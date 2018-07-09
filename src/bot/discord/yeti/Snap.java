@@ -5,10 +5,9 @@ import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class Snap {
 
@@ -30,6 +29,24 @@ public class Snap {
 
 
         }
+        Scanner thanosTxt = null;
+        try {
+    thanosTxt = new Scanner(new File("txt/thanos.txt"));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
+        while (thanosTxt.hasNext()){
+
+
+
+
+
+        }
+
 
 
 

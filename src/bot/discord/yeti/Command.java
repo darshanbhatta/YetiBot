@@ -9,8 +9,8 @@ public class Command extends ListenerAdapter {
 
     public void onMessageReceived(MessageReceivedEvent e) {
 
-        if (e.getMessage().getContent().startsWith("!")) {
-            String[] arg = e.getMessage().getContent().replaceFirst("!", "").split(" ");
+        if (e.getMessage().getContentRaw().startsWith("!")) {
+            String[] arg = e.getMessage().getContentRaw().replaceFirst("!", "").split(" ");
 
             switch (arg[0]) {
                 case "help":

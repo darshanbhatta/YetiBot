@@ -1,12 +1,12 @@
 package bot.discord.yeti;
 
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.OnlineStatus;
+import net.dv8tion.jda.client.entities.Application;
+import net.dv8tion.jda.core.*;
+import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 import javax.security.auth.login.LoginException;
+import java.awt.*;
 
 public class Main {
 
@@ -15,8 +15,9 @@ public class Main {
 
     public static void main(String[] args) {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-        builder.setToken("NDY1NjQwMzk3MTcxOTgyMzQ2.DiRcng.5CEaYu9pGWE0Cz5Qsm9Rc44ufhQ");
+        builder.setToken("NDY1OTQ1OTQ4OTI1OTg0NzY5.DiU5jw.JPmyl_v0ZUrcNVdkamdBY9Vwbyo");
         builder.setAutoReconnect(true);
+
         builder.setStatus(OnlineStatus.ONLINE);
         builder.addEventListener(new ReadyListener());
         builder.addEventListener(new Command());
@@ -26,8 +27,6 @@ public class Main {
         } catch (LoginException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (RateLimitedException e) {
             e.printStackTrace();
         }
 

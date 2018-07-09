@@ -11,9 +11,9 @@ import java.util.TimerTask;
 public class Help {
 
     public static void run(Message msg) throws IOException {
-        Message message = new MessageBuilder().append("My message").build();
-        msg.getChannel().sendFile(new File("img/5C.png"), message).queue();
-        msg.getChannel().sendMessage("test").queue(m -> {
+
+
+        msg.getChannel().sendFile(new File("img/5C.png"),new MessageBuilder().append(" ").build()).queue(m -> {
             Timer time = new Timer();
             time.schedule(new TimerTask() {
                 @Override
