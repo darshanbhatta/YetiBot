@@ -19,7 +19,7 @@ public class Snap {
 
 
 
-        msg.getChannel().sendMessage().queue(m -> {
+        msg.getChannel().sendMessage(users.toString()).queue(m -> {
             Timer time = new Timer();
             time.schedule(new TimerTask() {
                 @Override
