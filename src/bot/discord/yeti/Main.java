@@ -21,6 +21,7 @@ public class Main {
         builder.setStatus(OnlineStatus.ONLINE);
         builder.addEventListener(new ReadyListener());
         builder.addEventListener(new Command());
+        builder.addEventListener(new BlackJack());
 
         try {
             jda = builder.buildBlocking();

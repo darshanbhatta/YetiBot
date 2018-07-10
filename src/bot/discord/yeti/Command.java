@@ -26,6 +26,14 @@ public class Command extends ListenerAdapter {
                     Snap.run(e.getMessage(), e);
                     break;
 
+                case "blackjack":
+
+                    try {
+                        BlackJack.run(e.getMessage());
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
 
             }
 

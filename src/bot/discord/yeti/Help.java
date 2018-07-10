@@ -13,7 +13,7 @@ public class Help {
     public static void run(Message msg) throws IOException {
 
 
-        msg.getChannel().sendFile(new File("img/5C.png"),new MessageBuilder().append(" ").build()).queue(m -> {
+        msg.getChannel().sendFile(new File(""),new MessageBuilder().append(" ").build()).queue(m -> {
             Timer time = new Timer();
             time.schedule(new TimerTask() {
                 @Override
