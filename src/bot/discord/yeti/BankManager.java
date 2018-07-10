@@ -1,6 +1,8 @@
 package bot.discord.yeti;
 
 import bot.discord.yeti.currency.Bank;
+import net.dv8tion.jda.core.MessageBuilder;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
@@ -136,8 +138,16 @@ public class BankManager {
                 int number = bank.getAccountIndex((e.getAuthor().getId()));
 
                 if (number != -1) {
-                    msg.getChannel().sendMessage("You have " + bank.getAllBalance().get(number).getBalance() + " \uD83D\uDC8E").queue(m -> {
-                    });
+                    Bank finalBank = bank;
+                    e.getMember().getUser().openPrivateChannel().queue((channel) ->{
+
+                        channel.sendMessage("You have " + finalBank.getAllBalance().get(number).getBalance() + " \uD83D\uDC8E").queue();
+
+                            });
+
+
+
+
 
                 } else {
 
@@ -145,13 +155,40 @@ public class BankManager {
 
                     });
                 }
-            }
+            }else if (arg.length == 4 && arg[1].equals("add")) {
+                System.out.println(e.getMember().hasPermission(Permission.ADMINISTRATOR));
+                if(e.getMember().hasPermission(Permission.ADMINISTRATOR)){
+String addToWho = arg[2].substring(2,arg[2].indexOf(">"));
 
+                    int org = bank.getAccountIndex(addToWho);
+                    int bal = bank.getAllBalance().get(org).getBalance();
+                    String price = arg[3];
+                   // int number = bank.getAccountIndex((e.getAuthor().getId()));
+                    System.out.println(org);
+                    if (org != -1) {
+                        bank.getAllBalance().get(org).setBalance(bal +Integer.parseInt(price));
+                        msg.getChannel().sendMessage("Added " + price+ " \uD83D\uDC8E to " + bank.getAllBalance().get(org).getName()+"'s account" ).queue(m -> {
+                        });
 
-        }else{
+                    } else {
+
+                        msg.getChannel().sendMessage("Error you do not have an account type !bank init to make one").queue(m -> {
+
+                        });
+                    }
+
+                }else{
+                    msg.getChannel().sendMessage("Error you do not have permission to make this command").queue(m -> {
+
+                    });
+                }
+
+            } else{
             msg.getChannel().sendMessage("Error invalid format These are the available commands\n!bank init\n!bank balance\n!bank send @user %amount%").queue(m -> {
 
             });
+
+        }
 
         }
     }
