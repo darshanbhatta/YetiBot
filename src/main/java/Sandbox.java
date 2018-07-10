@@ -1,26 +1,22 @@
 package main.java;
 
+import bot.discord.yeti.currency.Bank;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class Sandbox {
 
     public static void main(String[] args) {
 
-        String test = "!fortniteStats Jeezy_x (pc) [solo]";
-        String username = test.substring(test.indexOf("!fortniteStats") + 15);
-        if (username.contains("(")) {
-            username = username.substring(0, username.indexOf("(") - 1);
-        }
-        String platform = "";
-        try {
-            platform = test.substring(test.indexOf("(") + 1, test.indexOf(")"));
-        } catch (IndexOutOfBoundsException e) {
+        Bank bank = new Bank();
+        bank.addUser("dsdsds","sdsdsdsds",54545);
 
-        }
-        String mode = "";
-        try {
-            mode = test.substring(test.indexOf("[") + 1,test.indexOf("]"));
-        } catch (IndexOutOfBoundsException e) {
+        bank.getAllBalance().get(0).setBalance(50);
 
-        }
-        System.out.println(username + " " + platform + " " + mode);
+bank.getAllBalance().get(0).setBalance(0);
+        System.out.println(bank.getAllBalance().get(0).getBalance());
+
     }
 }

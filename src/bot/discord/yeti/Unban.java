@@ -41,7 +41,7 @@ public class Unban {
                 int count = 0;
                 if (users.size() != 0) {
                     for (int x = 0; x < users.size(); x++) {
-                        if (users.get(x).getName().toLowerCase().equals(command.toLowerCase())) {
+                        if (command.toLowerCase().contains(users.get(x).getId().toLowerCase())) {
                             guild.getController().unban(users.get(x).getId()).queue();
                             msg.getChannel().sendMessage("Successfully unbanned " + users.get(x).getName()).queue(w -> {
 
@@ -67,10 +67,10 @@ public class Unban {
 
 
             } else {
-                msg.getChannel().sendMessage("Error incorrect format. !unban [username]").queue();
+                msg.getChannel().sendMessage("Error incorrect format. !unban [@username]").queue();
             }
         } catch (StringIndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Error incorrect format. !unban [username]").queue(w -> {
+            msg.getChannel().sendMessage("Error incorrect format. !unban [@username]").queue(w -> {
 
 
             });

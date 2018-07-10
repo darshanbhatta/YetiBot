@@ -58,6 +58,13 @@ public class Command extends ListenerAdapter {
                         e1.printStackTrace();
                     }
                     break;
+                case "bank":
+                    try {
+                        BankManager.run(e.getMessage(), e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
 
             }
 

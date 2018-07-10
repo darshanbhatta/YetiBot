@@ -22,21 +22,22 @@ public class Ban {
         try {
 
             String username = msg.getContentRaw().substring(msg.getContentRaw().indexOf("!ban") + 5);
-            if (username.contains("(")) {
-                username = username.substring(0, username.indexOf("(") - 1);
+            if (username.contains("<")) {
+                username = username.substring(2, username.indexOf(">"));
             }
             String reason = "";
             try {
-                reason = msg.getContentRaw().substring(msg.getContentRaw().indexOf("(") + 1, msg.getContentRaw().indexOf(")"));
+                reason = msg.getContentRaw().substring(msg.getContentRaw().indexOf(">") + 1);
             } catch (IndexOutOfBoundsException e) {
 
             }
-            System.out.println(reason + " lol " + username);
+      //      System.out.println(reason + " lol " + username + "  "  +users.get(1).getUser().getIdLong()+"");
             if (username != null) {
                 int count = 0;
                 if (users.size() != 0) {
                     for (int x = 0; x < users.size(); x++) {
-                        if (users.get(x).getUser().getName().toLowerCase().equals(username.toLowerCase())) {
+                        System.out.println(reason + " lol " + username + "  "  +users.get(x).getUser().getId()+"");
+                        if (username.toLowerCase().contains(users.get(x).getUser().getId().toLowerCase())) {
                             guild.getController().ban(users.get(x).getUser().getId(), 0, reason).queue();
                             msg.getChannel().sendMessage("Successfully banned " + users.get(x).getUser().getName()).queue(w -> {
 
@@ -62,10 +63,10 @@ public class Ban {
 
 
             } else {
-                msg.getChannel().sendMessage("Error incorrect format. !ban [username] (optional reason)").queue();
+                msg.getChannel().sendMessage("Error incorrect format. !ban @username %optional reason%").queue();
             }
         } catch (StringIndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Error incorrect format. !ban [username] (optional reason)").queue(w -> {
+            msg.getChannel().sendMessage("Error incorrect format. !ban @username %optional reason%").queue(w -> {
 
 
             });
