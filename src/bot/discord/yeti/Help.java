@@ -1,28 +1,35 @@
 package bot.discord.yeti;
 
-import net.dv8tion.jda.core.MessageBuilder;
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.Invite;
 import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-import java.io.File;
+import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Help {
 
-    public static void run(Message msg) throws IOException {
+    public static void run(Message msg, MessageReceivedEvent e) throws IOException {
 
 
-        msg.getChannel().sendFile(new File("img/5C.png"),new MessageBuilder().append(" ").build()).queue(m -> {
-            Timer time = new Timer();
-            time.schedule(new TimerTask() {
+        msg.getChannel().sendMessage("yo").queue(m -> {
+
+
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+
                 @Override
                 public void run() {
-                    msg.delete().queue();
-
+                   m.editMessage("hehehe").queue();
                 }
-            }, 5000);
-
+            }, 500);
 
         });
     }
