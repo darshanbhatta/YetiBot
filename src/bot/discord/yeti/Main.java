@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-        builder.setToken("NDY1OTQ1OTQ4OTI1OTg0NzY5.DiU5jw.JPmyl_v0ZUrcNVdkamdBY9Vwbyo");
+        builder.setToken("");
         builder.setAutoReconnect(true);
 
         builder.setStatus(OnlineStatus.ONLINE);
