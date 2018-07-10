@@ -51,6 +51,7 @@ public class Command extends ListenerAdapter {
                     }
                     break;
 
+
                 case "fortniteShop":
                     try {
                         FortniteShop.run(e.getMessage(), e);
@@ -60,7 +61,15 @@ public class Command extends ListenerAdapter {
                     break;
                 case "bank":
                     try {
-                        BankManager.run(e.getMessage(), e);
+                        BankManager.run(e.getMessage(),e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+                case "blackjack":
+
+                    try {
+                        BlackJack.run(e.getMessage());
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }

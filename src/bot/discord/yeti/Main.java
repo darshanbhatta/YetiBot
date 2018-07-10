@@ -14,12 +14,15 @@ public class Main {
 
     public static void main(String[] args) {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-        builder.setToken("%TOKEN%");
+
+        builder.setToken("NDY1OTQ1OTQ4OTI1OTg0NzY5.DiU5jw.JPmyl_v0ZUrcNVdkamdBY9Vwbyo");
+
         builder.setAutoReconnect(true);
 
         builder.setStatus(OnlineStatus.ONLINE);
         builder.addEventListener(new ReadyListener());
         builder.addEventListener(new Command());
+        builder.addEventListener(new BlackJack());
 
         try {
             jda = builder.buildBlocking();

@@ -13,6 +13,8 @@ public class ReadyListener extends ListenerAdapter {
         for (Guild g : e.getJDA().getGuilds()) {
             out += g.getName() + "\n";
 
+
+
         }
         System.out.println(out);
 
