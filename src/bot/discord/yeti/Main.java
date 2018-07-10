@@ -14,8 +14,9 @@ public class Main {
 
     public static void main(String[] args) {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-
-        builder.setToken("NDY1OTU1NzgzODQ3MzEzNDQ5.Diadxw.Mq2K5BjW4kUiNmEM6C3HzUFX_nk");
+//
+        //NDY1OTU1NzgzODQ3MzEzNDQ5.Diadxw.Mq2K5BjW4kUiNmEM6C3HzUFX_nk
+        builder.setToken("NDY1OTQ1OTQ4OTI1OTg0NzY5.Dia2Jw._wd1777XafK_lqjplkVmS2bBADA");
 
         builder.setAutoReconnect(true);
 

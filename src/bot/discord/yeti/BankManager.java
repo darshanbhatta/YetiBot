@@ -169,6 +169,16 @@ String addToWho = arg[2].substring(2,arg[2].indexOf(">"));
                         bank.getAllBalance().get(org).setBalance(bal +Integer.parseInt(price));
                         msg.getChannel().sendMessage("Added " + price+ " \uD83D\uDC8E to " + bank.getAllBalance().get(org).getName()+"'s account" ).queue(m -> {
                         });
+                        try {
+                            FileOutputStream fileOut =
+                                    new FileOutputStream("bank.ser");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(bank);
+                            out.close();
+                            fileOut.close();
+                        } catch (IOException i) {
+                            i.printStackTrace();
+                        }
 
                     } else {
 
