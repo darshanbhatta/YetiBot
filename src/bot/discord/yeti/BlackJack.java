@@ -32,7 +32,7 @@ public class BlackJack extends ListenerAdapter {
     private static boolean dealerBust;
     private static Message publicmsg;
     private static String price;
-    private static Bank bank = new Bank();
+    private static Bank bank;
     private static int i;
     private static String[] arg;
     //Main run method for Blackjack
@@ -46,7 +46,6 @@ public class BlackJack extends ListenerAdapter {
         placeBet = false;
 
         msg.getGuild().getMembers().forEach(m -> users.add(m));
-        Bank bank = new Bank();
 
         try {
             FileInputStream fileIn = new FileInputStream("bank.ser");
@@ -79,11 +78,17 @@ public class BlackJack extends ListenerAdapter {
 
                 if (bal >= Integer.parseInt(price)) {
                     bank.getAllBalance().get(i).setBalance(bal - Integer.parseInt(price));
+                    completeTransaction();
                 }
 
                 completeTransaction();
 
                 msg.getChannel().sendMessage("Successfully withdrew " + Integer.parseInt(price) + " \uD83D\uDC8E" + " from " + bank.getAllBalance().get(i).getName() + " " + " ").queue(m -> {});
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 placeBet = true;
 
             } else {
@@ -152,6 +157,7 @@ public class BlackJack extends ListenerAdapter {
         else{
             isVictory();
         }
+
     }
 
     //METHOD for Drawing a card from the deck
@@ -159,7 +165,9 @@ public class BlackJack extends ListenerAdapter {
         for(int i = 0; i < parameter; i++) {
             Message message = new MessageBuilder().append(" ").build();
 
-            publicmsg.getChannel().sendFile(new File(deck.get(0).getImage()), message).queue();
+            publicmsg.getChannel().sendFile(new File(deck.get(0).getImage()),new MessageBuilder().append(" ").build()).complete();
+
+           // publicmsg.getChannel().sendFile(new File(deck.get(0).getImage()), message).queue();
 
             total = total + deck.get(0).getNumber();
             if(deck.get(0).isAce()){
@@ -173,6 +181,7 @@ public class BlackJack extends ListenerAdapter {
     }
 
 
+
     //METHOD for Hit or Stand choice
     public void onMessageReceived(MessageReceivedEvent e) {
 
@@ -181,12 +190,20 @@ public class BlackJack extends ListenerAdapter {
             if (gameStart) {
                 switch (arg[0]) {
                     case "hit":
-                        drawCard(1);
+
+
+                            drawCard(1);
+
+
+
                         break;
 
                     case "stand":
-                        isVictory();
-                        gameStart = false;
+
+                            isVictory();
+                            gameStart = false;
+
+
                         break;
                 }
             } else {
@@ -215,24 +232,27 @@ public class BlackJack extends ListenerAdapter {
             publicmsg.getChannel().sendMessage("Dealer busted. You win.").queue();
             if(placeBet) {
                 bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + 2 * (Integer.valueOf(price)));
+                completeTransaction();
             }
             gameStart = false;
         }
         else if(!dealerBust && total <= 21 && !hasAce){
-            publicmsg.getChannel().sendMessage("Dealer had " + dealerTotal).queue();
+           // publicmsg.getChannel().sendMessage(").queue();
             if(dealerTotal > total){
-                publicmsg.getChannel().sendMessage("You lose.").queue();
+                publicmsg.getChannel().sendMessage("Dealer had " + dealerTotal + "\nYou lose.").queue();
             }
             else if(total > dealerTotal){
-                publicmsg.getChannel().sendMessage("You win.").queue();
+                publicmsg.getChannel().sendMessage("Dealer had " + dealerTotal + "\nYou win.").queue();
                 if(placeBet) {
                     bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + 2 * (Integer.valueOf(price)));
+                    completeTransaction();
                 }
             }
             else{
                 publicmsg.getChannel().sendMessage("It's a tie.").queue();
                 if(placeBet) {
                     bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + (Integer.valueOf(price)));
+                    completeTransaction();
                 }
             }
             gameStart = false;
@@ -242,28 +262,33 @@ public class BlackJack extends ListenerAdapter {
                 publicmsg.getChannel().sendMessage("Blackjack! You win.").queue();
                 if(placeBet) {
                     bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + (int) (2.5 * (Integer.valueOf(price))));
+                    completeTransaction();
                 }
                 gameStart = false;
             }
             else if((totalAceUp == 21) && dealerTotal < 21){
-                publicmsg.getChannel().sendMessage("Dealer had " + dealerTotal).queue();
-                publicmsg.getChannel().sendMessage("Twenty-one, You win.").queue();
+                //publicmsg.getChannel().sendMessage().queue();
+                publicmsg.getChannel().sendMessage("Dealer had " + dealerTotal +"\nTwenty-one, You win.").queue();
                 if(placeBet) {
                     bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + (2 * (Integer.valueOf(price))));
+                    completeTransaction();
                 }
                 gameStart = false;
             }
             else if(dealerBust && totalAceUp <= 21){
                 publicmsg.getChannel().sendMessage("Dealer busted. You win.").queue();
+
                 if(placeBet) {
+
                     bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + (2 * (Integer.valueOf(price))));
+                    completeTransaction();
                 }
                 gameStart = false;
             }
             else if(!dealerBust && totalAceUp <= 21){
                 if(dealerTotal > total && dealerTotal > totalAceUp){
-                    publicmsg.getChannel().sendMessage("Dealer had " + dealerTotal).queue();
-                    publicmsg.getChannel().sendMessage("You lose.").queue();
+                    //publicmsg.getChannel().sendMessage().queue();
+                    publicmsg.getChannel().sendMessage("Dealer had " + dealerTotal + "\nYou lose.").queue();
                     gameStart = false;
                 }
             }
@@ -271,12 +296,15 @@ public class BlackJack extends ListenerAdapter {
                 publicmsg.getChannel().sendMessage("Stand-off. It's a tie. ").queue();
                 if(placeBet) {
                     bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + (Integer.valueOf(price)));
+                    completeTransaction();
+
                 }
                 gameStart = false;
             }
             else {
-                publicmsg.getChannel().sendMessage("Total: " + total + " or " + totalAceUp).queue();
-                publicmsg.getChannel().sendMessage("Choose !hit or !stand").queue();
+               // publicmsg.getChannel().sendMessage().queue();
+                publicmsg.getChannel().sendMessage("Total: " + total + " or " + totalAceUp + "\nChoose !hit or !stand").queue();
+
             }
 
         }
