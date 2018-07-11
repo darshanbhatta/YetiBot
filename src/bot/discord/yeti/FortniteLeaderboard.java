@@ -15,6 +15,7 @@ import java.util.TimerTask;
 public class FortniteLeaderboard {
     public static void run(Message msg, MessageReceivedEvent event) throws IOException {
         String platform = "";
+        System.setProperty("http.agent", "Chrome");
         try {
             platform = msg.getContentRaw().substring(msg.getContentRaw().indexOf("(") + 1, msg.getContentRaw().indexOf(")"));
 

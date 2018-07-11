@@ -1,13 +1,15 @@
+
 package bot.discord.yeti;
 
+import bot.discord.yeti.currency.Bank;
 import net.dv8tion.jda.core.MessageBuilder;
+import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -16,6 +18,7 @@ import java.util.Collections;
 public class BlackJack extends ListenerAdapter {
 
     private static ArrayList<Card> deck = new ArrayList();
+    private static ArrayList<Member> users = new ArrayList();
 
     private static int total;
     private static int dealerTotal;
@@ -23,20 +26,91 @@ public class BlackJack extends ListenerAdapter {
     private static int totalAceUp;
     private static int cardCount;
     private static boolean gameStart;
-
+    private static boolean placeBet;
     private static boolean hasAce;
     private static boolean dealerHasAce;
     private static boolean dealerBust;
     private static Message publicmsg;
-
-
+    private static String price;
+    private static Bank bank = new Bank();
+    private static int i;
+    private static String[] arg;
     //Main run method for Blackjack
+
     public static void run(Message msg) throws IOException {
         gameStart = true;
         publicmsg = msg; //Allows messages to be sent outside the 'run' method
         total = 0;
         cardCount = 0;
         hasAce = false;
+        placeBet = false;
+
+        msg.getGuild().getMembers().forEach(m -> users.add(m));
+        Bank bank = new Bank();
+
+        try {
+            FileInputStream fileIn = new FileInputStream("bank.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            bank = (Bank) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+            return;
+        }
+
+        arg = msg.getContentRaw().split(" ");
+
+        i = bank.getAccountIndex(msg.getAuthor().getId());
+        if(arg.length == 1){
+            publicmsg.getChannel().sendMessage("Began game without bet.").queue();
+        }
+        else{
+            price = arg[1];
+        }
+
+        if(arg.length == 2) {
+            if (i != -1) {
+
+                int bal = bank.getAllBalance().get(i).getBalance();
+
+                if (bal >= Integer.parseInt(price)) {
+                    bank.getAllBalance().get(i).setBalance(bal - Integer.parseInt(price));
+                }
+
+                completeTransaction();
+
+                msg.getChannel().sendMessage("Successfully withdrew " + Integer.parseInt(price) + " \uD83D\uDC8E" + " from " + bank.getAllBalance().get(i).getName() + " " + " ").queue(m -> {});
+                placeBet = true;
+
+            } else {
+                msg.getChannel().sendMessage("Error recipient does not have an account, tell them to type !bank init to make one").queue(m -> {
+                });
+
+            }
+        }
+
+
+
+
+
+        try {
+            FileInputStream fileIn = new FileInputStream("bank.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            bank = (Bank) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException p) {
+            p.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+            return;
+        }
+
 
 
         startGame();
@@ -46,7 +120,17 @@ public class BlackJack extends ListenerAdapter {
         drawCard(2);
 
     }
-
+    public static void completeTransaction(){
+        try {
+            FileOutputStream fileOut = new FileOutputStream("bank.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(bank);
+            out.close();
+            fileOut.close();
+        } catch (IOException ww) {
+            ww.printStackTrace();
+        }
+    }
 
     //METHOD for Initializing the Game
     public static void startGame(){
@@ -129,6 +213,9 @@ public class BlackJack extends ListenerAdapter {
         }
         else if(dealerBust && total <= 21){
             publicmsg.getChannel().sendMessage("Dealer busted. You win.").queue();
+            if(placeBet) {
+                bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + 2 * (Integer.valueOf(price)));
+            }
             gameStart = false;
         }
         else if(!dealerBust && total <= 21 && !hasAce){
@@ -136,27 +223,56 @@ public class BlackJack extends ListenerAdapter {
             if(dealerTotal > total){
                 publicmsg.getChannel().sendMessage("You lose.").queue();
             }
-            else{
+            else if(total > dealerTotal){
                 publicmsg.getChannel().sendMessage("You win.").queue();
+                if(placeBet) {
+                    bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + 2 * (Integer.valueOf(price)));
+                }
+            }
+            else{
+                publicmsg.getChannel().sendMessage("It's a tie.").queue();
+                if(placeBet) {
+                    bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + (Integer.valueOf(price)));
+                }
             }
             gameStart = false;
         }
         else{
             if(totalAceUp == 21 && cardCount <= 2){
                 publicmsg.getChannel().sendMessage("Blackjack! You win.").queue();
+                if(placeBet) {
+                    bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + (int) (2.5 * (Integer.valueOf(price))));
+                }
                 gameStart = false;
             }
             else if((totalAceUp == 21) && dealerTotal < 21){
                 publicmsg.getChannel().sendMessage("Dealer had " + dealerTotal).queue();
                 publicmsg.getChannel().sendMessage("Twenty-one, You win.").queue();
+                if(placeBet) {
+                    bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + (2 * (Integer.valueOf(price))));
+                }
                 gameStart = false;
             }
             else if(dealerBust && totalAceUp <= 21){
                 publicmsg.getChannel().sendMessage("Dealer busted. You win.").queue();
+                if(placeBet) {
+                    bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + (2 * (Integer.valueOf(price))));
+                }
                 gameStart = false;
+            }
+            else if(!dealerBust && totalAceUp <= 21){
+                if(dealerTotal > total && dealerTotal > totalAceUp){
+                    publicmsg.getChannel().sendMessage("Dealer had " + dealerTotal).queue();
+                    publicmsg.getChannel().sendMessage("You lose.").queue();
+                    gameStart = false;
+                }
             }
             else if((total == dealerTotal) || (totalAceUp == dealerTotal) && dealerTotal == 21){
                 publicmsg.getChannel().sendMessage("Stand-off. It's a tie. ").queue();
+                if(placeBet) {
+                    bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + (Integer.valueOf(price)));
+                }
+                gameStart = false;
             }
             else {
                 publicmsg.getChannel().sendMessage("Total: " + total + " or " + totalAceUp).queue();

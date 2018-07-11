@@ -1,6 +1,5 @@
 package bot.discord.yeti;
 
-import bot.discord.yeti.fortniteAPI.FortniteShop;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
