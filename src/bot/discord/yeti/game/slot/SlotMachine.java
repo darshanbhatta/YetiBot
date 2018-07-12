@@ -74,7 +74,7 @@ public class SlotMachine {
 
     @Override
     public String toString() {
-        String table = "\uD83C\uDFB0 Slot Machine" + "\n";
+        String table = ":slot_machine: Slots :slot_machine: " + "\n";
         String[] machineLine = new String[col];
         for (int i = 0; i < col; i++) {
             machineLine[i] = "";

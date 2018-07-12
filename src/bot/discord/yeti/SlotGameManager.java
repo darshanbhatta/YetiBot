@@ -36,7 +36,7 @@ public class SlotGameManager {
                 // checking valid integer using parseInt() method
                 price = Integer.parseInt(arg[1]);
                 int currentBal = bank.getAllBalance().get(indx).getBalance();
-                System.out.println(price + " " + currentBal);
+
                 if (price <= currentBal) {
                     SlotMachine slot = new SlotMachine();
                     int finalPrice = price;
@@ -65,12 +65,12 @@ public class SlotGameManager {
                                                         String winningMessage;
                                                         if (slot.getWinMultiplier() == 0) {
                                                             finalBank.getAllBalance().get(indx).setBalance(currentBal - finalPrice1);
-                                                            winningMessage = "You lost " + finalPrice + " !";
+                                                            winningMessage = "You lose.";
 
 
                                                         } else if (slot.getWinMultiplier() == 1) {
 
-                                                            winningMessage = "You broke even";
+                                                            winningMessage = "You broke even. Returned " +  (Integer.valueOf(finalPrice)) + " :gem:";
 
                                                         } else {
                                                             finalBank.getAllBalance().get(indx).setBalance(currentBal + (finalPrice1 * slot.getWinMultiplier()));
@@ -104,11 +104,11 @@ public class SlotGameManager {
                     });
                 }else {
 
-                    msg.getChannel().sendMessage("Error insufficient funds, you have " + currentBal + " \uD83D\uDC8E").queue(m -> {
+                    msg.getChannel().sendMessage("Error, insufficient funds, you have " + currentBal + " \uD83D\uDC8E").queue(m -> {
                     });
                 }
             } catch (NumberFormatException woah) {
-                msg.getChannel().sendMessage("Error you can only bet integers").queue(m -> {
+                msg.getChannel().sendMessage("Error, you can only bet integers").queue(m -> {
                 });
             }
 
@@ -116,69 +116,69 @@ public class SlotGameManager {
         } else if(arg.length==2){
 
 
-        msg.getChannel().sendMessage("Error you do not have a bank account to bet with, try !bank init to make one");
+            msg.getChannel().sendMessage("Error you do not have a bank account to bet with, try !bank init to make one");
 
 
-    }else
+        }else
 
-    {
+        {
 
-        SlotMachine slot = new SlotMachine();
-
-
-        msg.getChannel().sendMessage(slot.toString()).queue(message -> {
+            SlotMachine slot = new SlotMachine();
 
 
-            Timer time = new Timer();
-            time.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    slot.play();
-                    message.editMessage(slot.toString()).queue(message1 -> {
-                        Timer time = new Timer();
-                        time.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                slot.play();
-                                message.editMessage(slot.toString()).queue(message2 -> {
-                                    Timer time = new Timer();
-                                    time.schedule(new TimerTask() {
-                                        @Override
-                                        public void run() {
-                                            slot.play();
-                                            String winningMessage;
-                                            if (slot.getWinMultiplier() == 0) {
-                                                winningMessage = "You could of lost!";
+            msg.getChannel().sendMessage(slot.toString()).queue(message -> {
 
-                                            } else if (slot.getWinMultiplier() == 1) {
 
-                                                winningMessage = "You broke even!";
+                Timer time = new Timer();
+                time.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        slot.play();
+                        message.editMessage(slot.toString()).queue(message1 -> {
+                            Timer time = new Timer();
+                            time.schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                    slot.play();
+                                    message.editMessage(slot.toString()).queue(message2 -> {
+                                        Timer time = new Timer();
+                                        time.schedule(new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                slot.play();
+                                                String winningMessage;
+                                                if (slot.getWinMultiplier() == 0) {
+                                                    winningMessage = "You lose.";
 
-                                            } else {
-                                                winningMessage = "You could have won " + "✖" + slot.getWinMultiplier() + " \uD83D\uDC8E";
+                                                } else if (slot.getWinMultiplier() == 1) {
 
+                                                    winningMessage = "You broke even.";
+
+                                                } else {
+                                                    winningMessage = "You won on " + "✖" + slot.getWinMultiplier() + " \uD83D\uDC8E";
+
+                                                }
+                                                message.editMessage(slot.toString() + "\n" + " " + winningMessage).queue();
                                             }
-                                            message.editMessage(slot.toString() + "\n" + " " + winningMessage).queue();
-                                        }
-                                    }, 750);
+                                        }, 750);
 
-                                });
-                            }
-                        }, 750);
+                                    });
+                                }
+                            }, 750);
 
 
-                    });
-                }
-            }, 750);
+                        });
+                    }
+                }, 750);
 
 
-        });
+            });
+
+
+        }
 
 
     }
-
-
-}
 
 
 

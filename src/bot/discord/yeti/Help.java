@@ -20,18 +20,7 @@ public class Help {
 
 
 
-        msg.getChannel().sendMessage("yo").queue(m -> {
-
-
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-
-                @Override
-                public void run() {
-                   m.editMessage("hehehe").queue();
-                }
-            }, 500);
-
-        });
+        msg.getChannel().sendMessage(":game_die: Yeti Casino :game_die: \n\t !blackjack\n\t !coinflip\n\t !slot \n\t !roulette").queue();
+        msg.getChannel().sendMessage(":gem: Yeti Reserve :gem:  \n\t !bank init\n\t !bank balance\n\t !bank send").queue();
     }
 }

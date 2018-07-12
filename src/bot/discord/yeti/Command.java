@@ -81,6 +81,25 @@ break;
                         e1.printStackTrace();
                     }
                     break;
+                case "coinflip":
+
+
+                    try {
+                        Coinflip.run(e.getMessage());
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    break;
+                case "roulette":
+
+
+                    RouletteManager.run(e);
+
+                    break;
+
+            }
+
 
             }
 
@@ -88,4 +107,3 @@ break;
 
 
     }
-}

@@ -143,7 +143,7 @@ public class BankManager {
 
                         channel.sendMessage("You have " + finalBank.getAllBalance().get(number).getBalance() + " \uD83D\uDC8E").queue();
 
-                            });
+                    });
 
 
 
@@ -158,12 +158,12 @@ public class BankManager {
             }else if (arg.length == 4 && arg[1].equals("add")) {
                 System.out.println(e.getMember().hasPermission(Permission.ADMINISTRATOR));
                 if(e.getMember().hasPermission(Permission.ADMINISTRATOR)){
-String addToWho = arg[2].substring(2,arg[2].indexOf(">"));
+                    String addToWho = arg[2].substring(2,arg[2].indexOf(">"));
 
                     int org = bank.getAccountIndex(addToWho);
                     int bal = bank.getAllBalance().get(org).getBalance();
                     String price = arg[3];
-                   // int number = bank.getAccountIndex((e.getAuthor().getId()));
+                    // int number = bank.getAccountIndex((e.getAuthor().getId()));
                     System.out.println(org);
                     if (org != -1) {
                         bank.getAllBalance().get(org).setBalance(bal +Integer.parseInt(price));
@@ -182,23 +182,28 @@ String addToWho = arg[2].substring(2,arg[2].indexOf(">"));
 
                     } else {
 
-                        msg.getChannel().sendMessage("Error you do not have an account type !bank init to make one").queue(m -> {
+                        msg.getChannel().sendMessage("Error, you do not have an account type !bank init to make one").queue(m -> {
 
                         });
                     }
 
                 }else{
-                    msg.getChannel().sendMessage("Error you do not have permission to make this command").queue(m -> {
+                    msg.getChannel().sendMessage("Error, you do not have permission to make this command").queue(m -> {
 
                     });
                 }
 
             } else{
-            msg.getChannel().sendMessage("Error invalid format These are the available commands\n!bank init\n!bank balance\n!bank send @user %amount%").queue(m -> {
+                switch(arg[1]) {
+                    case "send":  msg.getChannel().sendMessage("Format: !bank send @user <amount>").queue();
+                        break;
+                    case "add":   msg.getChannel().sendMessage("Format: !bank add @user <amount>").queue();
+                        break;
+                    default:     msg.getChannel().sendMessage("Error, invalid command.").queue();
 
-            });
+                }
 
-        }
+            }
 
         }
     }

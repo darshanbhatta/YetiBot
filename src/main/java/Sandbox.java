@@ -1,23 +1,29 @@
 package main.java;
 
-import bot.discord.yeti.game.slot.SlotMachine;
+import bot.discord.yeti.game.roulette.Roulette;
+import bot.discord.yeti.game.roulette.RouletteGame;
+import bot.discord.yeti.game.roulette.RouletteGameHolder;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class Sandbox {
 
     public static void main(String[] args) {
 
-
-
-        for(int w=0;w<100;w++) {
-            SlotMachine machine = new SlotMachine();
-            for (int x = 0; x < 3; x++) {
-                machine.play();
-            }
-            if(machine.getWinMultiplier()==4) {
-                System.out.println(machine.toString());
-                System.out.println(machine.getWinMultiplier());
-                System.out.println();
-            }
+        RouletteGameHolder rouletteGame = new RouletteGameHolder();
+        rouletteGame.getRouletteGames().add(new RouletteGame(true, "5455454545"));
+        try {
+            FileOutputStream fileOut = new FileOutputStream("roulette.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(rouletteGame);
+            out.close();
+            fileOut.close();
+        } catch (IOException ww) {
+            ww.printStackTrace();
         }
+
+
     }
 }
