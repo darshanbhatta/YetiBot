@@ -1,21 +1,18 @@
 package main.java;
 
-import bot.discord.yeti.game.roulette.Roulette;
-import bot.discord.yeti.game.roulette.RouletteGame;
-import bot.discord.yeti.game.roulette.RouletteGameHolder;
+import bot.discord.yeti.game.jackpot.JackpotGame;
+import bot.discord.yeti.game.jackpot.JackpotGameHolder;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class Sandbox {
 
     public static void main(String[] args) {
 
-        RouletteGameHolder rouletteGame = new RouletteGameHolder();
-        rouletteGame.getRouletteGames().add(new RouletteGame(true, "5455454545"));
+       JackpotGameHolder rouletteGame = new JackpotGameHolder();
+        rouletteGame.getJackPotGame().add(new JackpotGame(true, "5455454545"));
         try {
-            FileOutputStream fileOut = new FileOutputStream("roulette.ser");
+            FileOutputStream fileOut = new FileOutputStream("jackpot.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(rouletteGame);
             out.close();
@@ -26,4 +23,6 @@ public class Sandbox {
 
 
     }
-}
+
+
+    }

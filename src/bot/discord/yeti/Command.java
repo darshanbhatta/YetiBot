@@ -97,8 +97,16 @@ break;
                     RouletteManager.run(e);
 
                     break;
+                    case "jackpot":
+
+
+                    JackpotManager.run(e);
+
+                    break;
 
             }
+
+        }
 
 
             }
@@ -106,4 +114,3 @@ break;
         }
 
 
-    }

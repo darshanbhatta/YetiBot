@@ -147,7 +147,7 @@ public class RouletteManager {
 
                                                                         if (finalServerid.equals(rouletteGame[0].getRouletteGames().get(x).getServerid())) {
                                                                             indx = x;
-
+break;
 
                                                                         }
 
@@ -167,7 +167,7 @@ public class RouletteManager {
                                                                     c.printStackTrace();
                                                                     return;
                                                                 }
-                                                       //         System.out.println("Game indx " + rouletteGame[0].getRouletteGames().get(indx).getRouletteUsers().size());
+                                                                //         System.out.println("Game indx " + rouletteGame[0].getRouletteGames().get(indx).getRouletteUsers().size());
                                                                 for (int x = 0; x < rouletteGame[0].getRouletteGames().get(indx).getRouletteUsers().size(); x++) {
                                                                     int ida = finalBank[0].getAccountIndex(e.getAuthor().getId());
                                                                     int userBalance;
@@ -177,7 +177,7 @@ public class RouletteManager {
                                                                     ga.calcMulti();
                                                                     int userMulti = ga.getMultiplier();
                                                                     finalBank[0].getAllBalance().get(ida).setBalance(finalBank[0].getAllBalance().get(ida).getBalance() + (userMulti * bet));
-                                                              //      System.out.println(userMulti);
+                                                                    //      System.out.println(userMulti);
 
 
                                                                 }
@@ -243,8 +243,8 @@ public class RouletteManager {
                     String whatBet = code[3]; //check if valid bet
                     boolean vaildBet = true;
 
-                        if(bet>0){
-                            try{
+                    if(bet>0){
+                        try{
                             int num =       Integer.parseInt(whatBet);
 
                             if(num<37&&num>-1){
@@ -260,11 +260,11 @@ public class RouletteManager {
                             boolean found = false;
                             if (bet <= currentBal) {
 
-                               // System.out.println(bank[0].getAllBalance().get(bankAccountIndex).getBalance());
+                                // System.out.println(bank[0].getAllBalance().get(bankAccountIndex).getBalance());
                                 for (int x = 0; x < rouletteGame[0].getRouletteGames().size(); x++) {
                                     String se = e.getGuild().getId();
                                     if (se.equals(rouletteGame[0].getRouletteGames().get(x).getServerid())) {
-                                   //     System.out.println(se + " " + rouletteGame[0].getRouletteGames().get(x).getServerid() + " " + x);
+                                        //     System.out.println(se + " " + rouletteGame[0].getRouletteGames().get(x).getServerid() + " " + x);
                                         rouletteGame[0].getRouletteGames().get(x).getRouletteUsers().add(new RouletteUsers(e.getAuthor().getId(), whatBet, bet));
                                         try {
                                             FileOutputStream fileOut = new FileOutputStream("roulette.ser");
@@ -317,12 +317,12 @@ public class RouletteManager {
 
                         }
 
-                        }else{
+                    }else{
 
-                            e.getChannel().sendMessage("Error invalid bet, you can only bet positive integers");
+                        e.getChannel().sendMessage("Error invalid bet, you can only bet positive integers");
 
 
-                        }
+                    }
 
 
 
@@ -338,10 +338,10 @@ public class RouletteManager {
 
             }else{
 
-            e.getChannel().sendMessage("Error you do not have a bank account to bet with, try !bank init to make one");
+                e.getChannel().sendMessage("Error you do not have a bank account to bet with, try !bank init to make one");
 
 
-        }
+            }
         }else{
 
             e.getChannel().sendMessage("Error invalid command. Try !roulette init to start a match and !roulette bet %bet amount% %bet type[red/black/green/odd/even/number from 1-36]%");
@@ -349,4 +349,3 @@ public class RouletteManager {
         }
     }
 }
-

@@ -15,8 +15,9 @@ public class Main {
     public static void main(String[] args) {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
 //
-        //NDY1OTU1NzgzODQ3MzEzNDQ5.Diadxw.Mq2K5BjW4kUiNmEM6C3HzUFX_nk
-        builder.setToken("NDY1OTQ1OTQ4OTI1OTg0NzY5.Dihznw.aUy9Je6z4JNTU2012hJ1LlQl-uU");
+        //NDY1OTU1NzgzODQ3MzEzNDQ5.DikfTg.ahBOBRUhceNFxPsaWvpU3WCGDmA
+        //NDY1OTQ1OTQ4OTI1OTg0NzY5.Dih9TA.eB6WD26KkcN8_hVkv5tZs7Egkjc
+        builder.setToken("NDY1OTQ1OTQ4OTI1OTg0NzY5.Dih9TA.eB6WD26KkcN8_hVkv5tZs7Egkjc");
 
         builder.setAutoReconnect(true);
 
