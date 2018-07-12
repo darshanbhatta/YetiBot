@@ -42,7 +42,7 @@ public class SlotGameManager {
                     int finalPrice = price;
                     Bank finalBank = bank;
                     int finalPrice1 = price;
-                    msg.getChannel().sendMessage(slot.toString()).queue(message -> {
+                    msg.getChannel().sendMessage(slot.empty()).queue(message -> {
 
 
                         Timer time = new Timer();
@@ -50,18 +50,16 @@ public class SlotGameManager {
                             @Override
                             public void run() {
                                 slot.play();
-                                message.editMessage(slot.toString()).queue(message1 -> {
+                                message.editMessage(slot.firstIter()).queue(message1 -> {
                                     Timer time = new Timer();
                                     time.schedule(new TimerTask() {
                                         @Override
                                         public void run() {
-                                            slot.play();
-                                            message.editMessage(slot.toString()).queue(message2 -> {
+                                            message.editMessage(slot.secondIter()).queue(message2 -> {
                                                 Timer time = new Timer();
                                                 time.schedule(new TimerTask() {
                                                     @Override
                                                     public void run() {
-                                                        slot.play();
                                                         String winningMessage;
                                                         if (slot.getWinMultiplier() == 0) {
                                                             finalBank.getAllBalance().get(indx).setBalance(currentBal - finalPrice1);
@@ -77,7 +75,7 @@ public class SlotGameManager {
                                                             winningMessage = "You win " + finalPrice * slot.getWinMultiplier() + " \uD83D\uDC8E";
 
                                                         }
-                                                        message.editMessage(slot.toString() + "\n" + " " + winningMessage).queue();
+                                                        message.editMessage(slot.thirdIter() + "\n" + " " + winningMessage).queue();
                                                         try {
                                                             FileOutputStream fileOut =
                                                                     new FileOutputStream("bank.ser");
@@ -126,7 +124,7 @@ public class SlotGameManager {
             SlotMachine slot = new SlotMachine();
 
 
-            msg.getChannel().sendMessage(slot.toString()).queue(message -> {
+            msg.getChannel().sendMessage(slot.empty()).queue(message -> {
 
 
                 Timer time = new Timer();
@@ -134,18 +132,17 @@ public class SlotGameManager {
                     @Override
                     public void run() {
                         slot.play();
-                        message.editMessage(slot.toString()).queue(message1 -> {
+                        message.editMessage(slot.firstIter()).queue(message1 -> {
                             Timer time = new Timer();
                             time.schedule(new TimerTask() {
                                 @Override
                                 public void run() {
-                                    slot.play();
-                                    message.editMessage(slot.toString()).queue(message2 -> {
+
+                                    message.editMessage(slot.secondIter()).queue(message2 -> {
                                         Timer time = new Timer();
                                         time.schedule(new TimerTask() {
                                             @Override
                                             public void run() {
-                                                slot.play();
                                                 String winningMessage;
                                                 if (slot.getWinMultiplier() == 0) {
                                                     winningMessage = "You lose.";
@@ -158,7 +155,7 @@ public class SlotGameManager {
                                                     winningMessage = "You won on " + "✖" + slot.getWinMultiplier() + " \uD83D\uDC8E";
 
                                                 }
-                                                message.editMessage(slot.toString() + "\n" + " " + winningMessage).queue();
+                                                message.editMessage(slot.thirdIter() + "\n" + " " + winningMessage).queue();
                                             }
                                         }, 750);
 
