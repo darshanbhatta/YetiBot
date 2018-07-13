@@ -67,11 +67,9 @@ public class Command extends ListenerAdapter {
 break;
                 case "blackjack":
 
-                    try {
-                        BlackJack.run(e.getMessage());
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
+
+                        BlackjackManager.run(e);
+
                     break;
                 case "slot":
 
