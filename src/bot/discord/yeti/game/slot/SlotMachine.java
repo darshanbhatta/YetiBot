@@ -29,12 +29,35 @@ public class SlotMachine {
 
             int first = (int) (Math.random() * slotTypes.length);
             vals[currentRow][currentCol] = first;
+            if(first==2){
+                first=0;
+            }else if(first==3){
+                first=1;
+            }else if(first==8){
+                first=5;
+            }else if(first==9){
+                first=6;
+            }else if(first==10){
+                first=7;
+            }
             currentCol++;
             if (Math.random() < .2) {
                 vals[currentRow][currentCol] = first;
 
             } else {
-                vals[currentRow][currentCol] = (int) (Math.random() * slotTypes.length);
+                int second = (int) (Math.random() * slotTypes.length);
+                if(second==2){
+                    second=0;
+                }else if(second==3){
+                    second=1;
+                }else if(second==8){
+                    second=5;
+                }else if(second==9){
+                    second=6;
+                }else if(second==10){
+                    second=7;
+                }
+                vals[currentRow][currentCol] = second;
 
             }
             currentCol++;
@@ -42,7 +65,19 @@ public class SlotMachine {
                 vals[currentRow][currentCol] = first;
 
             } else {
-                vals[currentRow][currentCol] = (int) (Math.random() * slotTypes.length);
+                int third = (int) (Math.random() * slotTypes.length);
+                if(third==2){
+                    third=0;
+                }else if(third==3){
+                    third=1;
+                }else if(third==8){
+                    third=5;
+                }else if(third==9){
+                    third=6;
+                }else if(third==10){
+                    third=7;
+                }
+                vals[currentRow][currentCol] = third;
 
             }
 
@@ -58,12 +93,13 @@ public class SlotMachine {
 
 
     private void winnerCalc() {
-
+        winMultiplier = 0;
        if (vals[0][0] == vals[0][1] && vals[0][1] == vals[0][2]) {
             winMultiplier = slotTypes[vals[0][0]].getX3();
 
+
         }
-        if (vals[1][0] == vals[1][1] && vals[0][1] == vals[1][2]) {
+        if (vals[1][0] == vals[1][1] && vals[1][1] == vals[1][2]) {
             if(winMultiplier<slotTypes[vals[1][0]].getX3())
             winMultiplier = slotTypes[vals[1][0]].getX3();
 

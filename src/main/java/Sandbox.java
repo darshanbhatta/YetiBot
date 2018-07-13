@@ -18,7 +18,7 @@ for(int x=0;x<10000;x++){
     System.out.println(game.thirdIter());
     System.out.println(game.getWinMultiplier());
 
-    if(game.getWinMultiplier()==10){
+    if(game.getWinMultiplier()==5){
         count++;
     }
 }
