@@ -103,6 +103,12 @@ break;
                     JackpotManager.run(e);
 
                     break;
+                case "tic":
+
+
+                    TicTacToeManager.run(e);
+
+                    break;
 
             }
 
