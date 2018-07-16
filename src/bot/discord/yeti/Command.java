@@ -107,14 +107,19 @@ break;
                     TicTacToeManager.run(e);
 
                     break;
+                case "c4":
 
+
+                    Connect4Manager.run(e);
+
+                    break;
+
+            }
             }
 
         }
 
 
             }
-
-        }
 
 
