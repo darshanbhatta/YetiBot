@@ -6,6 +6,8 @@ import bot.discord.yeti.game.connect4.Connect4Game;
 import bot.discord.yeti.game.connect4.Connect4Holder;
 import bot.discord.yeti.game.jackpot.JackpotGame;
 import bot.discord.yeti.game.jackpot.JackpotGameHolder;
+import bot.discord.yeti.game.numguesser.NumGuessGame;
+import bot.discord.yeti.game.numguesser.NumGuessHolder;
 import bot.discord.yeti.game.slot.Slot;
 import bot.discord.yeti.game.slot.SlotMachine;
 import bot.discord.yeti.game.tictactoe.TicTacToeGame;
@@ -17,11 +19,11 @@ public class Sandbox {
 
     public static void main(String[] args) {
 
-        Connect4Holder x = new Connect4Holder();
-        x.getConnect4GameArrayList().add(new Connect4Game("43434","454","ssdsd"));
+        NumGuessHolder x = new NumGuessHolder();
+        x.getNumGuessHolders().add(new NumGuessGame("43434",454));
 
         try {
-            FileOutputStream fileOut = new FileOutputStream("connect4.ser");
+            FileOutputStream fileOut = new FileOutputStream("numguess.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(x);
             out.close();
@@ -29,7 +31,7 @@ public class Sandbox {
         } catch (IOException ww) {
             ww.printStackTrace();
         }
-
+        System.out.println((int)(Math.random()*(100))+1);
 
 
 

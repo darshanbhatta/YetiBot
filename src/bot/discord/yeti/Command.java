@@ -113,6 +113,12 @@ break;
                     Connect4Manager.run(e);
 
                     break;
+                case "numguess":
+
+
+                    NumGuessManager.run(e);
+
+                    break;
 
             }
             }
