@@ -119,13 +119,20 @@ break;
                     NumGuessManager.run(e);
 
                     break;
+                case "weather":
+
+
+                    Weather.run(e);
+
+                    break;
 
             }
+
+            }
+
             }
 
         }
 
-
-            }
 
 
