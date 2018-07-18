@@ -128,6 +128,13 @@ break;
                 case "poll":
                     PollManager.run(e);
                     break;
+                case "reddit":
+                    try {
+                        RedditManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
 
             }
 
