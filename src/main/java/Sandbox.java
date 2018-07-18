@@ -27,7 +27,7 @@ public class Sandbox {
 
     public static void main(String[] args) {
 String id = "";
-        String search = "75063";
+        String search = "New york";
         char quotes = '"';
         search = search.replace(" ", "%20");
         String what = "https://query.yahooapis.com/v1/public/yql?q=select*from%20geo.places%20where%20text=%22"+search+"%22&format=json";
@@ -66,8 +66,13 @@ String id = "";
             }
           String build="\t";
             for(int x=0;x<channel.getItem().getForecasts().size();x++){
+                String v = " will be ";
+                if(channel.getItem().getForecasts().get(x).getText().charAt(channel.getItem().getForecasts().get(x).getText().length()-1)=='s'||channel.getItem().getForecasts().get(x).getText().contains("rain")||channel.getItem().getForecasts().get(x).getText().contains("thunder")){
+                    v = " there will be ";
+
+                }
                 if(x<=5)
-                    build+=channel.getItem().getForecasts().get(x).getDay() + " will be " +channel.getItem().getForecasts().get(x).getText() + " with a high of "+channel.getItem().getForecasts().get(x).getHigh()  + " and a low of " + channel.getItem().getForecasts().get(x).getLow() +"\n\t";
+                    build+=channel.getItem().getForecasts().get(x).getDay() + v +channel.getItem().getForecasts().get(x).getText() + " with a high of "+channel.getItem().getForecasts().get(x).getHigh()  + " and a low of " + channel.getItem().getForecasts().get(x).getLow() +"\n\t";
 
 
             }

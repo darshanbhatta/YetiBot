@@ -66,11 +66,17 @@ public class Weather {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
                 String cond = channel.getItem().getCondition().toString().substring(channel.getItem().getCondition().toString().indexOf("text=")+5,channel.getItem().getCondition().toString().indexOf("code")-2).toLowerCase();
                 String temp = channel.getItem().getCondition().toString().substring(channel.getItem().getCondition().toString().indexOf("temp=")+5,channel.getItem().getCondition().toString().indexOf("date")-2);
                 String location = channel.getTitle().substring((channel.getTitle().indexOf("Yahoo! Weather - ")+17));
                 location = location.substring(0,location.indexOf(","));
-                event.getChannel().sendMessage("Currently in "+ location + " it is "+cond+ " with a temperature of " + temp).queue();
+                String v = " it is ";
+                if(cond.charAt(cond.length()-1)=='s'||cond.contains("rain")||cond.contains("thunder")){
+                    v = " there are ";
+
+                }
+                event.getChannel().sendMessage("Currently in "+ location + v+cond+ " with a temperature of " + temp + " °F").queue();
 
             } catch (Exception e) {
                 event.getChannel().sendMessage("Error location not found").queue();
@@ -131,13 +137,18 @@ public class Weather {
                 String location = channel.getTitle().substring((channel.getTitle().indexOf("Yahoo! Weather - ")+17));
                 String build="\n\t";
                 for(int x=0;x<channel.getItem().getForecasts().size();x++){
+                    String v = " will be ";
+                    if(channel.getItem().getForecasts().get(x).getText().charAt(channel.getItem().getForecasts().get(x).getText().length()-1)=='s'||channel.getItem().getForecasts().get(x).getText().contains("rain")||channel.getItem().getForecasts().get(x).getText().contains("thunder")){
+                        v = " there will be ";
+
+                    }
                     if(x<=5)
-                        build+=channel.getItem().getForecasts().get(x).getDay() + " will be " +channel.getItem().getForecasts().get(x).getText().toLowerCase() + " with a high of "+channel.getItem().getForecasts().get(x).getHigh()  + " and a low of " + channel.getItem().getForecasts().get(x).getLow() +"\n\t";
+                        build+=channel.getItem().getForecasts().get(x).getDay() + v +channel.getItem().getForecasts().get(x).getText().toLowerCase() + " with a high of "+channel.getItem().getForecasts().get(x).getHigh()  + " °F and a low of " + channel.getItem().getForecasts().get(x).getLow() +" °F\n\t";
 
 
                 }
                 location = location.substring(0,location.indexOf(","));
-                event.getChannel().sendMessage("5 day forecast for "+ location + "\n"+build).queue();
+                event.getChannel().sendMessage("Future forecasts for "+ location + "\n"+build).queue();
 
             } catch (Exception e) {
                 event.getChannel().sendMessage("Error location not found").queue();
@@ -198,8 +209,12 @@ public class Weather {
                 }
                 String location = channel.getTitle().substring((channel.getTitle().indexOf("Yahoo! Weather - ")+17));
                 String build="";
+                String v = " it will be ";
+                if(channel.getItem().getForecasts().get(0).getText().charAt(channel.getItem().getForecasts().get(0).getText().length()-1)=='s'||channel.getItem().getForecasts().get(0).getText().contains("rain")||channel.getItem().getForecasts().get(0).getText().contains("thunder")){
+                    v = " there will be ";
 
-                        build+= "it will be " +channel.getItem().getForecasts().get(0).getText().toLowerCase() + " with a high of "+channel.getItem().getForecasts().get(0).getHigh()  + " and a low of " + channel.getItem().getForecasts().get(0).getLow() +"\n\t";
+                }
+                        build+= v +channel.getItem().getForecasts().get(0).getText().toLowerCase() + " with a high of "+channel.getItem().getForecasts().get(0).getHigh()  + " °F and a low of " + channel.getItem().getForecasts().get(0).getLow() +" °F\n\t";
 
 
 
