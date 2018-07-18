@@ -125,6 +125,9 @@ break;
                     Weather.run(e);
 
                     break;
+                case "poll":
+                    PollManager.run(e);
+                    break;
 
             }
 
