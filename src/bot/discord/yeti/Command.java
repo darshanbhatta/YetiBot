@@ -1,5 +1,6 @@
 package bot.discord.yeti;
 
+import bot.discord.yeti.game.trivia.TriviaHolder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -134,6 +135,12 @@ break;
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
+                    break;
+                case "trivia":
+TriviaManager triviaManager = new TriviaManager();
+                    triviaManager.run(e);
+
+
                     break;
 
             }
