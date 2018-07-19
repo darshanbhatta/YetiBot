@@ -1,36 +1,7 @@
 package main.java;
 
-import bot.discord.yeti.PollManager;
-import bot.discord.yeti.game.blackjack.BlackjackGame;
-import bot.discord.yeti.game.blackjack.BlackjackGameHolder;
-import bot.discord.yeti.game.connect4.Connect4Game;
-import bot.discord.yeti.game.connect4.Connect4Holder;
-import bot.discord.yeti.game.jackpot.JackpotGame;
-import bot.discord.yeti.game.jackpot.JackpotGameHolder;
-import bot.discord.yeti.game.numguesser.NumGuessGame;
-import bot.discord.yeti.game.numguesser.NumGuessHolder;
-import bot.discord.yeti.game.slot.Slot;
-import bot.discord.yeti.game.slot.SlotMachine;
-import bot.discord.yeti.game.tictactoe.TicTacToeGame;
-import bot.discord.yeti.game.tictactoe.TicTacToeHolder;
-import bot.discord.yeti.game.trivia.TriviaGame;
-import bot.discord.yeti.game.trivia.TriviaHolder;
-import bot.discord.yeti.util.poll.Poll;
-import bot.discord.yeti.util.poll.PollHolder;
-import com.github.fedy2.weather.YahooWeatherService;
-import com.github.fedy2.weather.data.Channel;
-import com.github.fedy2.weather.data.unit.DegreeUnit;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import javax.xml.bind.JAXBException;
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 
 public class Sandbox {
 
@@ -109,12 +80,11 @@ if(answerChoice.size()!=2){
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        */
 
-        TriviaHolder x = new TriviaHolder();
-        x.getGames().add(new TriviaGame("dsdsd"));
+         RewardUserHolder x = new RewardUserHolder();
+        x.getRewardUsers().add(new RewardUser("dsdsd"));
         try {
-            FileOutputStream fileOut = new FileOutputStream("trivia.ser");
+            FileOutputStream fileOut = new FileOutputStream("claim.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(x);
             out.close();
@@ -122,6 +92,65 @@ if(answerChoice.size()!=2){
         } catch (IOException ww) {
             ww.printStackTrace();
         }
+        */
+
+String list = "0  - \"Create Instant Invite\"\n" +
+        "1  - \"Kick Members\"\n" +
+        "2  - \"Ban Members\"\n" +
+        "3  - \"Administrator\"\n" +
+        "4  - \"Manage Channels\"\n" +
+        "5  - \"Manage Server\"\n" +
+        "6  - \"Add Reactions\"\n" +
+        "7  - \"View Audit Logs\"\n" +
+        "10 - \"Read Text Channels & See Voice Channels\"\n" +
+        "11 - \"Send Messages\"\n" +
+        "12 - \"Send TTS Messages\"\n" +
+        "13 - \"Manage Messages\"\n" +
+        "14 - \"Embed Links\"\n" +
+        "15 - \"Attach Files\"\n" +
+        "16 - \"Read History\"\n" +
+        "17 - \"Mention Everyone\"\n" +
+        "18 - \"Use External Emojis\"\n" +
+        "20 - \"Connect\"\n" +
+        "21 - \"Speak\"\n" +
+        "22 - \"Mute Members\"\n" +
+        "23 - \"Deafen Members\"\n" +
+        "24 - \"Move Members\"\n" +
+        "25 - \"Use Voice Activity\"\n" +
+        "26 - \"Change Nickname\"\n" +
+        "27 - \"Manage Nicknames\"\n" +
+        "28 - \"Manage Roles\"\n" +
+        "29 - \"Manage Webhooks\"\n" +
+        "30 - \"Manage Emojis\"";
+
+
+
+        System.out.println(list);
+String code = "!role add woah man <15, 16>";
+        String allPerm = code.substring(code.indexOf("<")+1,code.indexOf(">"));
+allPerm = allPerm.replace(" ", "");
+String allPer[] = allPerm.split(",");
+int[] allPerNum = new int[allPer.length];
+boolean isVaild = true;
+for(int x=0;x<allPer.length;x++){
+    try{
+
+        allPerNum[x] = Integer.parseInt(allPer[x]);
+
+    }catch (Exception e){
+        isVaild = false;
+        break;
+    }
+
+}
+if(isVaild){
+
+    System.out.println(Arrays.toString(allPerNum));
+}else{
+
+
+}
+
 
     }
 

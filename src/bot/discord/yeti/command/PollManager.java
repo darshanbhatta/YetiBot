@@ -1,4 +1,4 @@
-package bot.discord.yeti;
+package bot.discord.yeti.command;
 
 import bot.discord.yeti.game.jackpot.JackpotGame;
 import bot.discord.yeti.game.jackpot.JackpotGameHolder;

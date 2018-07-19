@@ -9,7 +9,7 @@ public class ReadyListener extends ListenerAdapter {
     Guild guild;
 
     public void onReady(ReadyEvent e) {
-        String out = "\nThis bot is running on";
+        String out = "\nThis bot is running on\n";
         for (Guild g : e.getJDA().getGuilds()) {
             out += g.getName() + "\n";
 

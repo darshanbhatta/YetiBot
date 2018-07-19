@@ -1,4 +1,4 @@
-package bot.discord.yeti;
+package bot.discord.yeti.command;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;

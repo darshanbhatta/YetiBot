@@ -1,4 +1,4 @@
-package bot.discord.yeti;
+package bot.discord.yeti.command;
 
 import com.github.fedy2.weather.YahooWeatherService;
 import com.github.fedy2.weather.data.Channel;

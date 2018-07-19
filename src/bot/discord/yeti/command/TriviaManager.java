@@ -1,4 +1,4 @@
-package bot.discord.yeti;
+package bot.discord.yeti.command;
 
 
 import bot.discord.yeti.game.trivia.TriviaGame;

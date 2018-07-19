@@ -1,6 +1,6 @@
 package bot.discord.yeti;
 
-import bot.discord.yeti.game.trivia.TriviaHolder;
+import bot.discord.yeti.command.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -10,8 +10,8 @@ public class Command extends ListenerAdapter {
 
     public void onMessageReceived(MessageReceivedEvent e) {
 
-        if (e.getMessage().getContentRaw().startsWith("!")) {
-            String[] arg = e.getMessage().getContentRaw().replaceFirst("!", "").split(" ");
+        if (e.getMessage().getContentRaw().toLowerCase().startsWith("!")) {
+            String[] arg = e.getMessage().getContentRaw().toLowerCase().replaceFirst("!", "").split(" ");
 
             switch (arg[0]) {
                 case "help":
@@ -61,21 +61,21 @@ public class Command extends ListenerAdapter {
                     break;
                 case "bank":
                     try {
-                        BankManager.run(e.getMessage(),e);
+                        BankManager.run(e.getMessage(), e);
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
-break;
+                    break;
                 case "blackjack":
 
 
-                        BlackjackManager.run(e);
+                    BlackjackManager.run(e);
 
                     break;
                 case "slot":
 
                     try {
-                        SlotGameManager.run(e.getMessage(),e);
+                        SlotGameManager.run(e.getMessage(), e);
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
@@ -96,7 +96,7 @@ break;
                     RouletteManager.run(e);
 
                     break;
-                    case "jackpot":
+                case "jackpot":
 
 
                     JackpotManager.run(e);
@@ -137,19 +137,50 @@ break;
                     }
                     break;
                 case "trivia":
-TriviaManager triviaManager = new TriviaManager();
+                    TriviaManager triviaManager = new TriviaManager();
                     triviaManager.run(e);
+
+
+                    break;
+                case "claim":
+
+                    Claim.run(e);
+
+
+                    break;
+                case "kick":
+
+                    Kick.run(e.getMessage(), e);
+
+
+                    break;
+                case "addtext":
+
+                    CreateTextChannel.run(e);
+
+
+                    break;
+                case "addvoice":
+
+                    CreateVoiceChannel.run(e);
+
+
+                    break;
+                case "role":
+
+                    Role.run(e);
 
 
                     break;
 
             }
 
-            }
-
-            }
 
         }
+
+    }
+
+}
 
 
 

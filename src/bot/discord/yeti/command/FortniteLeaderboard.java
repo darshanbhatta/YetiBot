@@ -1,4 +1,4 @@
-package bot.discord.yeti;
+package bot.discord.yeti.command;
 
 import bot.discord.yeti.fortniteAPI.AllStats;
 import bot.discord.yeti.fortniteAPI.LeaderFetch;

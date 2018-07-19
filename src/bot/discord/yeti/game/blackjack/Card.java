@@ -1,4 +1,4 @@
-package bot.discord.yeti;
+package bot.discord.yeti.game.blackjack;
 
 
 import java.io.Serializable;

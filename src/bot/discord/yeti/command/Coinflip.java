@@ -1,4 +1,4 @@
-package bot.discord.yeti;
+package bot.discord.yeti.command;
 
 import bot.discord.yeti.currency.Bank;
 import net.dv8tion.jda.core.entities.Member;

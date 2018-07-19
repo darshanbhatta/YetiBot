@@ -1,5 +1,6 @@
-package bot.discord.yeti;
+package bot.discord.yeti.command;
 
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Ban {
+public class Kick {
 
     public static void run(Message msg, MessageReceivedEvent event) {
         Guild guild = event.getGuild();
@@ -33,29 +34,41 @@ public class Ban {
             }
       //      System.out.println(reason + " lol " + username + "  "  +users.get(1).getUser().getIdLong()+"");
             if (username != null) {
-                int count = 0;
+                final int[] count = {0};
                 if (users.size() != 0) {
                     for (int x = 0; x < users.size(); x++) {
                         System.out.println(reason + " lol " + username + "  "  +users.get(x).getUser().getId()+"");
                         if (username.toLowerCase().contains(users.get(x).getUser().getId().toLowerCase())) {
-                            guild.getController().ban(users.get(x).getUser().getId(), 0, reason).queue();
-                            msg.getChannel().sendMessage("Successfully banned " + users.get(x).getUser().getName()).queue(w -> {
+                            if(event.getMember().hasPermission(Permission.ADMINISTRATOR)){
+
+                                try{
+                                    guild.getController().kick(users.get(x), reason).queue();
+                                    msg.getChannel().sendMessage("Successfully kicked " + users.get(x).getUser().getName()).queue(w -> {
+                                        count[0]++;
+
+                                    });
+                                }catch (Exception e){
+                                    msg.getChannel().sendMessage("Error can't kick a member with higher or equal highest role than yourself!").queue(w -> {
+
+                                    });
+
+                                }
+
+                            }else{
+                                msg.getChannel().sendMessage("Error you do not have permission").queue(w -> {
+
+                                });
+                            }
 
 
-                            });
-                            count++;
+
                         }
 
                     }
-                    if (count == 0) {
-                        msg.getChannel().sendMessage("Error username cannot be found in server").queue(w -> {
 
-
-                        });
-                    }
                 } else {
 
-                    msg.getChannel().sendMessage("Error cannot ban").queue(w -> {
+                    msg.getChannel().sendMessage("Error cannot kick").queue(w -> {
 
 
                     });
@@ -63,10 +76,10 @@ public class Ban {
 
 
             } else {
-                msg.getChannel().sendMessage("Error incorrect format. !ban @username %optional reason%").queue();
+                msg.getChannel().sendMessage("Error incorrect format. !kick @username %optional reason%").queue();
             }
         } catch (StringIndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Error incorrect format. !ban @username %optional reason%").queue(w -> {
+            msg.getChannel().sendMessage("Error incorrect format. !kick @username %optional reason%").queue(w -> {
 
 
             });
