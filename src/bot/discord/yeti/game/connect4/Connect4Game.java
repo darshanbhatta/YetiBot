@@ -165,7 +165,7 @@ if(whoSaid.equals(userid2)&&name2.equals("")){
     @Override
     public String toString() {
 
-        String board = "";
+        String board = ":one: :two: :three: :four: :five: :six: :seven:\n";
 
 
             for (int r = 0; r < gameBoard.length; r++) {

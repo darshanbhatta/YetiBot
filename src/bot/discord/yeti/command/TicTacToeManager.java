@@ -99,6 +99,7 @@ public class TicTacToeManager {
                         //     System.out.println(se + " " + rouletteGame[0].getRouletteGames().get(x).getServerid() + " " + x);
 
                         int whereGo = ticTacToe[0].getTicTacToeGameArrayList().get(x).move(move, e.getAuthor().getId(), e.getAuthor().getName());
+                        System.out.println(whereGo);
                         if (whereGo == 0) {
                             if (ticTacToe[0].getTicTacToeGameArrayList().get(x).isWinnerX()) {
 
@@ -141,7 +142,7 @@ public class TicTacToeManager {
                         } else {
                             if (whereGo == 1) {
                                 e.getChannel().sendMessage(e.getAuthor().getName() + ", its not your turn.").queue();
-                            } else {
+                            }else {
 
                                 e.getChannel().sendMessage("Error " + move + " is already taken").queue();
                             }

@@ -28,7 +28,6 @@ public class SlotMachine {
         for (int x = 0; x < 3; x++) {
 
             int first = (int) (Math.random() * slotTypes.length);
-            vals[currentRow][currentCol] = first;
             if(first==2){
                 first=0;
             }else if(first==3){
@@ -40,6 +39,7 @@ public class SlotMachine {
             }else if(first==10){
                 first=7;
             }
+            vals[currentRow][currentCol] = first;
             currentCol++;
             if (Math.random() < .2) {
                 vals[currentRow][currentCol] = first;

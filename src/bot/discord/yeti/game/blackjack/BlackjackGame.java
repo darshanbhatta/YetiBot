@@ -1,7 +1,5 @@
 package bot.discord.yeti.game.blackjack;
 
-import bot.discord.yeti.BlackJack;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;

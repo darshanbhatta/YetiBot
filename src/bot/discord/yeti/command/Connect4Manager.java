@@ -81,7 +81,56 @@ public class Connect4Manager {
             }
 
 
-        } else if (code.length == 2) {
+        } else if(code.length == 2 && code[1].equals("quit")){
+            boolean hasGame = false;
+            for (int x = 0; x < connect4[0].getConnect4GameArrayList().size(); x++) {
+                String user = e.getAuthor().getId();
+                if (user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid()) || user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid2())) {
+
+                    e.getChannel().sendMessage("Successfully ended " + connect4[0].getConnect4GameArrayList().get(x).getName()+ "'s Connect 4 game").queue();
+                    hasGame= true;
+
+                    user.equals(connect4[0].getConnect4GameArrayList().remove(x));
+                    try {
+                        FileOutputStream fileOut = new FileOutputStream("connect4.ser");
+                        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                        out.writeObject(connect4[0]);
+                        out.close();
+                        fileOut.close();
+                    } catch (IOException ww) {
+                        ww.printStackTrace();
+                    }
+
+                    break;
+                }
+
+                } if(!hasGame){
+
+                e.getChannel().sendMessage("Error you are not in a game").queue();
+            }
+
+
+            } else if(code.length == 2 && code[1].equals("board")){
+            boolean hasGame = false;
+            for (int x = 0; x < connect4[0].getConnect4GameArrayList().size(); x++) {
+                String user = e.getAuthor().getId();
+                if (user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid()) || user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid2())) {
+
+                    e.getChannel().sendMessage(e.getAuthor().getName()+"'s Connect 4 Game\n" +connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
+                    hasGame= true;
+
+                    user.equals(connect4[0].getConnect4GameArrayList().remove(x));
+
+
+                    break;
+                }
+
+            } if(!hasGame){
+
+                e.getChannel().sendMessage("Error you are not in a game").queue();
+            }
+
+    }else if (code.length == 2) {
             try{
 
                 int move = Integer.parseInt(code[1]); // try catch
@@ -177,59 +226,9 @@ public class Connect4Manager {
 
             //!tic quit
             //!tic board
-        } else if(code.length == 2 && code[1].equals("quit")){
-            boolean hasGame = false;
-            for (int x = 0; x < connect4[0].getConnect4GameArrayList().size(); x++) {
-                String user = e.getAuthor().getId();
-                if (user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid()) || user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid2())) {
+        }else{
 
-                    e.getChannel().sendMessage("Successfully ended " + connect4[0].getConnect4GameArrayList().get(x).getName()+ "'s Connect 4 game").queue();
-                    hasGame= true;
-
-                    user.equals(connect4[0].getConnect4GameArrayList().remove(x));
-                    try {
-                        FileOutputStream fileOut = new FileOutputStream("connect4.ser");
-                        ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                        out.writeObject(connect4[0]);
-                        out.close();
-                        fileOut.close();
-                    } catch (IOException ww) {
-                        ww.printStackTrace();
-                    }
-
-                    break;
-                }
-
-                } if(!hasGame){
-
-                e.getChannel().sendMessage("Error you are not in a game").queue();
-            }
-
-
-            } else if(code.length == 2 && code[1].equals("board")){
-            boolean hasGame = false;
-            for (int x = 0; x < connect4[0].getConnect4GameArrayList().size(); x++) {
-                String user = e.getAuthor().getId();
-                if (user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid()) || user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid2())) {
-
-                    e.getChannel().sendMessage(e.getAuthor().getName()+"'s Connect 4 Game\n" +connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
-                    hasGame= true;
-
-                    user.equals(connect4[0].getConnect4GameArrayList().remove(x));
-
-
-                    break;
-                }
-
-            } if(!hasGame){
-
-                e.getChannel().sendMessage("Error you are not in a game").queue();
-            }
-
-    }
-        else{
-
-            e.getChannel().sendMessage("Error invalid command.\n\nCommand List\n\t!c4 start @user to start a match\n\t!c4 play %move number% to move\n\t!c4 board to print our your current match board\n\t!c4 quit to end any unfinished games").queue();
+            e.getChannel().sendMessage("Error invalid command.\n\nCommand List\n\t!c4 start @user to start a match\n\t!c4 %move number% to move\n\t!c4 board to print our your current match board\n\t!c4 quit to end any unfinished games").queue();
 
         }
     }

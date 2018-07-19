@@ -17,7 +17,7 @@ public class Main {
 //
         //NDY1OTU1NzgzODQ3MzEzNDQ5.DikfTg.ahBOBRUhceNFxPsaWvpU3WCGDmA
         //NDY1OTQ1OTQ4OTI1OTg0NzY5.Dih9TA.eB6WD26KkcN8_hVkv5tZs7Egkjc
-        builder.setToken("NDY1OTU1NzgzODQ3MzEzNDQ5.DiqrDQ.14tHChJ9uHblPMZS3ABauk-oKDk");
+        builder.setToken("NDY1OTQ1OTQ4OTI1OTg0NzY5.Dih9TA.eB6WD26KkcN8_hVkv5tZs7Egkjc");
 
         builder.setAutoReconnect(true);
 

@@ -19,7 +19,7 @@ public class FortniteStats {
         try {
             String username = msg.getContentRaw().substring(msg.getContentRaw().indexOf("!fortniteStats") + 15);
             if (username.contains("(")) {
-                username = username.substring(0, username.indexOf("(") - 1);
+                username = username.substring(1, username.indexOf("(") - 1);
             }
             String platform = "";
             try {

@@ -110,6 +110,7 @@ public class RouletteManager {
                                                         public void run() {
 
                                                             int rollNumber = (int) ((Math.random() * (37)));
+                                                            System.out.println(rollNumber);
                                                             String icon = "";
 
                                                             if (rollNumber == 1 || rollNumber == 3 || rollNumber == 5 || rollNumber == 7 || rollNumber == 9 || rollNumber == 12 || rollNumber == 14 || rollNumber == 16 || rollNumber == 18 || rollNumber == 19 || rollNumber == 21 || rollNumber == 23 || rollNumber == 25 || rollNumber == 27 || rollNumber == 30 || rollNumber == 32 || rollNumber == 34 || rollNumber == 36) {
@@ -169,7 +170,7 @@ break;
                                                                 }
                                                                 //         System.out.println("Game indx " + rouletteGame[0].getRouletteGames().get(indx).getRouletteUsers().size());
                                                                 for (int x = 0; x < rouletteGame[0].getRouletteGames().get(indx).getRouletteUsers().size(); x++) {
-                                                                    int ida = finalBank[0].getAccountIndex(e.getAuthor().getId());
+                                                                    int ida = finalBank[0].getAccountIndex(rouletteGame[0].getRouletteGames().get(indx).getRouletteUsers().get(x).getUserid());
                                                                     int userBalance;
                                                                     String whatBet = rouletteGame[0].getRouletteGames().get(indx).getRouletteUsers().get(x).getBet();
                                                                     int bet = rouletteGame[0].getRouletteGames().get(indx).getRouletteUsers().get(x).getBetAmount();
@@ -344,7 +345,7 @@ break;
             }
         }else{
 
-            e.getChannel().sendMessage("Error invalid command. Try !roulette init to start a match and !roulette bet %bet amount% %bet type[red/black/green/odd/even/number from 1-36]%");
+            e.getChannel().sendMessage("Error invalid command. Try !roulette init to start a match and !roulette bet %bet amount% %bet type[red/black/green/odd/even/number from 1-36]%").queue();
 
         }
     }

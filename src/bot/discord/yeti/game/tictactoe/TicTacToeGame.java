@@ -61,7 +61,7 @@ if(whoSaid.equals(userid2)&&name2.equals("")){
         if((whoGoes==true&&userid.equals(whoSaid))||(whoGoes==false&&userid2.equals(whoSaid))){
             whoGoes=!whoGoes;
             if(!alreadyPicked.contains(where)) {
-
+                alreadyPicked.add(where);
                 if(whoGoes){
                     gameBoard = gameBoard.substring(0, where - 1) + "X" + gameBoard.substring(where);
                 }else{
@@ -69,7 +69,8 @@ if(whoSaid.equals(userid2)&&name2.equals("")){
 
                 }
                 turn++;
-                if(turn==9&&(!isWinnerX()||!isWinnerY())){
+
+                if(turn==9&&(!isWinnerX()&&!isWinnerY())){
                     return 3;
                 }
                 return 0;

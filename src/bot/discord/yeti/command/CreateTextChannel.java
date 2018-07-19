@@ -10,8 +10,8 @@ public class CreateTextChannel {
 
         if(e.getMember().hasPermission(Permission.ADMINISTRATOR)){
             System.out.println(code);
-            e.getGuild().getController().createTextChannel(code.substring(code.indexOf("addtext")+9).trim()).queue();
-            e.getChannel().sendMessage("Created text channel \""+(code.substring(code.indexOf("addtext")+9).trim())+"\"").queue(w -> {
+            e.getGuild().getController().createTextChannel(code.substring(code.indexOf("addtext")+8).trim()).queue();
+            e.getChannel().sendMessage("Created text channel \""+(code.substring(code.indexOf("addtext")+8).trim())+"\"").queue(w -> {
 
             });
 

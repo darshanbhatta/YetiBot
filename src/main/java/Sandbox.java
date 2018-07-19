@@ -1,5 +1,10 @@
 package main.java;
 
+import bot.discord.yeti.game.blackjack.BlackjackGame;
+import bot.discord.yeti.game.blackjack.BlackjackGameHolder;
+import bot.discord.yeti.game.connect4.Connect4Game;
+import bot.discord.yeti.game.connect4.Connect4Holder;
+
 import java.io.*;
 import java.util.Arrays;
 
@@ -92,7 +97,7 @@ if(answerChoice.size()!=2){
         } catch (IOException ww) {
             ww.printStackTrace();
         }
-        */
+
 
 String list = "0  - \"Create Instant Invite\"\n" +
         "1  - \"Kick Members\"\n" +
@@ -154,4 +159,44 @@ if(isVaild){
 
     }
 
+
+        Connect4Holder x = new Connect4Holder();
+        x.getConnect4GameArrayList().add(new Connect4Game("343434", "dsd", "ddsd"));
+        try {
+            FileOutputStream fileOut = new FileOutputStream("connect4.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(x);
+            out.close();
+            fileOut.close();
+        } catch (IOException ww) {
+            ww.printStackTrace();
+        }
+
+    }
+     */
+for(int x=0;x<100;x++) {
+    int rollNumber = (int) ((Math.random() * (37)));
+    System.out.println(rollNumber);
+    String icon = "";
+
+    if (rollNumber == 1 || rollNumber == 3 || rollNumber == 5 || rollNumber == 7 || rollNumber == 9 || rollNumber == 12 || rollNumber == 14 || rollNumber == 16 || rollNumber == 18 || rollNumber == 19 || rollNumber == 21 || rollNumber == 23 || rollNumber == 25 || rollNumber == 27 || rollNumber == 30 || rollNumber == 32 || rollNumber == 34 || rollNumber == 36) {
+        icon = "🔴  Red";
+
+        //red
+
+    } else if (rollNumber == 2 || rollNumber == 4 || rollNumber == 6 || rollNumber == 8 || rollNumber == 10 || rollNumber == 11 || rollNumber == 13 || rollNumber == 15 || rollNumber == 17 || rollNumber == 20 || rollNumber == 22 || rollNumber == 24 || rollNumber == 26 || rollNumber == 28 || rollNumber == 29 || rollNumber == 31 || rollNumber == 33 || rollNumber == 35) {
+        icon = "⚫ Black";
+        //black
+
+    } else if (rollNumber == 0) {
+        icon = "🍀 Green";
+        //green
+
+
+    }
+
+    System.out.println(icon);
+}
+
+    }
 }

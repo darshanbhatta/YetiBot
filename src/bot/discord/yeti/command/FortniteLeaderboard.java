@@ -15,13 +15,14 @@ import java.util.TimerTask;
 public class FortniteLeaderboard {
     public static void run(Message msg, MessageReceivedEvent event) throws IOException {
         String platform = "";
+        String[] code = msg.getContentRaw().split(" ");
         System.setProperty("http.agent", "Chrome");
         try {
-            platform = msg.getContentRaw().substring(msg.getContentRaw().indexOf("(") + 1, msg.getContentRaw().indexOf(")"));
+            platform = code[1];
 
             String mode = "";
             try {
-                mode = msg.getContentRaw().substring(msg.getContentRaw().indexOf("[") + 1, msg.getContentRaw().indexOf("]"));
+                mode = code[2];
                 int who = 01;
                 if (platform.toLowerCase().equals("pc")) {
                     if (mode.toLowerCase().equals("solo")) {
@@ -88,12 +89,12 @@ public class FortniteLeaderboard {
 
             } catch (Exception e) {
                 System.out.println(e.toString());
-                msg.getChannel().sendMessage("Error invalid format !fortniteLeaderboard (pc/ps4/xb1) [solo/duo/squad]").queue();
+                msg.getChannel().sendMessage("Error invalid format !fortniteLeaderboard %pc/ps4/xb1% %solo/duo/squad%").queue();
             }
 
 
         } catch (IndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Error invalid format !fortniteLeaderboard (pc/ps4/xb1) [solo/duo/squad]").queue();
+            msg.getChannel().sendMessage("Error invalid format !fortniteLeaderboard %pc/ps4/xb1% %solo/duo/squad%").queue();
         }
 
 

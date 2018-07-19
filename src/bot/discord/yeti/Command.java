@@ -35,7 +35,7 @@ public class Command extends ListenerAdapter {
                     Unban.run(e.getMessage(), e);
                     break;
 
-                case "fortniteStats":
+                case "fortnitestats":
                     try {
                         FortniteStats.run(e.getMessage(), e);
                     } catch (IOException e1) {
@@ -43,7 +43,7 @@ public class Command extends ListenerAdapter {
                     }
                     break;
 
-                case "fortniteLeaderboard":
+                case "fortniteleaderboard":
                     try {
                         FortniteLeaderboard.run(e.getMessage(), e);
                     } catch (IOException e1) {
@@ -52,7 +52,8 @@ public class Command extends ListenerAdapter {
                     break;
 
 
-                case "fortniteShop":
+                case "fortniteshop":
+                    System.out.println("shoprunning");
                     try {
                         FortniteShop.run(e.getMessage(), e);
                     } catch (IOException e1) {
@@ -169,8 +170,6 @@ public class Command extends ListenerAdapter {
                 case "role":
 
                     Role.run(e);
-
-
                     break;
 
             }
