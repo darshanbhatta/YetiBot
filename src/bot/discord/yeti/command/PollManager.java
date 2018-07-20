@@ -159,7 +159,7 @@ String build = "";
 
 
             }else{
-                event.getChannel().sendMessage("Error poll already in progress").queue();
+                event.getChannel().sendMessage("A poll is already in progress.").queue();
                 //error game in prog
 
             }
@@ -190,7 +190,7 @@ String build = "";
 
             }else{
 
-                event.getChannel().sendMessage("Error no active polls. Try !poll (title) [list of options] <time limit in seconds>").queue();
+                event.getChannel().sendMessage("No active polls. Try !poll (title) [list of options] <time limit in seconds>").queue();
                 try {
                     FileOutputStream fileOut = new FileOutputStream("poll.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -209,7 +209,7 @@ String build = "";
             try{
                 int num = Integer.parseInt(code[1]);
                 int ind = -1;
-String server = event.getGuild().getId();
+                String server = event.getGuild().getId();
                 for (int x = 0; x < pollHolders[0].getPolls().size(); x++) {
 
 
@@ -225,7 +225,7 @@ String server = event.getGuild().getId();
                 if(ind!=-1){
                     if(pollHolders[0].getPolls().get(ind).getUsers().contains(event.getAuthor().getId())){
 
-                        event.getChannel().sendMessage("Error you already voted").queue();
+                        event.getChannel().sendMessage("You cannot vote more than once").queue();
 
 
 
@@ -250,27 +250,35 @@ String server = event.getGuild().getId();
 
                 }else{
 
-                    event.getChannel().sendMessage("Error no active polls. Try !poll (title) [list of options] <time limit in seconds>").queue();
+                    event.getChannel().sendMessage("No active polls. Format: !poll (title) [list of options] <time limit (sec)>").queue();
 
                 }
 
 
             }catch (Exception e){
 
-                event.getChannel().sendMessage("Error vote has to be an integer").queue();
+                event.getChannel().sendMessage("Vote has to be an integer").queue();
 
             }
 
 
 
         }else{
+            if(!event.getAuthor().isBot())
+            event.getChannel().sendMessage("Start a poll - !poll (title) [list of options separated by commas] <time limit (sec)>\nExample: !poll (Do you enjoy using YetiBot?) [Yes, Sure, Absolutely] <20>\n\nVote in a poll - !poll <vote number>\nEnd a poll - !poll end").queue();
 
-            event.getChannel().sendMessage("Error invalid command Try !poll (title) [list of options] <time limit in seconds> or !poll %vote number%").queue();
 
 
         }
 
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                event.getMessage().delete().queue();
 
+            }
+        }, 5000);
 
     }
 }

@@ -88,7 +88,14 @@ public class Coinflip {
             msg.getChannel().sendMessage("Please use the format !coinflip [heads, tails] <Optional: bet amount>").queue();
         }
 
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                msg.delete().queue();
 
+            }
+        }, 5000);
     }
     public static void completeTransaction(){
         try {

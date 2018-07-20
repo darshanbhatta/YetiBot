@@ -173,7 +173,14 @@ public class SlotGameManager {
 
 
         }
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                e.getMessage().delete().queue();
 
+            }
+        }, 5000);
 
     }
 

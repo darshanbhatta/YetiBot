@@ -52,8 +52,10 @@ public class JackpotManager {
             return;
         }
         int bankAccountIndex = bank[0].getAccountIndex(e.getAuthor().getId());
-
-        if (code.length == 2 && code[1].equals("init")) {
+        if(code.length == 1){
+            e.getChannel().sendMessage("Format: !jackpot start").queue();
+        }
+        if (code.length == 2 && code[1].equals("start")) {
             boolean gameInProg = false;
             String serverid = null;
             for (int x = 0; x < jackpotGameHolders[0].getJackPotGame().size(); x++) {
@@ -79,7 +81,7 @@ public class JackpotManager {
                     ww.printStackTrace();
                 }
 
-                e.getChannel().sendMessage("Game created 20 seconds to place bets, type !jackpot bet").queue(m -> {
+                e.getChannel().sendMessage("Game created! 20 seconds to place bets.\nFormat: !jackpot bet <bet amount>").queue(m -> {
 
                 });
 
@@ -93,19 +95,19 @@ public class JackpotManager {
                         String finalServerid = e.getGuild().getId();
                         final Bank[] finalBank = {bank[0]};
 
-                        e.getChannel().sendMessage("Place your final bets rolling in 3 seconds!...").queue(m -> {
+                        e.getChannel().sendMessage("Final bets! Rolling in 3 seconds!...").queue(m -> {
                             Timer timer = new Timer();
                             timer.schedule(new TimerTask() {
 
                                 @Override
                                 public void run() {
-                                    m.editMessage("Place your final bets rolling in 2 seconds!...").queue(m -> {
+                                    m.editMessage("Final bets! Rolling in 2 seconds!...").queue(m -> {
                                         Timer timer = new Timer();
                                         timer.schedule(new TimerTask() {
 
                                             @Override
                                             public void run() {
-                                                m.editMessage("Place your final bets rolling in 1 seconds!...").queue(m -> {
+                                                m.editMessage("Final bets! Rolling in 1 seconds!...").queue(m -> {
                                                     Timer timer = new Timer();
                                                     timer.schedule(new TimerTask() {
 
@@ -130,7 +132,7 @@ public class JackpotManager {
 
                                                                     if (finalServerid.equals(jackpotGameHolders[0].getJackPotGame().get(x).getServerid())) {
                                                                         indx = x;
-break;
+                                                                            break;
 
                                                                     }
 
@@ -209,7 +211,7 @@ break;
 
                                                             }else{
 
-                                                                m.editMessage("No one placed bets!").queue();
+                                                                m.editMessage("No bets have been placed.").queue();
                                                                 jackpotGameHolders[0].getJackPotGame().remove(finalIndx);
 
                                                                 try {
@@ -249,7 +251,7 @@ break;
 
 
             } else {
-                e.getChannel().sendMessage("Error game already in progress, try !jackpot bet").queue();
+                e.getChannel().sendMessage("Game is already in progress. Format: !jackpot bet <bet amount>").queue();
 
             }
 
@@ -308,13 +310,13 @@ break;
                                 }
 
                                 if (!found)
-                                    e.getChannel().sendMessage("Error no running games, try !jackpot init to start a game").queue();
+                                    e.getChannel().sendMessage("No game in progress. See !jackpot for commands.").queue();
                                 //error no running games
 
 
                             } else {
 
-                                e.getChannel().sendMessage("Error insufficient funds, you have " + currentBal + " \uD83D\uDC8E").queue(m -> {
+                                e.getChannel().sendMessage("Insufficient funds, you have " + currentBal + " \uD83D\uDC8E").queue(m -> {
                                 });
 
 
@@ -330,7 +332,7 @@ break;
 
                         }else{
 
-                            e.getChannel().sendMessage("Error invalid bet, you can only bet positive integers");
+                            e.getChannel().sendMessage("Invalid bet, you can only bet positive integers");
 
 
                         }
@@ -343,21 +345,29 @@ break;
 
 
                 } catch (Exception e1) {
-                    e.getChannel().sendMessage("Error you can only bet integers");
+                    e.getChannel().sendMessage("You can only bet integers.");
 
                 }
 
             }else{
 
-            e.getChannel().sendMessage("Error you do not have a bank account to bet with, try !bank init to make one");
+            e.getChannel().sendMessage("You do not have a bank account to bet with, try !bank init to make one");
 
 
         }
         }else{
 
-            e.getChannel().sendMessage("Error invalid command. Try !jackpot init to start a match and !jackpot bet %bet amount%");
+            e.getChannel().sendMessage("Invalid command. See !jackpot for commands.");
 
         }
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                e.getMessage().delete().queue();
+
+            }
+        }, 5000);
     }
 }
 

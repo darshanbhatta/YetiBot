@@ -33,7 +33,7 @@ public class Unban {
                     }
                     msg.getChannel().sendMessage("Successfully unbanned all users").queue();
                 } else {
-                    msg.getChannel().sendMessage("Error no users in ban list").queue();
+                    msg.getChannel().sendMessage("No users in ban list.").queue();
                 }
 
 
@@ -52,14 +52,14 @@ public class Unban {
 
                     }
                     if (count == 0) {
-                        msg.getChannel().sendMessage("Error cannot find user in ban list").queue(w -> {
+                        msg.getChannel().sendMessage("Unable to find user in ban list.").queue(w -> {
 
 
                         });
                     }
                 } else {
 
-                    msg.getChannel().sendMessage("Error no users in ban list").queue(w -> {
+                    msg.getChannel().sendMessage("No users in ban list.").queue(w -> {
 
 
                     });
@@ -67,10 +67,10 @@ public class Unban {
 
 
             } else {
-                msg.getChannel().sendMessage("Error incorrect format. !unban [@username]").queue();
+                msg.getChannel().sendMessage("Format: !unban @username").queue();
             }
         } catch (StringIndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Error incorrect format. !unban [@username]").queue(w -> {
+            msg.getChannel().sendMessage("Format: !unban @username").queue(w -> {
 
 
             });

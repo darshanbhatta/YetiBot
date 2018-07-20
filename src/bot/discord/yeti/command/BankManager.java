@@ -28,6 +28,7 @@ public class BankManager {
         String[] arg = msg.getContentRaw().split(" ");
         e.getGuild().getMembers().forEach(m -> users.add(m));
         if (arg.length != 1) {
+            System.out.println(arg.length);
             Bank bank = new Bank();
             try {
                 FileInputStream fileIn = new FileInputStream("bank.ser");
@@ -134,7 +135,7 @@ public class BankManager {
                 }
 
 
-            } else if (arg.length == 2 && arg[1].equals("balance")) {
+            } else if (arg.length == 2 && arg[1].equals("bal")) {
                 int number = bank.getAccountIndex((e.getAuthor().getId()));
 
                 if (number != -1) {
@@ -156,8 +157,8 @@ public class BankManager {
                     });
                 }
             }else if (arg.length == 4 && arg[1].equals("add")) {
-                System.out.println(e.getMember().hasPermission(Permission.ADMINISTRATOR));
-                if(e.getMember().hasPermission(Permission.ADMINISTRATOR)){
+                System.out.println(e.getAuthor().getId());
+                if(e.getAuthor().getId().equals("91684442644418560")||e.getAuthor().getId().equals("285169303500619777")){
                     String addToWho = arg[2].substring(2,arg[2].indexOf(">"));
 
                     int org = bank.getAccountIndex(addToWho);
@@ -194,18 +195,32 @@ public class BankManager {
                 }
 
             } else{
+                System.out.println("running");
                 switch(arg[1]) {
                     case "send":  msg.getChannel().sendMessage("Format: !bank send @user <amount>").queue();
                         break;
                     case "add":   msg.getChannel().sendMessage("Format: !bank add @user <amount>").queue();
                         break;
-                    default:     msg.getChannel().sendMessage("Error, invalid command.").queue();
+                    default:     msg.getChannel().sendMessage("Error, invalid command. Try !bank to see all available commands").queue();
 
                 }
 
             }
 
+        }else{
+
+            String reserve = "Available commands:\n\t !bank init\n\t !bank bal\n\t !bank send\n\t";
+            msg.getChannel().sendMessage(reserve).queue();
+
         }
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                msg.delete().queue();
+
+            }
+        }, 5000);
     }
 
 

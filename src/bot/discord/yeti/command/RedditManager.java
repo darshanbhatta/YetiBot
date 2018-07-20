@@ -11,11 +11,16 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class RedditManager {
     public static void run(MessageReceivedEvent event) throws IOException {
         //!reddit funny
         String[] code = event.getMessage().getContentRaw().split(" ");
+        if(code.length == 1){
+            event.getChannel().sendMessage("!reddit (subreddit name) - Displays a popular post from the subreddit").queue();
+        }
         if(code.length==2){
             String subReddit = code[1];
             String search = "https://www.reddit.com/r/"+subReddit+"/hot.json?limit=100";
@@ -49,7 +54,7 @@ public class RedditManager {
 
             }catch (Exception ea){
 
-                event.getChannel().sendMessage("Error subreddit does not exit").queue();
+                event.getChannel().sendMessage("Cannot find subreddit.").queue();
 
             }
 
@@ -63,7 +68,14 @@ public class RedditManager {
 
         }
 
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                event.getMessage().delete().queue();
 
+            }
+        }, 5000);
 
 
     }

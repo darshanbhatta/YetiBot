@@ -22,7 +22,6 @@ public class Snap {
         Collections.shuffle(users);
         List<Invite> invite = event.getGuild().getInvites().complete();
         invite.get(0).getURL();
-        System.out.println(users.get(0).toString());
         Scanner thanosTxt = null;
         try {
             thanosTxt = new Scanner(new File("txt/thanos.txt"));
@@ -46,44 +45,64 @@ public class Snap {
 
 
         }
-
+        final int[] banCounter = {0};
         for (int x = 0; x < users.size() / 2; x++) {
             banned.add(users.get(x));
             String finalQuote = quote;
             int finalX = x;
             String finalQuote1 = quote;
             if (!users.get(finalX).isOwner() && !users.get(finalX).getUser().isBot()) {
+                int finalX1 = x;
                 users.get(x).getUser().openPrivateChannel().queue((channel) ->
                 {
 
                     channel.sendMessage(finalQuote + " " + invite.get(0).getURL()).queue(m -> {
                         if (!users.get(finalX).isOwner() && !users.get(finalX).getUser().isBot()) {
+                            banCounter[0]=  banCounter[0]+1;
                             guild.getController().ban(users.get(finalX).getUser().getId(), 0).queue();
-                            // System.out.println(users.get(x).getUser().getName());
+                                System.out.println(banCounter[0]);
+                                if(finalX1 ==users.size() / 2-1) {
+                                if (banCounter[0] == 0) {
+
+
+                                    msg.getChannel().sendFile(new File("img/thanos_loses.jpeg"), new MessageBuilder().append("In time you will know what it’s like to lose.").build()).queue();
+
+
+                                } else {
+                                    String us = "users";
+                                    if(banCounter[0]==1){
+                                        us = "user";
+                                    }
+                                    msg.getChannel().sendFile(new File("img/thanos_snap.jpg"), new MessageBuilder().append(finalQuote1 + "\nBanned " + banCounter[0] +" " + us).build()).queue();
+                                }
+                            }
+
+                            System.out.println(users.get(0).getUser().getName());
                         }
 
 
-                        msg.getChannel().sendFile(new File("img/thanos_snap.jpg"), new MessageBuilder().append(" ").build()).queue();
-                        msg.getChannel().sendMessage(finalQuote1).queue(w -> {
 
-                            Timer time = new Timer();
-                            time.schedule(new TimerTask() {
-                                @Override
-                                public void run() {
-                                    msg.delete().queue();
-
-                                }
-                            }, 5000);
-
-                        });
 
 
                     });
 
                 });
+
+
+
+
+                Timer time = new Timer();
+                time.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        msg.delete().queue();
+
+                    }
+                }, 5000);
+            }else{
+                msg.getChannel().sendFile(new File("img/thanos_loses.jpeg"), new MessageBuilder().append("In time you will know what it’s like to lose.").build()).queue();
+
             }
-
-
         }
     }
 }

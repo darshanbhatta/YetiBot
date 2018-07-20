@@ -8,6 +8,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.jsoup.Jsoup;
 
+
 import java.awt.*;
 import java.io.*;
 import java.util.Timer;
@@ -360,7 +361,7 @@ triviaHolders[0].getGames().remove(ind);
 
        }else{
 
-           event.getChannel().sendMessage("Error invalid command. Try !trivia start to start the game and !trivia %answer choice%").queue();
+           event.getChannel().sendMessage("Format:\n\t!trivia start - starts the game\n\t!trivia (answer choice number) - answer questions\n\t!trivia quit - end any unfinished games").queue();
        }
 
 

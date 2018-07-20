@@ -7,6 +7,8 @@ import bot.discord.yeti.util.reward.RewardUserHolder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.io.*;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class Claim {
@@ -43,6 +45,9 @@ public class Claim {
         }
 
         //!claim daily
+        if(code.length == 1){
+            event.getChannel().sendMessage("!claim hourly - Claim 50 :gem: - Available every 60 minutes\n!claim daily - Claim 500 :gem: - Available every 24 hours").queue();
+        }
         if(code.length==2&&code[1].equals("daily")){
 int indx = -1;
             for(int x=0;x<rewardUserHolders[0].getRewardUsers().size();x++){
@@ -410,7 +415,14 @@ int indx = -1;
 
 
         }
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                event.getMessage().delete().queue();
 
+            }
+        }, 5000);
 
 
 

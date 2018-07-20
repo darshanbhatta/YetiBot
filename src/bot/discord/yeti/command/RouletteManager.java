@@ -348,5 +348,13 @@ break;
             e.getChannel().sendMessage("Error invalid command. Try !roulette init to start a match and !roulette bet %bet amount% %bet type[red/black/green/odd/even/number from 1-36]%").queue();
 
         }
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                e.getMessage().delete().queue();
+
+            }
+        }, 5000);
     }
 }

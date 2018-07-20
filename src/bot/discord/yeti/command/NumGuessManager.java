@@ -46,9 +46,9 @@ public class NumGuessManager {
 
         //!numguess init 500
 
-        if (code.length == 3 && code[1].equals("init")) {
+        if (code.length == 3 && code[1].equals("start")) {
 try{
-    int betAmount = Integer.parseInt(code[2]); //try catch //see if greater than 1 //see if postive // see if account has enough
+    int betAmount = Integer.parseInt(code[2]); //try catch //see if greater than 1 //see if positive // see if account has enough
     if(betAmount>0) {
        int accountIndx =  bank[0].getAccountIndex(e.getAuthor().getId()); // see if account exists
         if (accountIndx != -1) {
@@ -286,7 +286,7 @@ if(numGuessHolder[0].getNumGuessHolders().get(ind).getNumGuessUsers().size()!=0)
 
                 }else{
 
-                    e.getChannel().sendMessage("Error game already in progress").queue();
+                    e.getChannel().sendMessage("Game already in progress").queue();
                     //error game already in progress
                 }
 
@@ -294,19 +294,19 @@ if(numGuessHolder[0].getNumGuessHolders().get(ind).getNumGuessUsers().size()!=0)
 
 
             } else {
-                e.getChannel().sendMessage("Error not enough funds").queue();
+                e.getChannel().sendMessage("Not enough funds").queue();
                 //error not enough funds
 
             }
 
 
         } else {
-            e.getChannel().sendMessage("Error you do not have a bank account").queue();
+            e.getChannel().sendMessage("You do not have a bank account").queue();
           //erorr you do not have a bank account
 
         }
     }else{
-        e.getChannel().sendMessage("Error can only bet positive integers").queue();
+        e.getChannel().sendMessage("Can only bet positive integers").queue();
         //error have to bed postive
     }
 
@@ -370,14 +370,14 @@ break;
 
 
                             } else {
-                                e.getChannel().sendMessage("Error not enough funds").queue();
+                                e.getChannel().sendMessage("Not enough funds").queue();
                                 //error not enough funds
 
                             }
 
 
                         } else {
-                            e.getChannel().sendMessage("Error no game in progess, try !numguess %bet amount% to start a game").queue();
+                            e.getChannel().sendMessage("No game in progess. try !numguess %bet amount% to start a game").queue();
                             //erorr you do not have a bank account
 
                         }
@@ -405,12 +405,18 @@ break;
 
 
         }else{
-
-            e.getChannel().sendMessage("Error invalid command. Try //!numguess init %bet amount% to start a match and !numguess guess %number from 1-100%").queue();
-
+            if(!e.getAuthor().isBot())
+            e.getChannel().sendMessage("!numguess start <bet amount> - Start a match with a fixed bet amount\n!numguess guess <number> - Guess number within 1-100").queue();
         }
 
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                e.getMessage().delete().queue();
 
+            }
+        }, 5000);
 
     }
 

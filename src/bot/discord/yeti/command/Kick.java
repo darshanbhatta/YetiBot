@@ -13,76 +13,87 @@ import java.util.TimerTask;
 public class Kick {
 
     public static void run(Message msg, MessageReceivedEvent event) {
-        Guild guild = event.getGuild();
-        ArrayList<Member> users = new ArrayList();
-
-        StringBuilder builder = new StringBuilder(guild.getName() + " (" + guild.getId() + ")\r\n---");
-        guild.getMembers().forEach(m -> users.add(m));
 
 
-        try {
+        if(msg.getContentRaw().toLowerCase().equals("!kick")){
+            msg.getChannel().sendMessage("Format: !kick @username (Optional: Reason)").queue();
 
-            String username = msg.getContentRaw().substring(msg.getContentRaw().indexOf("!ban") + 5);
-            if (username.contains("<")) {
-                username = username.substring(2, username.indexOf(">"));
-            }
-            String reason = "";
+        }else{
+
+            Guild guild = event.getGuild();
+            ArrayList<Member> users = new ArrayList();
+
+            StringBuilder builder = new StringBuilder(guild.getName() + " (" + guild.getId() + ")\r\n---");
+            guild.getMembers().forEach(m -> users.add(m));
+
+
             try {
-                reason = msg.getContentRaw().substring(msg.getContentRaw().indexOf(">") + 1);
-            } catch (IndexOutOfBoundsException e) {
 
-            }
-      //      System.out.println(reason + " lol " + username + "  "  +users.get(1).getUser().getIdLong()+"");
-            if (username != null) {
-                final int[] count = {0};
-                if (users.size() != 0) {
-                    for (int x = 0; x < users.size(); x++) {
-                        System.out.println(reason + " lol " + username + "  "  +users.get(x).getUser().getId()+"");
-                        if (username.toLowerCase().contains(users.get(x).getUser().getId().toLowerCase())) {
-                            if(event.getMember().hasPermission(Permission.ADMINISTRATOR)){
+                String username = msg.getContentRaw().substring(msg.getContentRaw().indexOf("!ban") + 5);
+                if (username.contains("<")) {
+                    username = username.substring(2, username.indexOf(">"));
+                }
+                String reason = "";
+                try {
+                    reason = msg.getContentRaw().substring(msg.getContentRaw().indexOf(">") + 1);
+                } catch (IndexOutOfBoundsException e) {
 
-                                try{
-                                    guild.getController().kick(users.get(x), reason).queue();
-                                    msg.getChannel().sendMessage("Successfully kicked " + users.get(x).getUser().getName()).queue(w -> {
-                                        count[0]++;
+                }
+                //      System.out.println(reason + " lol " + username + "  "  +users.get(1).getUser().getIdLong()+"");
+                if (username != null) {
+                    final int[] count = {0};
+                    if (users.size() != 0) {
+                        for (int x = 0; x < users.size(); x++) {
+                            System.out.println(reason + " lol " + username + "  "  +users.get(x).getUser().getId()+"");
+                            if (username.toLowerCase().contains(users.get(x).getUser().getId().toLowerCase())) {
+                                if(event.getMember().hasPermission(Permission.ADMINISTRATOR)){
+
+                                    try{
+                                        guild.getController().kick(users.get(x), reason).queue();
+                                        msg.getChannel().sendMessage("Successfully kicked " + users.get(x).getUser().getName()).queue(w -> {
+                                            count[0]++;
+
+                                        });
+                                    }catch (Exception e){
+                                        msg.getChannel().sendMessage("Unable to kick a member with higher or equal highest role than yourself!").queue(w -> {
+
+                                        });
+
+                                    }
+
+                                }else{
+                                    msg.getChannel().sendMessage("You do not have permission.").queue(w -> {
 
                                     });
-                                }catch (Exception e){
-                                    msg.getChannel().sendMessage("Error can't kick a member with higher or equal highest role than yourself!").queue(w -> {
-
-                                    });
-
                                 }
 
-                            }else{
-                                msg.getChannel().sendMessage("Error you do not have permission").queue(w -> {
 
-                                });
+
                             }
-
-
 
                         }
 
+                    } else {
+
+                        msg.getChannel().sendMessage("Unable to kick.").queue(w -> {
+
+
+                        });
                     }
 
+
                 } else {
-
-                    msg.getChannel().sendMessage("Error cannot kick").queue(w -> {
-
-
-                    });
+                    msg.getChannel().sendMessage("Format: !kick @username (Optional: Reason)").queue();
                 }
+            } catch (StringIndexOutOfBoundsException e) {
+                msg.getChannel().sendMessage("Format: !kick @username (Optional: Reason)").queue(w -> {
 
 
-            } else {
-                msg.getChannel().sendMessage("Error incorrect format. !kick @username %optional reason%").queue();
+                });
+
+
             }
-        } catch (StringIndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Error incorrect format. !kick @username %optional reason%").queue(w -> {
 
-
-            });
 
 
         }

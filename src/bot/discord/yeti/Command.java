@@ -109,17 +109,23 @@ public class Command extends ListenerAdapter {
                     TicTacToeManager.run(e);
 
                     break;
+                case "tictactoe": e.getChannel().sendMessage("!tic start @user - Start a match\n!tic play <move number> to move\n!tic board - Print out your current match board\n!tic quit - End any unfinished games").queue();
+                    break;
                 case "c4":
 
 
                     Connect4Manager.run(e);
 
                     break;
+                case "connectfour":
+                    e.getChannel().sendMessage("!c4 start @user - Start a match\n!c4 <column number> - Play Column\n!c4 board - Print our your current match board\n!c4 quit - End any unfinished games").queue();
+                    break;
                 case "numguess":
-
 
                     NumGuessManager.run(e);
 
+                    break;
+                case "numberguess": e.getChannel().sendMessage("!numguess start <bet amount> - Start a match with a fixed bet amount\n!numguess guess <number> - Guess number within 1-100").queue();
                     break;
                 case "weather":
 
@@ -129,6 +135,9 @@ public class Command extends ListenerAdapter {
                     break;
                 case "poll":
                     PollManager.run(e);
+                    break;
+                case "polling": e.getChannel().sendMessage("Start a poll - !poll (title) [list of options separated by commas] <time limit (sec)>\nExample: !poll (Do you enjoy using YetiBot?) [Yes, Sure, Absolutely] <20>\n\nVote in a poll - !poll <vote number>\nEnd a poll - !poll end").queue();
+
                     break;
                 case "reddit":
                     try {
@@ -170,6 +179,12 @@ public class Command extends ListenerAdapter {
                 case "role":
 
                     Role.run(e);
+                    break;
+                case "snappy":
+                    e.getChannel().sendMessage("Bans half of the members in the discord server under Thanos' will - !snap").queue();
+
+                    break;
+                default:
                     break;
 
             }

@@ -71,7 +71,7 @@ public class TicTacToeManager {
 
 
                 } else {
-                    e.getChannel().sendMessage("Error you already are in a game, type !tic play %move number% or !tic quit").queue();
+                    e.getChannel().sendMessage("You already are in a game, type !tic play %move number% or !tic quit").queue();
 
                 }
 
@@ -81,7 +81,7 @@ public class TicTacToeManager {
 
             }else{
 
-                e.getChannel().sendMessage("Error cannot start game with yourself").queue();
+                e.getChannel().sendMessage("You cannot play solo Tic Tac Toe.").queue();
 
             }
 
@@ -141,10 +141,10 @@ public class TicTacToeManager {
                             }
                         } else {
                             if (whereGo == 1) {
-                                e.getChannel().sendMessage(e.getAuthor().getName() + ", its not your turn.").queue();
+                                e.getChannel().sendMessage(e.getAuthor().getName() + ", it is not your turn.").queue();
                             }else {
 
-                                e.getChannel().sendMessage("Error " + move + " is already taken").queue();
+                                e.getChannel().sendMessage(move + " is already taken").queue();
                             }
 
 
@@ -222,8 +222,8 @@ public class TicTacToeManager {
 
     }
         else{
-
-            e.getChannel().sendMessage("Error invalid command.\n\nCommand List\n\t!tic start @user to start a match\n\t!tic play %move number% to move\n\t!tic board to print our your current match board\n\t!tic quit to end any unfinished games").queue();
+            if(!e.getAuthor().isBot())
+                e.getChannel().sendMessage("!tic start @user - Start a match\n!tic play <move number> to move\n!tic board - Print out your current match board\n!tic quit - End any unfinished games").queue();
 
         }
     }

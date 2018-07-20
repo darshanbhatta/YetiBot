@@ -181,7 +181,7 @@ public class FortniteShop {
 
                     } catch (Exception e) {
                         System.out.println(e.toString());
-                        msg.getChannel().sendMessage("Error invalid format !fortniteShop").queue();
+                        msg.getChannel().sendMessage("Format: !fortniteshop").queue();
                     }
 
 
@@ -189,11 +189,19 @@ public class FortniteShop {
 
 
             } catch (IndexOutOfBoundsException e) {
-                msg.getChannel().sendMessage("Error invalid format !fortniteShop").queue();
+                msg.getChannel().sendMessage("Format: !fortniteshop").queue();
             }
         } catch (IndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Error invalid format !fortniteShop").queue();
+            msg.getChannel().sendMessage("Format: !fortniteshop").queue();
         }
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                event.getMessage().delete().queue();
+
+            }
+        }, 5000);
     }
 }
 

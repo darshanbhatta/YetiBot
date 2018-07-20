@@ -15,7 +15,11 @@ import java.net.URL;
 public class Weather {
     public static void run(MessageReceivedEvent event){
         //!weather current dallas tx
+
         String[] code = event.getMessage().getContentRaw().split(" ");
+        if(code.length == 1){
+            event.getChannel().sendMessage("Display current weather in a certain area\n!weather current <location name/zipcode>\n\nDisplay tomorrows weather in a certain area\n!weather tmr <location name/zipcode>\n\nDisplay weather of the upcoming week in a certain area\n!weather forecast <location name/zipcode>").queue();
+        }
         if(code.length>=3&&code[1].equals("current")){
             String id = "";
             String search = code[2];
@@ -79,7 +83,7 @@ public class Weather {
                 event.getChannel().sendMessage("Currently in "+ location + v+cond+ " with a temperature of " + temp + " °F").queue();
 
             } catch (Exception e) {
-                event.getChannel().sendMessage("Error location not found").queue();
+                event.getChannel().sendMessage("Location not found.").queue();
                 System.out.println(e.toString());
 
             }
@@ -151,7 +155,7 @@ public class Weather {
                 event.getChannel().sendMessage("Future forecasts for "+ location + "\n"+build).queue();
 
             } catch (Exception e) {
-                event.getChannel().sendMessage("Error location not found").queue();
+                event.getChannel().sendMessage("Location not found.").queue();
                 System.out.println(e.toString());
 
             }
@@ -222,7 +226,7 @@ public class Weather {
                 event.getChannel().sendMessage("Tomorrow in "+ location + " "+build).queue();
 
             } catch (Exception e) {
-                event.getChannel().sendMessage("Error location not found").queue();
+                event.getChannel().sendMessage("Location not found.").queue();
                 System.out.println(e.toString());
 
             }
@@ -231,8 +235,9 @@ public class Weather {
             //error invalid
 
         }else{
-
-            event.getChannel().sendMessage("Error command not found. Try these commands\n\n\t!weather current %location name/zipcode%\n\t!weather tmr %location name/zipcode%\n\t!weather forecast %location name/zipcode%").queue();
+            if(code.length >= 2) {
+                event.getChannel().sendMessage("Invalid command. See !weather for commands.").queue();
+            }
         }
 
 

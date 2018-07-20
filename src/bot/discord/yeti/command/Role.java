@@ -8,6 +8,8 @@ import java.awt.*;
 import java.security.Permissions;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Role {
     public static void run(MessageReceivedEvent e) {
@@ -15,6 +17,10 @@ public class Role {
         String[] co = code.split(" ");
 
         //!role add name <> []
+
+        if(co.length == 1){
+            e.getChannel().sendMessage("Create a role\n!role create (name) <Opt: Permission> [Opt: Hex Color]\n\nAdd user to a role\n!role add @username [role names separated by commas]\n\nRemove user from a role\n!role remove @username [role names separated by commas]").queue();
+        }
         if (co.length >= 3 && co[1].equals("create") && !code.contains("<") && !code.contains(">") && !code.contains("[") && !code.contains("]")) {
             if (e.getMember().hasPermission(Permission.MANAGE_ROLES)) {
                 System.out.println(code);
@@ -26,7 +32,7 @@ public class Role {
 
 
             } else {
-                e.getChannel().sendMessage("Error you do not have permission").queue(w -> {
+                e.getChannel().sendMessage("You do not have permission.").queue(w -> {
 
                 });
             }
@@ -66,7 +72,7 @@ public class Role {
                         });
                     } catch (Exception aa) {
 
-                        e.getChannel().sendMessage("Error invalid hex color: e.g. #fffff or ffffff").queue(w -> {
+                        e.getChannel().sendMessage("Invalid hex color: e.g. #fffff or ffffff").queue(w -> {
 
                         });
 
@@ -76,7 +82,7 @@ public class Role {
                 } else {
 
 
-                    e.getChannel().sendMessage("Error invaild permission code, try !role perm to see all permission codes").queue(w -> {
+                    e.getChannel().sendMessage("Invaild permission code, try !role perm to see all permission codes").queue(w -> {
 
                     });
 
@@ -85,7 +91,7 @@ public class Role {
 
 
             } else {
-                e.getChannel().sendMessage("Error you do not have permission").queue(w -> {
+                e.getChannel().sendMessage("You do not have permission.").queue(w -> {
 
                 });
             }
@@ -124,7 +130,7 @@ public class Role {
                 } else {
 
 
-                    e.getChannel().sendMessage("Error invalid permission code, try !role perm to see all permission codes").queue(w -> {
+                    e.getChannel().sendMessage("Invalid permission code, try !role perm to see all permission codes").queue(w -> {
 
                     });
 
@@ -133,7 +139,7 @@ public class Role {
 
 
             } else {
-                e.getChannel().sendMessage("Error you do not have permission").queue(w -> {
+                e.getChannel().sendMessage("You do not have permission.").queue(w -> {
 
                 });
             }
@@ -155,7 +161,7 @@ public class Role {
                     });
                 } catch (Exception aa) {
 
-                    e.getChannel().sendMessage("Error invalid hex color: e.g. #fffff or ffffff").queue(w -> {
+                    e.getChannel().sendMessage("Invalid hex color: e.g. #fffff or ffffff").queue(w -> {
 
                     });
 
@@ -163,7 +169,7 @@ public class Role {
 
 
         } else {
-            e.getChannel().sendMessage("Error you do not have permission").queue(w -> {
+            e.getChannel().sendMessage("You do not have permission.").queue(w -> {
 
             });
         }
@@ -199,7 +205,7 @@ public class Role {
                     "28 - \"Manage Roles\"\n" +
                     "29 - \"Manage Webhooks\"\n" +
                     "30 - \"Manage Emojis\"";
-            e.getChannel().sendMessage("Type the number to the corresponding permission when creating permission for roles\n"+permission).queue();
+            e.getChannel().sendMessage("Type the number corresponding to the permission when adding permissions for roles\n"+permission).queue();
 
         }else if(co.length >= 3 && co[1].equals("add") && code.contains("<") && code.contains(">")){
             ArrayList<Member> users = new ArrayList();
@@ -229,7 +235,7 @@ public class Role {
                 e.getChannel().sendMessage("Successfully added " +users.get(ind).getUser().getName() +  " to "+builder ).queue();
 
             }else{
-                e.getChannel().sendMessage("Error username not found").queue();
+                e.getChannel().sendMessage("Username not found.").queue();
 
             }
 
@@ -265,7 +271,7 @@ public class Role {
             e.getChannel().sendMessage("Successfully removed " +users.get(ind).getUser().getName() +  " from "+builder ).queue();
 
         }else{
-            e.getChannel().sendMessage("Error username not found").queue();
+            e.getChannel().sendMessage("Username not found.").queue();
 
         }
 
@@ -274,12 +280,19 @@ public class Role {
 
 
     }else{
-
-            e.getChannel().sendMessage("Error command not found. Try these !role create %name% <optional permission> [option hex color] !role add @username [role names separated by commas] !role remove @username [role names separated by commas]").queue();
+            if(co.length >= 2)
+            e.getChannel().sendMessage("Invalid Command. See !role for commands.").queue();
 
         }
 
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                e.getMessage().delete().queue();
 
+            }
+        }, 5000);
 
 
     }

@@ -8,6 +8,8 @@ import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.io.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class BlackjackManager{
@@ -46,7 +48,10 @@ public class BlackjackManager{
         }
 
 //!blackjack init 500
-        if ((code.length == 2 ||code.length == 3)  && code[1].equals("init")) {
+        if(code.length == 1){
+            e.getChannel().sendMessage("Format: !blackjack start <Optional: bet amount>").queue();
+        }
+        if ((code.length == 2 ||code.length == 3)  && code[1].equals("start")) {
             String bet = "";
             int betAmount =0;
             if(code.length==3){
@@ -78,7 +83,7 @@ public class BlackjackManager{
                             if (!hasGame) {
                                 blackjackGameHolder[0].getBlackjackGames().add(new BlackjackGame(betAmount, e.getAuthor().getId(), e.getAuthor().getName()));
 
-                                e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size()-1).getCard())), new MessageBuilder().append(e.getAuthor().getName() + "'s Blackjack Game\n" + "Total " + blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size() - 1).getTotal()).build()).queue();
+                                e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size()-1).getCard())), new MessageBuilder().append(e.getAuthor().getName() + "'s :spades: Blackjack Game :spades: \n" + "Total " + blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size() - 1).getTotal()+"\n!blackjack stand/stay or !blackjack hit").build()).queue();
                                 e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size()-1).getCard()))).queue();
                                 if(blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size()-1).hasBlackJack()){
                                     e.getChannel().sendMessage("Blackjack! You win " + ((int) (2.5 * betAmount)) + " :gem:").queue();
@@ -111,7 +116,7 @@ public class BlackjackManager{
                                 }
                             } else {
 
-                                e.getChannel().sendMessage("Error you are already in a game").queue();
+                                e.getChannel().sendMessage("You are already in a game. Format: !blackjack [hit,stand]").queue();
                                 //error already in game
 
                             }
@@ -154,7 +159,7 @@ public class BlackjackManager{
                             if (!hasGame) {
                                 blackjackGameHolder[0].getBlackjackGames().add(new BlackjackGame(betAmount, e.getAuthor().getId(), e.getAuthor().getName()));
 
-                                e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size()-1).getCard())), new MessageBuilder().append(e.getAuthor().getName() + "'s Blackjack Game\n" + "Total " + blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size() - 1).getTotal()).build()).queue();
+                                e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size()-1).getCard())), new MessageBuilder().append(e.getAuthor().getName() + "'s :spades: Blackjack Game :spades: \n" + "Total " + blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size() - 1).getTotal()+"\n!blackjack stand/stay or !blackjack hit").build()).queue();
                                 e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size()-1).getCard()))).queue();
                                 if(blackjackGameHolder[0].getBlackjackGames().get(blackjackGameHolder[0].getBlackjackGames().size()-1).hasBlackJack()){
                                     e.getChannel().sendMessage("Blackjack! You win!").queue();
@@ -185,7 +190,7 @@ public class BlackjackManager{
                                 }
                             } else {
 
-                                e.getChannel().sendMessage("Error you are already in a game").queue();
+                                e.getChannel().sendMessage("You are already in a game. Format: !blackjack [hit,stand]").queue();
                                 //error already in game
 
                             }
@@ -222,7 +227,7 @@ public class BlackjackManager{
             if (hasGame) {
                 blackjackGameHolder[0].getBlackjackGames().get(indx).hit();
 
-                e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(indx).getCard())), new MessageBuilder().append(e.getAuthor().getName() + "'s Blackjack Game\n" + "Total " + blackjackGameHolder[0].getBlackjackGames().get(indx).getTotal()).build()).queue();
+                e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(indx).getCard())), new MessageBuilder().append(e.getAuthor().getName() + "'s :spades:  Blackjack Game :spades: \n" + "Total " + blackjackGameHolder[0].getBlackjackGames().get(indx).getTotal()+"\n!blackjack stand/stay or !blackjack hit").build()).queue();
                 try {
                     FileOutputStream fileOut = new FileOutputStream("blackjack.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -248,7 +253,7 @@ public class BlackjackManager{
 
             }else{
 
-                e.getChannel().sendMessage("Error you are not in a game, type !blackjack %bet% to start").queue();
+                e.getChannel().sendMessage("You are not in a game. See !blackjack for commands.").queue();
             }
 
 
@@ -281,8 +286,11 @@ int indx = 0;
                     }else{
 
                         for(int x=1;x<blackjackGameHolder[0].getBlackjackGames().get(indx).getDealer().size();x++){
-                            e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(indx).getDealerCard(x)))).queue();
-
+                            if(x==1)
+                            e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(indx).getDealerCard(x))),new MessageBuilder().append("Dealer's remaining hand").build()).queue();
+else{
+                                e.getChannel().sendFile((new File(blackjackGameHolder[0].getBlackjackGames().get(indx).getDealerCard(x)))).queue();
+                            }
 
 
                         }
@@ -462,16 +470,55 @@ int indx = 0;
 
             }else{
 
-                e.getChannel().sendMessage("Error you are not in a game, type !blackjack %bet% to start").queue();
+                e.getChannel().sendMessage("You are not in a game. See !blackjack for commands.").queue();
 
             }
 
-        }else{
+        }else if(code.length==2&&code[1].equals("quit")){
+            boolean hasGame = false;
+            int indx = 0;
+            for (int x = 0; x < blackjackGameHolder[0].getBlackjackGames().size(); x++) {
+
+                if (e.getAuthor().getId().equals(blackjackGameHolder[0].getBlackjackGames().get(x).getId())) {
+                    hasGame = true;
+                    indx = x;
+                    break;
+                }
+
+
+            }
+
+            if (hasGame) {
+                blackjackGameHolder[0].getBlackjackGames().remove(indx);
+                try {
+                    FileOutputStream fileOut = new FileOutputStream("blackjack.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(blackjackGameHolder[0]);
+                    out.close();
+                    fileOut.close();
+                } catch (IOException ww) {
+                    ww.printStackTrace();
+                }
+                e.getChannel().sendMessage("Successfully ended blackjack game!").queue();
+
+            }else{
+
+                e.getChannel().sendMessage("You are not in a game. See !blackjack for commands.").queue();
+
+            }
+
 
 
 
         }
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                e.getMessage().delete().queue();
 
+            }
+        }, 5000);
 
     }
     public static void completeTransaction(Bank bank){

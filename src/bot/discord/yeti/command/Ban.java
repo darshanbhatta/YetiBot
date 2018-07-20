@@ -49,14 +49,14 @@ public class Ban {
                                     });
                                     count++;
                                 }catch (Exception e){
-                                    msg.getChannel().sendMessage("Error can't ban a member with higher or equal highest role than yourself!").queue(w -> {
+                                    msg.getChannel().sendMessage("Unable to ban a member with higher or equal highest role than yourself.").queue(w -> {
 
                                     });
 
                                 }
 
                             }else{
-                                msg.getChannel().sendMessage("Error you do not have permission").queue(w -> {
+                                msg.getChannel().sendMessage("You do not have permission.").queue(w -> {
 
                                 });
 
@@ -68,7 +68,7 @@ public class Ban {
                     }
                 } else {
 
-                    msg.getChannel().sendMessage("Error cannot ban").queue(w -> {
+                    msg.getChannel().sendMessage("Unable to ban").queue(w -> {
 
 
                     });
@@ -76,10 +76,10 @@ public class Ban {
 
 
             } else {
-                msg.getChannel().sendMessage("Error incorrect format. !ban @username %optional reason%").queue();
+                msg.getChannel().sendMessage("Format: !ban @username (Optional: reason)").queue();
             }
         } catch (StringIndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Error incorrect format. !ban @username %optional reason%").queue(w -> {
+            msg.getChannel().sendMessage("Format: !ban @username (Optional: reason)").queue(w -> {
 
 
             });

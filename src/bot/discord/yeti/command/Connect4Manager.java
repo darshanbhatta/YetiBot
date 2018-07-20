@@ -5,6 +5,8 @@ import bot.discord.yeti.game.connect4.Connect4Holder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.io.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Connect4Manager {
 
@@ -29,6 +31,7 @@ public class Connect4Manager {
         }
 
 //!c4 play @
+
         if (code.length == 3 && code[1].equals("start")) {
             String username = code[2].substring(2, code[2].indexOf(">"));
             if(!e.getAuthor().getId().equals(username)){
@@ -66,7 +69,7 @@ public class Connect4Manager {
 
 
                 } else {
-                    e.getChannel().sendMessage("Error you already are in a game, type !c4 play %move number% or !c4 quit").queue();
+                    e.getChannel().sendMessage("You already are in a game. See !connect4 for commands.").queue();
 
                 }
 
@@ -76,7 +79,7 @@ public class Connect4Manager {
 
             }else{
 
-                e.getChannel().sendMessage("Error cannot start game with yourself").queue();
+                e.getChannel().sendMessage("You cannot play solo Connect Four.").queue();
 
             }
 
@@ -106,7 +109,7 @@ public class Connect4Manager {
 
                 } if(!hasGame){
 
-                e.getChannel().sendMessage("Error you are not in a game").queue();
+                e.getChannel().sendMessage("You are not in a Connect Four game.").queue();
             }
 
 
@@ -127,7 +130,7 @@ public class Connect4Manager {
 
             } if(!hasGame){
 
-                e.getChannel().sendMessage("Error you are not in a game").queue();
+                e.getChannel().sendMessage("You are not in a Connect Four game.").queue();
             }
 
     }else if (code.length == 2) {
@@ -188,10 +191,10 @@ public class Connect4Manager {
                                 }
                             } else {
                                 if (whereGo == 1) {
-                                    e.getChannel().sendMessage(e.getAuthor().getName() + ", its not your turn.").queue();
+                                    e.getChannel().sendMessage(e.getAuthor().getName() + ", it is not your turn.").queue();
                                 } else {
 
-                                    e.getChannel().sendMessage("Error column full").queue();
+                                    e.getChannel().sendMessage("Column Full.").queue();
                                 }
 
 
@@ -211,14 +214,14 @@ public class Connect4Manager {
 
                 } else {
 
-                    e.getChannel().sendMessage("Error invalid move number, only type numbers on the board").queue();
+                    e.getChannel().sendMessage("Invalid move number, only type numbers on the board").queue();
 
 
                 }
 
             }catch (Exception w){
 
-                e.getChannel().sendMessage("Error invalid move number, only type numbers on the board").queue();
+                e.getChannel().sendMessage("Invalid move number. Format: !c4 <column number>").queue();
 
 
             }
@@ -227,9 +230,17 @@ public class Connect4Manager {
             //!tic quit
             //!tic board
         }else{
-
-            e.getChannel().sendMessage("Error invalid command.\n\nCommand List\n\t!c4 start @user to start a match\n\t!c4 %move number% to move\n\t!c4 board to print our your current match board\n\t!c4 quit to end any unfinished games").queue();
+            if(!e.getAuthor().isBot())
+            e.getChannel().sendMessage("!c4 start @user - Start a match\n!c4 <column number> - Play Column\n!c4 board - Print our your current match board\n!c4 quit - End any unfinished games").queue();
 
         }
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                e.getMessage().delete().queue();
+
+            }
+        }, 5000);
     }
 }
