@@ -60,28 +60,48 @@ public class Coinflip {
             if (i != -1) {
                 bet = arg[1];
                 price = arg[2];
-                int bal = bank.getAllBalance().get(i).getBalance();
-
-                if (bal >= Integer.parseInt(price)) {
-                    bank.getAllBalance().get(i).setBalance(bal - Integer.parseInt(price));
-                    completeTransaction();
-                }
-
-                completeTransaction();
-
-                msg.getChannel().sendMessage(":moneybag:Coinflip:moneybag:").queue(m -> {});
                 try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    int betAmount = Integer.parseInt(arg[2]);
+                    int bal = bank.getAllBalance().get(i).getBalance();
+                    System.out.println(betAmount);
+                    if (betAmount > 0) {
+                        if (bal >= betAmount) {
+                            bank.getAllBalance().get(i).setBalance(bal - Integer.parseInt(price));
+                            completeTransaction();
+                            completeTransaction();
+
+                            msg.getChannel().sendMessage(":moneybag:Coinflip:moneybag:").queue(m -> {
+                            });
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            placeBet = true;
+                            countDown();
+                        } else {
+                            msg.getChannel().sendMessage("Error insufficient funds, you have " + bal + " \uD83D\uDC8E").queue(m -> {
+                            });
+
+
+                        }
+
+
+                    } else {
+                        msg.getChannel().sendMessage("Error can only bet positive numbers").queue(m -> {
+                        });
+                    }
+
+
+                } catch (Exception e) {
+                    msg.getChannel().sendMessage("Error can only bet numbers").queue(m -> {
+                    });
                 }
-                placeBet = true;
-                countDown();
-            } else {
+            }else{
                 msg.getChannel().sendMessage("Error recipient does not have an account, tell them to type !bank init to make one").queue(m -> {
                 });
-
             }
+
 
         }
         else{

@@ -49,8 +49,10 @@ public class RouletteManager {
             return;
         }
         int bankAccountIndex = bank[0].getAccountIndex(e.getAuthor().getId());
-
-        if (code.length == 2 && code[1].equals("init")) {
+        if(code.length == 1){
+            e.getChannel().sendMessage("Start a game\n!roulette start\n\nPlace a bet\n!roulette bet <bet amount> [red, black, green, odd, even, <1-36>]").queue();
+        }
+        if (code.length == 2 && code[1].equals("start")) {
             boolean gameInProg = false;
             String serverid = null;
             for (int x = 0; x < rouletteGame[0].getRouletteGames().size(); x++) {
@@ -76,7 +78,7 @@ public class RouletteManager {
                     ww.printStackTrace();
                 }
 
-                e.getChannel().sendMessage("Game created 10 seconds to place bets, type !roulette bet").queue(m -> {
+                e.getChannel().sendMessage("Game created! 30 seconds to place bets, type !roulette bet").queue(m -> {
 
                 });
 
@@ -90,19 +92,19 @@ public class RouletteManager {
                         String finalServerid = e.getGuild().getId();
                         final Bank[] finalBank = {bank[0]};
 
-                        e.getChannel().sendMessage("Place your final bets rolling in 3 seconds!...").queue(m -> {
+                        e.getChannel().sendMessage("Final bets! Rolling in 3 seconds!...").queue(m -> {
                             Timer timer = new Timer();
                             timer.schedule(new TimerTask() {
 
                                 @Override
                                 public void run() {
-                                    m.editMessage("Place your final bets rolling in 2 seconds!...").queue(m -> {
+                                    m.editMessage("Final bets! Rolling in 2 seconds!...").queue(m -> {
                                         Timer timer = new Timer();
                                         timer.schedule(new TimerTask() {
 
                                             @Override
                                             public void run() {
-                                                m.editMessage("Place your final bets rolling in 1 seconds!...").queue(m -> {
+                                                m.editMessage("Final bets! Rolling in 1 seconds!...").queue(m -> {
                                                     Timer timer = new Timer();
                                                     timer.schedule(new TimerTask() {
 
@@ -148,7 +150,7 @@ public class RouletteManager {
 
                                                                         if (finalServerid.equals(rouletteGame[0].getRouletteGames().get(x).getServerid())) {
                                                                             indx = x;
-break;
+                                                                            break;
 
                                                                         }
 
@@ -226,7 +228,7 @@ break;
                     }
 
 
-                }, 10000);
+                }, 30000);
 
 
             } else {
@@ -294,7 +296,7 @@ break;
                                 }
 
                                 if (!found)
-                                    e.getChannel().sendMessage("Error no running games, try !roulette init to start a game").queue();
+                                    e.getChannel().sendMessage("No game in progress. Format: !roulette init").queue();
                                 //error no running games
 
 
@@ -314,13 +316,13 @@ break;
 
                         }else{
 
-                            e.getChannel().sendMessage("Error invalid bet, roulette only supports red, black, even, odd, or a number from 1-36");
+                            e.getChannel().sendMessage("Invalid bet, roulette only supports red, black, even, odd, or a number from 1-36");
 
                         }
 
                     }else{
 
-                        e.getChannel().sendMessage("Error invalid bet, you can only bet positive integers");
+                        e.getChannel().sendMessage("Invalid bet, you can only bet positive integers");
 
 
                     }
@@ -333,28 +335,20 @@ break;
 
 
                 } catch (Exception e1) {
-                    e.getChannel().sendMessage("Error you can only bet integers");
+                    e.getChannel().sendMessage("You can only bet integers");
 
                 }
 
             }else{
 
-                e.getChannel().sendMessage("Error you do not have a bank account to bet with, try !bank init to make one");
+                e.getChannel().sendMessage("You do not have a bank account to bet with, try !bank init to make one");
 
 
             }
         }else{
-
-            e.getChannel().sendMessage("Error invalid command. Try !roulette init to start a match and !roulette bet %bet amount% %bet type[red/black/green/odd/even/number from 1-36]%").queue();
-
-        }
-        Timer time = new Timer();
-        time.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                e.getMessage().delete().queue();
-
+            if(code.length >= 2) {
+                e.getChannel().sendMessage("Invalid Command. See !roulette for commands.").queue();
             }
-        }, 5000);
+        }
     }
 }

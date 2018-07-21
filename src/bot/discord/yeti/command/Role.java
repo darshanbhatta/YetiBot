@@ -216,11 +216,13 @@ public class Role {
             allPerm = allPerm.replace(", ", " ");
             String allPer[] = allPerm.split(",");
             String builder = "";
+            System.out.println(allPerm.length());
             for(int x=0;x<allPer.length;x++){
                     builder+=allPer[x]+" ";
                 roles.add(e.getJDA().getRolesByName(allPer[x], true).get(0));
 
             }
+
             int ind = -1;
             for(int x=0;x<users.size();x++){
                 if (username.toLowerCase().contains(users.get(x).getUser().getId().toLowerCase())) {
@@ -230,9 +232,15 @@ public class Role {
 
             }
             if(ind!=-1){
+try{
+    e.getGuild().getController().addRolesToMember(users.get(ind),roles ).queue();
+    e.getChannel().sendMessage("Successfully added " +users.get(ind).getUser().getName() +  " to "+builder ).queue();
+}catch (Exception eae){
+    e.getChannel().sendMessage("Error: Bot can't modify a role with higher or equal highest role than itself!" ).queue();
 
-                e.getGuild().getController().addRolesToMember(users.get(ind),roles ).queue();
-                e.getChannel().sendMessage("Successfully added " +users.get(ind).getUser().getName() +  " to "+builder ).queue();
+}
+
+
 
             }else{
                 e.getChannel().sendMessage("Username not found.").queue();
@@ -266,9 +274,15 @@ public class Role {
 
         }
         if(ind!=-1){
+            try{
+                e.getGuild().getController().removeRolesFromMember(users.get(ind),roles ).queue();
+                e.getChannel().sendMessage("Successfully removed " +users.get(ind).getUser().getName() +  " from "+builder ).queue();
+            }catch (Exception eae){
+                e.getChannel().sendMessage("Error: Bot can't modify a role with higher or equal highest role than itself! " ).queue();
 
-            e.getGuild().getController().removeRolesFromMember(users.get(ind),roles ).queue();
-            e.getChannel().sendMessage("Successfully removed " +users.get(ind).getUser().getName() +  " from "+builder ).queue();
+            }
+
+
 
         }else{
             e.getChannel().sendMessage("Username not found.").queue();

@@ -81,7 +81,7 @@ public class JackpotManager {
                     ww.printStackTrace();
                 }
 
-                e.getChannel().sendMessage("Game created! 20 seconds to place bets.\nFormat: !jackpot bet <bet amount>").queue(m -> {
+                e.getChannel().sendMessage("Game created! 30 seconds to place bets.\nFormat: !jackpot bet <bet amount>").queue(m -> {
 
                 });
 
@@ -247,7 +247,7 @@ public class JackpotManager {
                     }
 
 
-                }, 20000);
+                }, 30000);
 
 
             } else {

@@ -1,13 +1,15 @@
 package bot.discord.yeti;
 
 import bot.discord.yeti.command.*;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class Command extends ListenerAdapter {
-
+    MusicManager musicManager = new MusicManager();
     public void onMessageReceived(MessageReceivedEvent e) {
 
         if (e.getMessage().getContentRaw().toLowerCase().startsWith("!")) {
@@ -184,6 +186,29 @@ public class Command extends ListenerAdapter {
                     e.getChannel().sendMessage("Bans half of the members in the discord server under Thanos' will - !snap").queue();
 
                     break;
+                case "invite":
+                    e.getChannel().sendMessage("You can add me to your guild/server with the following link : \n\nhttps://discordapp.com/oauth2/authorize?client_id=465945948925984769&scope=bot&permissions=2146958591").queue();
+
+                    break;
+                case "ping":
+
+                    long ping = e.getJDA().getPing();
+                    e.getTextChannel().sendMessage(new EmbedBuilder().setColor(getColorByPing(ping)).setDescription(
+                            String.format(":ping_pong:   **Pong!**\n\nThe ping is `%s` milliseconds.",
+                                    ping)
+                    ).build()).queue();
+
+                    break;
+                case "music":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+
+                    break;
                 default:
                     break;
 
@@ -192,6 +217,16 @@ public class Command extends ListenerAdapter {
 
         }
 
+    }
+
+    private Color getColorByPing(long ping) {
+        if (ping < 100)
+            return Color.green;
+        if (ping < 500)
+            return Color.yellow;
+        if (ping < 1000)
+            return Color.orange;
+        return Color.red;
     }
 
 }

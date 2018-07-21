@@ -5,101 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a27e9a9b-cdd5-4a5a-8134-3f2143fb4d2f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/libaries.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/libaries.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace_BACKUP_14352.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace_BACKUP_14352.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace_BASE_14352.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace_BASE_14352.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace_LOCAL_14352.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace_LOCAL_14352.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace_REMOTE_14352.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace_REMOTE_14352.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bank.ser" beforeDir="false" afterPath="$PROJECT_DIR$/bank.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blackjack.ser" beforeDir="false" afterPath="$PROJECT_DIR$/blackjack.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/claim.ser" beforeDir="false" afterPath="$PROJECT_DIR$/claim.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connect4.ser" beforeDir="false" afterPath="$PROJECT_DIR$/connect4.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jackpot.ser" beforeDir="false" afterPath="$PROJECT_DIR$/jackpot.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poll.ser" beforeDir="false" afterPath="$PROJECT_DIR$/poll.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libaries.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libaries.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/ReadyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/ReadyListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/Ban.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/Ban.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/BankManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/BankManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/BlackjackManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/BlackjackManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/Claim.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/Claim.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/Coinflip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/Coinflip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/Connect4Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/Connect4Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/CreateTextChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/CreateTextChannel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/CreateVoiceChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/CreateVoiceChannel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteLeaderboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteLeaderboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteShop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteStats.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/Help.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/JackpotManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/JackpotManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/Kick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/Kick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/NumGuessManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/NumGuessManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/PollManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/PollManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/RedditManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/RedditManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/RouletteManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/RouletteManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/SlotGameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/SlotGameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/Snap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/Snap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/TicTacToeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/TicTacToeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/TriviaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/TriviaManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/Unban.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/Unban.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/command/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/command/Weather.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/currency/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/currency/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/currency/Jewels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/currency/Jewels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/fortniteAPI/AllStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/fortniteAPI/AllStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/fortniteAPI/StatsAsyncTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/fortniteAPI/StatsAsyncTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/blackjack/BlackjackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/blackjack/BlackjackGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/blackjack/BlackjackGameHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/blackjack/BlackjackGameHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/blackjack/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/blackjack/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/jackpot/JackpotGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/jackpot/JackpotGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/jackpot/JackpotGameHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/jackpot/JackpotGameHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/jackpot/JackpotTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/jackpot/JackpotTicket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/jackpot/JackpotUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/jackpot/JackpotUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/numguesser/NumGuessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/numguesser/NumGuessGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/numguesser/NumGuessHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/numguesser/NumGuessHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/numguesser/NumGuessUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/numguesser/NumGuessUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/roulette/Roulette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/roulette/Roulette.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/roulette/RouletteGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/roulette/RouletteGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/roulette/RouletteGameHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/roulette/RouletteGameHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/roulette/RouletteUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/roulette/RouletteUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/tictactoe/TicTacToeGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/tictactoe/TicTacToeGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/tictactoe/TicTacToeHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/tictactoe/TicTacToeHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/util/poll/Poll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/util/poll/Poll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/util/poll/PollHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/util/poll/PollHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/util/reward/RewardUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/util/reward/RewardUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/util/reward/RewardUserHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/util/reward/RewardUserHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sandbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sandbox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Yeti.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Yeti.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/YetiBot-1.0-SNAPSHOT-shaded.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/YetiBot-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/YetiBot-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Ban.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Ban.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/BlackjackManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Claim.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Claim.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Connect4Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Connect4Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/CreateTextChannel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/CreateTextChannel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/CreateVoiceChannel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/CreateVoiceChannel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/BankManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/BankManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/BankManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/BankManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Coinflip$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Coinflip$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Coinflip$2$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Coinflip$2$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Coinflip$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Coinflip$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Coinflip$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Coinflip$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Coinflip.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Coinflip.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/FortniteLeaderboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/FortniteLeaderboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/FortniteStats.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/FortniteStats.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Help.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Help.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/JackpotManager$1$1$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/JackpotManager$1$1$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/JackpotManager$1$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/JackpotManager$1$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/JackpotManager$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/JackpotManager$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/JackpotManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/JackpotManager$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/JackpotManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/JackpotManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Kick.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Kick.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/NumGuessManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/NumGuessManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/PollManager$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/PollManager$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/PollManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/PollManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RedditManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RedditManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Role$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Role$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/TicTacToeManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/TriviaManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/TriviaManager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/TriviaManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/TriviaManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Unban.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Unban.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Weather.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/Weather.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager$1$1$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager$1$1$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager$1$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager$1$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/discord/yeti/command/RouletteManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/java/Sandbox.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/java/Sandbox.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tictactoe.ser" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/txt/thanos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/txt/thanos.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-Yeti.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/temp.jpg" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -117,32 +71,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="JackpotManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/JackpotManager.java">
+      <file leaf-file-name="TrackScheduler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/util/music/TrackScheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="55" column="73" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="73" />
+            <state relative-caret-position="520">
+              <caret line="65" selection-start-line="65" selection-end-line="65" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Kick.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Kick.java">
+      <file leaf-file-name="AudioPlayerSendHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/util/music/AudioPlayerSendHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PollManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/PollManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="267" column="90" selection-start-line="267" selection-start-column="90" selection-end-line="267" selection-end-column="90" />
+            <state relative-caret-position="149">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
-                <element signature="e#10320#10469#0" expanded="true" />
-                <element signature="e#10468#10469#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GuildMusicManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/util/music/GuildMusicManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+              <folding>
+                <element signature="e#671#672#0" expanded="true" />
+                <element signature="e#697#698#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MusicManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/MusicManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5941#6556#0" expanded="true" />
+                <element signature="e#6555#6556#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -151,8 +122,8 @@
       <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="138" column="106" lean-forward="true" selection-start-line="138" selection-start-column="106" selection-end-line="138" selection-end-column="106" />
+            <state relative-caret-position="193">
+              <caret line="204" selection-start-line="204" selection-end-line="204" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,66 +131,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Claim.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Claim.java">
+      <file leaf-file-name="RedditManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/RedditManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="416" column="9" lean-forward="true" selection-start-line="416" selection-start-column="9" selection-end-line="416" selection-end-column="9" />
+            <state relative-caret-position="782">
+              <caret line="58" column="26" lean-forward="true" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateTextChannel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/CreateTextChannel.java">
+      <file leaf-file-name="RouletteManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/RouletteManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="574">
+              <caret line="230" column="20" selection-start-line="230" selection-start-column="20" selection-end-line="230" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JackpotManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/JackpotManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1514">
+              <caret line="249" column="20" selection-start-line="249" selection-start-column="20" selection-end-line="249" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PollManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/PollManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3587">
+              <caret line="226" column="17" selection-start-line="226" selection-start-column="17" selection-end-line="226" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Coinflip.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Coinflip.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-461">
+              <caret line="131" column="23" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#4007#4141#0" expanded="true" />
+                <element signature="e#4140#4141#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FortniteLeaderboard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteLeaderboard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FortniteShop.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteShop.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2805">
-              <caret line="183" column="76" selection-start-line="183" selection-start-column="76" selection-end-line="183" selection-end-column="76" />
-              <folding>
-                <element signature="e#7878#8027#0" expanded="true" />
-                <element signature="e#8026#8027#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FortniteStats.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteStats.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Help.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Help.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -235,16 +191,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>black</find>
-      <find>completeTransaction</find>
-      <find>complet</find>
-      <find>gettotal</find>
-      <find>hit</find>
-      <find>you win</find>
-      <find>start</find>
-      <find>.move</find>
-      <find>tic</find>
-      <find>winner</find>
       <find>no one guessed</find>
       <find>condition</find>
       <find>code[</find>
@@ -265,6 +211,16 @@
       <find>stay</find>
       <find>doc = an</find>
       <find>.remove</find>
+      <find>.playTra</find>
+      <find>.contain</find>
+      <find>track.getInfo()</find>
+      <find>.nextt</find>
+      <find>Nothing found</find>
+      <find>users.</find>
+      <find>does not</find>
+      <find>Choose a song from below !music choose [song number]</find>
+      <find>from below</find>
+      <find>.send</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -273,12 +229,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/fortniteAPI/LeaderFetch.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/RedditManager.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaHolder.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/JackpotManager.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaQuestion.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaGame.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaUser.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/TriviaManager.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/util/reward/RewardUserHolder.java" />
@@ -294,36 +244,42 @@
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/ReadyListener.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/game/blackjack/BlackjackGame.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/game/slot/SlotMachine.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/Main.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/game/tictactoe/TicTacToeGame.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/game/connect4/Connect4Game.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Sandbox.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Weather.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Ban.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Unban.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/TriviaManager.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/BlackjackManager.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Claim.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Coinflip.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Connect4Manager.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/CreateTextChannel.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/CreateVoiceChannel.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/JackpotManager.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/NumGuessManager.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/RedditManager.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Role.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/RouletteManager.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/SlotGameManager.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Snap.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/BankManager.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/TicTacToeManager.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteStats.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteShop.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteLeaderboard.java" />
-        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Help.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Kick.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/TriviaManager.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Role.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Help.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteLeaderboard.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteStats.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/util/music/GuildAudio.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/util/music/AudioPlayerSendHandler.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/Main.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/util/music/GuildMusicManager.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/Command.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Sandbox.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/BankManager.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/Coinflip.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/RouletteManager.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/JackpotManager.java" />
         <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/PollManager.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/util/music/TrackScheduler.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/RedditManager.java" />
+        <option value="$PROJECT_DIR$/src/bot/discord/yeti/command/MusicManager.java" />
       </list>
     </option>
   </component>
@@ -351,10 +307,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1274" />
-    <option name="y" value="2" />
+    <option name="x" value="184" />
     <option name="width" value="1294" />
-    <option name="height" value="1400" />
+    <option name="height" value="1100" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -395,15 +350,28 @@
               <item name="YetiBot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="yeti" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="YetiBot" type="b2602c69:ProjectViewProjectNode" />
               <item name="YetiBot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="yeti" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="numguesser" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="music" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YetiBot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YetiBot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YetiBot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YetiBot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -428,11 +396,11 @@
       <recent name="bot.discord.yeti.game.jackpot" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\music" />
       <recent name="C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\slot" />
       <recent name="C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti" />
       <recent name="C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game" />
       <recent name="C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\meta" />
-      <recent name="C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\connect4" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -546,13 +514,13 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" weight="0.3296875" />
+      <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.3296875" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3028693" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3028693" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1234375" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1234375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -571,14 +539,14 @@
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="bottom" id="Version Control" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.32943678" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.25" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.32943678" />
+      <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
@@ -601,7 +569,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -614,91 +582,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/fortniteAPI/LeaderFetch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="96" selection-start-line="96" selection-end-line="117" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jrt://C:/Program Files/Java/jdk-10.0.1!/java.base/java/util/ArrayList.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="189" column="13" selection-start-line="189" selection-start-column="13" selection-end-line="189" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaQuestion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/game/trivia/TriviaUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jrt://C:/Program Files/Java/jdk-10.0.1!/java.base/java/util/Timer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/util/reward/RewardUserHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="53" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/util/reward/RewardUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/currency/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/JDA/3.6.0_377/JDA-3.6.0_377.jar!/net/dv8tion/jda/core/Permission.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/BlackJack.java" />
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/ReadyListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/game/slot/Slot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -713,23 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Sandbox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="198" column="1" selection-start-line="198" selection-start-column="1" selection-end-line="198" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="18" column="69" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/game/connect4/Connect4Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -741,10 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="685">
           <caret line="95" column="19" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
-          <folding>
-            <element signature="e#2064#2065#0" expanded="true" />
-            <element signature="e#2097#2098#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -773,9 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1428">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,13 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/TriviaManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="170" column="74" selection-start-line="170" selection-start-column="74" selection-end-line="170" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Ban.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="523">
@@ -821,20 +673,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Coinflip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="97" column="17" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Connect4Manager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="240" column="30" selection-start-line="240" selection-start-column="30" selection-end-line="240" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -849,27 +691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="523">
           <caret line="411" column="32" lean-forward="true" selection-start-line="411" selection-start-column="32" selection-end-line="411" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/RedditManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="77" column="17" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="287" column="33" lean-forward="true" selection-start-line="287" selection-start-column="33" selection-end-line="287" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/RouletteManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="349" column="9" lean-forward="true" selection-start-line="349" selection-start-column="9" selection-end-line="349" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -891,17 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/BankManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="211" column="78" selection-start-line="211" selection-start-column="78" selection-end-line="211" selection-end-column="78" />
-          <folding>
-            <element signature="e#8453#8587#0" expanded="true" />
-            <element signature="e#8586#8587#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/TicTacToeManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
@@ -913,11 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="517" column="30" selection-start-line="517" selection-start-column="30" selection-end-line="517" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#26580#26725#0" expanded="true" />
-            <element signature="e#26724#26725#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -938,13 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteShop.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2805">
@@ -956,54 +754,205 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteLeaderboard.java">
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Role.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="253">
+          <caret line="223" column="13" lean-forward="true" selection-start-line="223" selection-start-column="13" selection-end-line="223" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Help.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/JackpotManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="55" column="73" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="73" />
+        <state relative-caret-position="204">
+          <caret line="24" column="150" selection-start-line="24" selection-start-column="150" selection-end-line="24" selection-end-column="150" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Kick.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/Command.java">
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteLeaderboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="138" column="106" lean-forward="true" selection-start-line="138" selection-start-column="106" selection-end-line="138" selection-end-column="106" />
+        <state relative-caret-position="1377">
+          <caret line="91" column="108" selection-start-line="91" selection-start-column="108" selection-end-line="91" selection-end-column="108" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/PollManager.java">
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/FortniteStats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="95" column="76" selection-start-line="95" selection-start-column="76" selection-end-line="95" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/TriviaManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2703">
+          <caret line="170" column="57" selection-start-line="170" selection-start-column="52" selection-end-line="170" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libaries.jar!/org/jsoup/Jsoup.class" />
+    <entry file="jrt://C:/Program Files/Java/jdk-10.0.1!/java.desktop/java/awt/Color.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3094">
+          <caret line="182" column="21" selection-start-line="182" selection-start-column="21" selection-end-line="182" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/util/music/GuildAudio.java" />
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/util/music/MusicHolder.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/com/sedmelluq/lavaplayer/1.3.7/lavaplayer-1.3.7.jar!/com/sedmelluq/discord/lavaplayer/player/AudioPlayerManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/sedmelluq/lavaplayer/1.3.7/lavaplayer-1.3.7.jar!/com/sedmelluq/discord/lavaplayer/player/AudioPlayer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
-          <caret line="267" column="90" selection-start-line="267" selection-start-column="90" selection-end-line="267" selection-end-column="90" />
+          <caret line="25" column="50" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="50" />
           <folding>
-            <element signature="e#10320#10469#0" expanded="true" />
-            <element signature="e#10468#10469#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/JDA/3.6.0_377/JDA-3.6.0_377.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3213">
+          <caret line="189" column="22" selection-start-line="189" selection-start-column="22" selection-end-line="189" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/ReadyListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="50" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Sandbox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="212" lean-forward="true" selection-start-line="211" selection-start-column="8" selection-end-line="212" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/BankManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="128" column="20" lean-forward="true" selection-start-line="128" selection-start-column="20" selection-end-line="129" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Coinflip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-461">
+          <caret line="131" column="23" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
+          <folding>
+            <element signature="e#4007#4141#0" expanded="true" />
+            <element signature="e#4140#4141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/PollManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3587">
+          <caret line="226" column="17" selection-start-line="226" selection-start-column="17" selection-end-line="226" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/RedditManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="58" column="26" lean-forward="true" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/util/music/AudioPlayerSendHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/util/music/TrackScheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/RouletteManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="230" column="20" selection-start-line="230" selection-start-column="20" selection-end-line="230" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="204" selection-start-line="204" selection-end-line="204" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/util/music/GuildMusicManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+          <folding>
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/JackpotManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1514">
+          <caret line="249" column="20" selection-start-line="249" selection-start-column="20" selection-end-line="249" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/discord/yeti/command/MusicManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5941#6556#0" expanded="true" />
+            <element signature="e#6555#6556#0" expanded="true" />
           </folding>
         </state>
       </provider>

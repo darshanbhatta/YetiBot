@@ -100,7 +100,7 @@ public class FortniteStats {
 
 
             } catch (Exception e) {
-                msg.getChannel().sendMessage("Format !fortnitestats %username% (pc/ps4/xb1) [all/solo/duo/squad]").queue();
+                msg.getChannel().sendMessage("Format: !fortnitestats (username) [(pc), (ps4), (xb1)]  [[all], [solo], [duo], [squad]]").queue();
 
             }
             Timer time = new Timer();

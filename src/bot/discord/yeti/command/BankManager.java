@@ -26,7 +26,7 @@ public class BankManager {
 
         ArrayList<Member> users = new ArrayList();
         String[] arg = msg.getContentRaw().split(" ");
-        e.getGuild().getMembers().forEach(m -> users.add(m));
+
         if (arg.length != 1) {
             System.out.println(arg.length);
             Bank bank = new Bank();
@@ -75,6 +75,7 @@ public class BankManager {
 
             } else if (arg.length == 4 && arg[1].equals("send")) {
                 String price = arg[3];
+                e.getGuild().getMembers().forEach(m -> users.add(m));
                 int org = bank.getAccountIndex(e.getAuthor().getId());
                 int bal = bank.getAllBalance().get(org).getBalance();
                 // System.out.println(price + " " + bal + " " );
@@ -140,6 +141,7 @@ public class BankManager {
 
                 if (number != -1) {
                     Bank finalBank = bank;
+
                     e.getMember().getUser().openPrivateChannel().queue((channel) ->{
 
                         channel.sendMessage("You have " + finalBank.getAllBalance().get(number).getBalance() + " \uD83D\uDC8E").queue();

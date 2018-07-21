@@ -4,8 +4,16 @@ import bot.discord.yeti.game.blackjack.BlackjackGame;
 import bot.discord.yeti.game.blackjack.BlackjackGameHolder;
 import bot.discord.yeti.game.connect4.Connect4Game;
 import bot.discord.yeti.game.connect4.Connect4Holder;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Sandbox {
@@ -173,7 +181,7 @@ if(isVaild){
         }
 
     }
-     */
+
 for(int x=0;x<100;x++) {
     int rollNumber = (int) ((Math.random() * (37)));
     System.out.println(rollNumber);
@@ -197,6 +205,94 @@ for(int x=0;x<100;x++) {
 
     System.out.println(icon);
 }
+*/
+        String keyword = "lil skies";
+        keyword = keyword.replace(" ", "+");
+
+        String search = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&part=contentDetails&order=relevance&type=video&q=" + keyword + "&key=AIzaSyDNZ8_KqjQ7L09kGS5NzCwIqqgWNiDJ5fg";
+
+        URL url = null;
+        try {
+            url = new URL(search);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        BufferedReader br = null;
+        URLConnection hc = null;
+        hc = url.openConnection();
+
+        hc.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2");
+        //    br = new BufferedReader(new InputStreamReader());
+        final InputStream in = new BufferedInputStream(hc.getInputStream());
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        String json="";
+        String line;
+
+        while ((line = reader.readLine()) != null) {
+            json+=line;
+        }
+
+
+        System.out.println(json);
+        JSONObject jsonObject = new JSONObject(json);
+        String vid = "";
+String[] title = new String[5];
+        for(int x=0;x<jsonObject.getJSONArray("items").length();x++){
+            title[x] = jsonObject.getJSONArray("items").getJSONObject(x).getJSONObject("snippet").get("title").toString();
+           String ur = jsonObject.getJSONArray("items").getJSONObject(x).getJSONObject("id").get("videoId").toString();
+
+            vid+= ur+",";
+        }
+
+        String search2  = "https://www.googleapis.com/youtube/v3/videos?id="+vid+"&part=contentDetails&key=AIzaSyDNZ8_KqjQ7L09kGS5NzCwIqqgWNiDJ5fg";
+        URL url1 = null;
+        try {
+            url1 = new URL(search2);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        URLConnection hcc = null;
+        hcc = url1.openConnection();
+
+        hcc.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2");
+        //    br = new BufferedReader(new InputStreamReader());
+        final InputStream inn = new BufferedInputStream(hcc.getInputStream());
+        BufferedReader readerr = new BufferedReader(new InputStreamReader(inn));
+        String jsonn="";
+        String linee;
+
+        while ((linee = readerr.readLine()) != null) {
+            jsonn+=linee;
+        }
+        reader.close();
+        JSONObject jsonObjec = new JSONObject(jsonn);
+        System.out.println(jsonn);
+        String build = "Choose a song from below !music choose [song number]\n\t";
+        for(int x=0;x<jsonObjec.getJSONArray("items").length();x++){
+            // String title = jsonObject.getJSONArray("items").getJSONObject(x).getJSONObject("snippet").get("title").toString();
+            String ur = "https://www.youtube.com/watch?v="+jsonObjec.getJSONArray("items").getJSONObject(x).get("id").toString();
+            String time = jsonObjec.getJSONArray("items").getJSONObject(x).getJSONObject("contentDetails").get("duration").toString();
+            String ytdate = time;
+            String result = ytdate.replace("PT","").replace("H",":").replace("M",":").replace("S","");
+            String arr[]=result.split(":");
+            String timeString ="";
+            if(time.contains("H")){
+              timeString   = String.format("%d:%02d:%02d", Integer.parseInt(arr[0]), Integer.parseInt(arr[1]),Integer.parseInt(arr[2]));
+            }else if(time.contains("M")){
+                timeString   = String.format("0:%02d:%02d", Integer.parseInt(arr[0]),Integer.parseInt(arr[1]));
+
+            }else if(time.contains("S")){
+                timeString = String.format("0:00:%02d",Integer.parseInt(arr[0]));
+            }
+
+            System.out.print(timeString);
+
+
+            build += (x+1)+") "+title[x]+" " + ur + " " +timeString+"\n\t";
+
+        }
+        System.out.println(build);
+
 
     }
 }

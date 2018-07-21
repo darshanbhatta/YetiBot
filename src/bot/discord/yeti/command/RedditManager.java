@@ -50,7 +50,22 @@ public class RedditManager {
                 eb.setTitle(title,linkSrc);
                 eb.setImage(imgSrc);
                 eb.setColor(new Color(255, 102, 102));
-                event.getChannel().sendMessage(eb.build()).queue();
+                String nsfw = arr.getJSONObject("data").getJSONArray("children").getJSONObject(ran).getJSONObject("data").get("over_18").toString();
+
+                if(nsfw.equals("true")){
+
+                    if(event.getTextChannel().isNSFW()){
+                        event.getChannel().sendMessage(eb.build()).queue();
+                    }else{
+                        event.getChannel().sendMessage("Cannot post NSFW content to SFW channels").queue();
+                    }
+
+                }else{
+                    event.getChannel().sendMessage(eb.build()).queue();
+
+                }
+
+
 
             }catch (Exception ea){
 

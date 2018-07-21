@@ -170,23 +170,61 @@ String build = "";
 
             String server = event.getGuild().getId();
             int ind = -1;
-            for (int x = 0; x < pollHolders[0].getPolls().size(); x++) {
 
-
-                if (server.equals(pollHolders[0].getPolls().get(x).getServerID())) {
-
-                    ind = x;
-                    break;
-
-
-                }
-            }
 
             if(ind!=-1) {
+                for (int w = 0; w < pollHolders[0].getPolls().size(); w++) {
 
-                pollHolders[0].getPolls().remove(ind);
 
-                event.getChannel().sendMessage("Successfully removed poll").queue();
+                    if (server.equals(pollHolders[0].getPolls().get(w).getServerID())) {
+
+                        ind = w;
+                        if(pollHolders[0].getPolls().get(ind).getUsers().size()!=0){
+
+                            int total = 0;
+                            for(int x=0;x<pollHolders[0].getPolls().get(ind).getChoices().length;x++){
+                                total+=pollHolders[0].getPolls().get(ind).getChoices()[x];
+                            }
+                            String build = "";
+                            for(int x=0;x<pollHolders[0].getPolls().get(ind).getChoices().length;x++){
+                                BigDecimal a = new BigDecimal((((double)pollHolders[0].getPolls().get(ind).getChoices()[x]/total*100)));
+                                BigDecimal b = a.setScale(2, RoundingMode.DOWN);
+                                build+=pollHolders[0].getPolls().get(ind).getChoi().get(x) + " | " + (b +"%\n\t");
+                            }
+
+
+                            event.getChannel().sendMessage("Poll results \n\t" + build).queue();
+                            pollHolders[0].getPolls().remove(ind);
+                            try {
+                                FileOutputStream fileOut = new FileOutputStream("poll.ser");
+                                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                                out.writeObject(pollHolders[0]);
+                                out.close();
+                                fileOut.close();
+                            } catch (IOException ww) {
+                                ww.printStackTrace();
+                            }
+
+                        }else{
+                            pollHolders[0].getPolls().remove(ind);
+                            try {
+                                FileOutputStream fileOut = new FileOutputStream("poll.ser");
+                                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                                out.writeObject(pollHolders[0]);
+                                out.close();
+                                fileOut.close();
+                            } catch (IOException ww) {
+                                ww.printStackTrace();
+                            }
+                            event.getChannel().sendMessage("No one voted").queue();
+                            //no one voted
+
+                        }
+                        break;
+
+
+                    }
+                }
 
             }else{
 
