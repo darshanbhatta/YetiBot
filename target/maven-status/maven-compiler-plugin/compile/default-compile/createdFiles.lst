@@ -16,7 +16,6 @@ bot\discord\yeti\command\SlotGameManager$3.class
 bot\discord\yeti\fortniteAPI\StatsAsyncTask$1.class
 bot\discord\yeti\game\jackpot\JackpotTicket.class
 bot\discord\yeti\command\Coinflip$2$1.class
-bot\discord\yeti\command\Snap$1.class
 bot\discord\yeti\fortniteAPI\RawData.class
 bot\discord\yeti\game\blackjack\BlackjackGame.class
 bot\discord\yeti\game\trivia\TriviaUser.class
@@ -49,7 +48,6 @@ bot\discord\yeti\command\SlotGameManager$1$1$1.class
 bot\discord\yeti\game\tictactoe\TicTacToeGame.class
 bot\discord\yeti\command\SlotGameManager.class
 bot\discord\yeti\command\NumGuessManager$1.class
-bot\discord\yeti\Main.class
 bot\discord\yeti\command\RouletteManager.class
 bot\discord\yeti\command\RouletteManager$1.class
 bot\discord\yeti\command\CreateTextChannel.class
@@ -64,13 +62,11 @@ bot\discord\yeti\command\RouletteManager$1$1$1.class
 bot\discord\yeti\command\CreateVoiceChannel$1.class
 bot\discord\yeti\game\roulette\RouletteUsers.class
 bot\discord\yeti\command\Coinflip$2$1$1.class
-bot\discord\yeti\Command.class
 bot\discord\yeti\fortniteAPI\SalesFetch.class
 bot\discord\yeti\command\CreateTextChannel$1.class
 bot\discord\yeti\game\jackpot\JackpotUser.class
 bot\discord\yeti\util\reward\RewardUser.class
 bot\discord\yeti\command\SlotGameManager$2.class
-bot\discord\yeti\command\Snap.class
 bot\discord\yeti\command\JackpotManager$1$1$1$1.class
 bot\discord\yeti\command\Ban.class
 bot\discord\yeti\command\FortniteLeaderboard$1.class

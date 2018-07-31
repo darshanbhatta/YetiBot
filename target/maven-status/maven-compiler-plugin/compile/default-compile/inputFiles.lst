@@ -33,6 +33,7 @@ C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\JackpotManager.jav
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\poll\PollHolder.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\Connect4Manager.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\fortniteAPI\AllStats.java
+C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\music\TrackScheduler.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\FortniteLeaderboard.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\Claim.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\numguesser\NumGuessGame.java
@@ -52,14 +53,17 @@ C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\tictactoe\TicTacToeHo
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\PollManager.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\FortniteStats.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\slot\SlotMachine.java
+C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\music\GuildMusicManager.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\TriviaManager.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\Snap.java
 C:\Users\Darshan\Desktop\YetiBot\src\main\java\Sandbox.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\jackpot\JackpotGame.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\fortniteAPI\StatsPS4.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\roulette\Roulette.java
+C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\music\AudioPlayerSendHandler.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\fortniteAPI\StatsXB1.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\ReadyListener.java
+C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\MusicManager.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\trivia\TriviaGame.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\blackjack\Card.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\Ban.java

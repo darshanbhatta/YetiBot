@@ -1,15 +1,21 @@
 package bot.discord.yeti;
 
 import bot.discord.yeti.command.*;
+import bot.discord.yeti.dictionary.API;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.events.ReadyEvent;
+import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import org.discordbots.api.client.DiscordBotListAPI;
 
 import java.awt.*;
 import java.io.IOException;
 
 public class Command extends ListenerAdapter {
     MusicManager musicManager = new MusicManager();
+    String allGuilds = "";
     public void onMessageReceived(MessageReceivedEvent e) {
 
         if (e.getMessage().getContentRaw().toLowerCase().startsWith("!")) {
@@ -209,6 +215,121 @@ public class Command extends ListenerAdapter {
 
 
                     break;
+                case "play":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+
+                    break;
+                case "volume":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+
+                    break;
+                case "pause":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+
+                    break;
+                case "stop":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+
+                    break;
+                case "choose":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
+                case "skip":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    break;
+                case "queue":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
+                case "loop":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
+                case "repeat":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
+                case "shuffle":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
+                    case "current":
+
+                    try {
+                        musicManager.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
+                case "server":
+
+                    if(e.getAuthor().getId().equals(API.darshDiscordID)||e.getAuthor().getId().equals(API.arcticDiscordID)) {
+                        e.getChannel().sendMessage(allGuilds).queue();
+                    }
+                    break;
+                case "broadcast":
+                    Broadcast.run(e);
+
+                    break;
+                case "unsubscribe":
+                    Broadcast.run(e);
+
+                    break;
+                case "subscribe":
+                    Broadcast.run(e);
+
+                    break;
                 default:
                     break;
 
@@ -227,6 +348,59 @@ public class Command extends ListenerAdapter {
         if (ping < 1000)
             return Color.orange;
         return Color.red;
+    }
+
+    public void onGuildJoin(GuildJoinEvent event) {
+        int count =0;
+        String out = "\nThis bot is running on\n";
+        for (Guild g : event.getJDA().getGuilds()) {
+            out += g.getName() + "\n";
+            count++;
+
+
+        }
+        allGuilds = out;
+        DiscordBotListAPI api = new DiscordBotListAPI.Builder()
+                .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ2NTk0NTk0ODkyNTk4NDc2OSIsImJvdCI6dHJ1ZSwiaWF0IjoxNTMyMzA3NTcyfQ.Md14g0ZnY8mksl4wWsQQSBCe1Of2z7jUgCIVdZH0KIg")
+                .build();
+
+
+
+        api.setStats("465945948925984769",count );
+
+        event.getGuild().getDefaultChannel().sendMessage("Hello, I'm Yeti! Thanks for adding me.\n" +
+                "\n" +
+                "Enter **!help** for the list of commands that I am authorized to execute.\n" +
+                "\n" +
+                "Want to play some tunes? Enter **!music**.\n" +
+                "\n" +
+                "You can join my community server if you'd like to support me or if you need space to interact.\n\n" +
+                "https://discord.gg/sbrNjcd").queue ();
+
+
+
+    }
+
+    public void onReady(ReadyEvent e) {
+        int count =0;
+        String out = "\nThis bot is running on\n";
+        for (Guild g : e.getJDA().getGuilds()) {
+            out += g.getName() + "\n";
+            count++;
+
+
+        }
+
+        allGuilds = out;
+
+        DiscordBotListAPI api = new DiscordBotListAPI.Builder()
+                .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ2NTk0NTk0ODkyNTk4NDc2OSIsImJvdCI6dHJ1ZSwiaWF0IjoxNTMyMzA3NTcyfQ.Md14g0ZnY8mksl4wWsQQSBCe1Of2z7jUgCIVdZH0KIg")
+                .build();
+
+
+
+        api.setStats("465945948925984769",count );
+        System.out.println(out);
     }
 
 }

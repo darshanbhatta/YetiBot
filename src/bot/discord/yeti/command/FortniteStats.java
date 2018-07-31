@@ -16,102 +16,244 @@ import java.util.TimerTask;
 
 public class FortniteStats {
     public static void run(Message msg, MessageReceivedEvent event) throws IOException {
-        if (msg.getContentRaw().toLowerCase().equals("!fortnitestats")) {
-            msg.getChannel().sendMessage("Format: !fortnitestats %username% (pc/ps4/xb1) [all/solo/duo/squad]").queue();
-        } else {
-            try {
-                String username = msg.getContentRaw().substring(msg.getContentRaw().indexOf("!fortniteStats") + 15);
-                if (username.contains("(")) {
-                    username = username.substring(1, username.indexOf("(") - 1);
-                }
-                String platform = "";
-                try {
-                    platform = msg.getContentRaw().substring(msg.getContentRaw().indexOf("(") + 1, msg.getContentRaw().indexOf(")"));
-                } catch (IndexOutOfBoundsException e) {
+        String[] code = msg.getContentRaw().toLowerCase().split(" ");
+        if (code.length>1) {
+
+
+            String username = "";
+            String plat = "";
+            String mode = "";
+
+
+            if(msg.getContentRaw().toLowerCase().contains("pc")){
+                plat = "pc";
+                username = msg.getContentRaw().substring(msg.getContentRaw().toLowerCase().indexOf("!fortnitestats") + 15,msg.getContentRaw().toLowerCase().indexOf("pc"));
+
+            }else if(msg.getContentRaw().toLowerCase().contains("ps4")){
+                plat = "ps4";
+                username = msg.getContentRaw().substring(msg.getContentRaw().toLowerCase().indexOf("!fortnitestats") + 15,msg.getContentRaw().toLowerCase().indexOf("ps4"));
+
+            }else if(msg.getContentRaw().toLowerCase().contains("xb1")){
+                plat = "xb1";
+                username = msg.getContentRaw().substring(msg.getContentRaw().toLowerCase().indexOf("!fortnitestats") + 15,msg.getContentRaw().toLowerCase().indexOf("xb1"));
+
+            }
+
+            if(msg.getContentRaw().toLowerCase().contains("all")){
+                mode = "all";
+                if(username.equals("")){
+                    username = msg.getContentRaw().substring(msg.getContentRaw().toLowerCase().indexOf("!fortnitestats") + 15,msg.getContentRaw().toLowerCase().indexOf("all"));
+
 
                 }
+            }else if(msg.getContentRaw().toLowerCase().contains("solo")){
+                mode = "solo";
+                if(username.equals("")){
+                    username = msg.getContentRaw().substring(msg.getContentRaw().toLowerCase().indexOf("!fortnitestats") + 15,msg.getContentRaw().toLowerCase().indexOf("solo"));
 
-                String mode = "";
-                try {
-                    mode = msg.getContentRaw().substring(msg.getContentRaw().indexOf("[") + 1, msg.getContentRaw().indexOf("]"));
-                } catch (IndexOutOfBoundsException e) {
 
                 }
+            }else if(msg.getContentRaw().toLowerCase().contains("duo")){
+                mode = "duo";
+                if(username.equals("")){
+                    username = msg.getContentRaw().substring(msg.getContentRaw().toLowerCase().indexOf("!fortnitestats") + 15,msg.getContentRaw().toLowerCase().indexOf("duo"));
+
+
+                }
+            }else if(msg.getContentRaw().toLowerCase().contains("squad")){
+                if(username.equals("")){
+                    username = msg.getContentRaw().substring(msg.getContentRaw().toLowerCase().indexOf("!fortnitestats") + 15,msg.getContentRaw().toLowerCase().indexOf("squad"));
+
+
+                }
+                mode = "squad";
+
+            }
+
+            if(username.equals("")){
+                username = msg.getContentRaw().substring(msg.getContentRaw().toLowerCase().indexOf("!fortnitestats") + 15);
+
+
+            }
+
+            if(mode.equals("")&&plat.equals("")){
                 StatsAsyncTask stats = new StatsAsyncTask(username);
                 try {
                     AllStats stat = stats.getStats();
+                    int pc = (int)stat.getPc().getBr_score_pc_m0_p2();
+                    int ps4 = (int)stat.getPs4().getBr_score_ps4_m0_p2();
+                    int xb1 = (int)stat.getXb1().getBr_score_xb1_m0_p2();
+                    int max =  Math.max(Math.max(pc,ps4),xb1);
+                    String maxPlat = "PC";
+                    if(max==ps4){
+                        maxPlat = "PS4";
+                    }else if(max==xb1){
+                        maxPlat = "XB1";
 
+                    }
 
-                    if (platform.toLowerCase().equals("pc")) {
-                        if (!stat.getPc().hasAccount()) {
-                            msg.getChannel().sendMessage("Error no PC account found for this username").queue();
-                        } else {
-                            if (mode.toLowerCase().equals("all")) {
-                                msg.getChannel().sendMessage(stat.getPc().lifeTime() + "").queue();
-                            } else if ((mode.toLowerCase().equals("solo"))) {
-                                msg.getChannel().sendMessage(stat.getPc().soloStat() + "").queue();
-                            } else if ((mode.toLowerCase().equals("duo"))) {
-                                msg.getChannel().sendMessage(stat.getPc().duoStat() + "").queue();
-                            } else if ((mode.toLowerCase().equals("squad"))) {
-                                msg.getChannel().sendMessage(stat.getPc().squadStat() + "").queue();
-                            }
-
-                        }
-
-                    } else if (platform.toLowerCase().equals("ps4")) {
-                        if (!stat.getPs4().hasAccount()) {
-                            msg.getChannel().sendMessage("Error no PS4 account found for this username").queue();
-                        } else {
-                            if (mode.toLowerCase().equals("all")) {
-                                msg.getChannel().sendMessage(stat.getPs4().lifeTime() + "").queue();
-                            } else if ((mode.toLowerCase().equals("solo"))) {
-                                msg.getChannel().sendMessage(stat.getPs4().soloStat() + "").queue();
-                            } else if ((mode.toLowerCase().equals("duo"))) {
-                                msg.getChannel().sendMessage(stat.getPs4().duoStat() + "").queue();
-                            } else if ((mode.toLowerCase().equals("squad"))) {
-                                msg.getChannel().sendMessage(stat.getPs4().squadStat() + "").queue();
-                            }
-
-                        }
-                    } else if (platform.toLowerCase().equals("xb1")) {
-                        if (!stat.getXb1().hasAccount()) {
-                            msg.getChannel().sendMessage("Error no XB1 account found for this username").queue();
-                        } else {
-                            if (mode.toLowerCase().equals("all")) {
-                                msg.getChannel().sendMessage(stat.getXb1().lifeTime() + "").queue();
-                            } else if ((mode.toLowerCase().equals("solo"))) {
-                                msg.getChannel().sendMessage(stat.getXb1().soloStat() + "").queue();
-                            } else if ((mode.toLowerCase().equals("duo"))) {
-                                msg.getChannel().sendMessage(stat.getXb1().duoStat() + "").queue();
-                            } else if ((mode.toLowerCase().equals("squad"))) {
-                                msg.getChannel().sendMessage(stat.getXb1().squadStat() + "").queue();
+                        if (maxPlat.toLowerCase().equals("pc")) {
+                            if (!stat.getPc().hasAccount()) {
+                                msg.getChannel().sendMessage("No PC account found for this username").queue();
                             } else {
-                                msg.getChannel().sendMessage("Error invalid gamemode [all/solo/duo/squad]").queue();
+
+                                    msg.getChannel().sendMessage(username+"'s Lifetime Stats\n"+stat.getPc().lifeTime() + "").queue();
+
+
+                            }
+
+                        } else if (maxPlat.toLowerCase().equals("ps4")) {
+                            if (!stat.getPs4().hasAccount()) {
+                                msg.getChannel().sendMessage("No PS4 account found for this username").queue();
+                            } else {
+
+                                    msg.getChannel().sendMessage(username+"'s Lifetime Stats\n"+stat.getPs4().lifeTime() + "").queue();
+
+
+                            }
+                        } else if (maxPlat.toLowerCase().equals("xb1")) {
+                            if (!stat.getXb1().hasAccount()) {
+                                msg.getChannel().sendMessage("No XB1 account found for this username").queue();
+                            } else {
+
+                                    msg.getChannel().sendMessage(username+"'s Lifetime Stats\n"+stat.getXb1().lifeTime() + "").queue();
+
+                            }
+                    } else {
+                        msg.getChannel().sendMessage("Cannot find account: make sure your account is linked with Epic Games and you are searching using your Epic Games' username").queue();
+                    }
+                } catch (Exception e) {
+                    msg.getChannel().sendMessage("Cannot find account").queue();
+
+
+                }
+
+
+            }else if(mode.equals("")) {
+                StatsAsyncTask stats = new StatsAsyncTask(username);
+                try {
+                    AllStats stat = stats.getStats();
+                    if (plat.toLowerCase().equals("pc")) {
+                        if (!stat.getPc().hasAccount()) {
+                            msg.getChannel().sendMessage("No PC account found for this username").queue();
+                        } else {
+                            msg.getChannel().sendMessage(username + "'s Lifetime Stats\n" + stat.getPc().lifeTime() + "").queue();
+
+
+                        }
+
+                    } else if (plat.toLowerCase().equals("ps4")) {
+                        if (!stat.getPs4().hasAccount()) {
+                            msg.getChannel().sendMessage("No PS4 account found for this username").queue();
+                        } else {
+                            msg.getChannel().sendMessage(username + "'s Lifetime Stats\n" + stat.getPs4().lifeTime() + "").queue();
+
+
+                        }
+                    } else if (plat.toLowerCase().equals("xb1")) {
+                        if (!stat.getXb1().hasAccount()) {
+                            msg.getChannel().sendMessage("No XB1 account found for this username").queue();
+                        } else {
+
+                            msg.getChannel().sendMessage(username + "'s Lifetime Stats\n" + stat.getXb1().lifeTime() + "").queue();
+
+                        }
+
+
+                    }
+                        } catch (Exception e) {
+                            msg.getChannel().sendMessage("Cannot find account").queue();
+
+
+                        }
+
+
+                    } else if (plat.equals("")) {
+
+                StatsAsyncTask stats = new StatsAsyncTask(username);
+                try {
+                    AllStats stat = stats.getStats();
+                    int pc = (int) stat.getPc().getBr_score_pc_m0_p2();
+                    int ps4 = (int) stat.getPs4().getBr_score_ps4_m0_p2();
+                    int xb1 = (int) stat.getXb1().getBr_score_xb1_m0_p2();
+                    int max = Math.max(Math.max(pc, ps4), xb1);
+                    String maxPlat = "PC";
+                    if (max == ps4) {
+                        maxPlat = "PS4";
+                    } else if (max == xb1) {
+                        maxPlat = "XB1";
+
+                    }
+                    if (maxPlat.toLowerCase().equals("pc")) {
+                        if (!stat.getPc().hasAccount()) {
+                            msg.getChannel().sendMessage("No PC account found for this username").queue();
+                        } else {
+                            if (mode.toLowerCase().equals("all")) {
+                                msg.getChannel().sendMessage(username + "'s Lifetime Stats\n" + stat.getPc().lifeTime() + "").queue();
+                            } else if ((mode.toLowerCase().equals("solo"))) {
+                                msg.getChannel().sendMessage(username + "'s Solo Stats\n" + stat.getPc().soloStat() + "").queue();
+                            } else if ((mode.toLowerCase().equals("duo"))) {
+                                msg.getChannel().sendMessage(username + "'s Duo Stats\n" + stat.getPc().duoStat() + "").queue();
+                            } else if ((mode.toLowerCase().equals("squad"))) {
+                                msg.getChannel().sendMessage(username + "'s Squad Stats\n" + stat.getPc().squadStat() + "").queue();
+                            }
+
+                        }
+
+                    } else if (maxPlat.toLowerCase().equals("ps4")) {
+                        if (!stat.getPs4().hasAccount()) {
+                            msg.getChannel().sendMessage("No PS4 account found for this username").queue();
+                        } else {
+                            if (mode.toLowerCase().equals("all")) {
+                                msg.getChannel().sendMessage(username + "'s Lifetime Stats\n" + stat.getPs4().lifeTime() + "").queue();
+                            } else if ((mode.toLowerCase().equals("solo"))) {
+                                msg.getChannel().sendMessage(username + "'s Solo Stats\n" + stat.getPs4().soloStat() + "").queue();
+                            } else if ((mode.toLowerCase().equals("duo"))) {
+                                msg.getChannel().sendMessage(username + "'s Duo Stats\n" + stat.getPs4().duoStat() + "").queue();
+                            } else if ((mode.toLowerCase().equals("squad"))) {
+                                msg.getChannel().sendMessage(username + "'s Squad Stats\n" + stat.getPs4().squadStat() + "").queue();
+                            }
+
+                        }
+                    } else if (maxPlat.toLowerCase().equals("xb1")) {
+                        if (!stat.getXb1().hasAccount()) {
+                            msg.getChannel().sendMessage("No XB1 account found for this username").queue();
+                        } else {
+                            if (mode.toLowerCase().equals("all")) {
+                                msg.getChannel().sendMessage(username + "'s Lifetime Stats\n" + stat.getXb1().lifeTime() + "").queue();
+                            } else if ((mode.toLowerCase().equals("solo"))) {
+                                msg.getChannel().sendMessage(username + "'s Solo Stats\n" + stat.getXb1().soloStat() + "").queue();
+                            } else if ((mode.toLowerCase().equals("duo"))) {
+                                msg.getChannel().sendMessage(username + "'s Duo Stats\n" + stat.getXb1().duoStat() + "").queue();
+                            } else if ((mode.toLowerCase().equals("squad"))) {
+                                msg.getChannel().sendMessage(username + "'s Squad Stats\n" + stat.getXb1().squadStat() + "").queue();
                             }
                         }
                     } else {
-                        msg.getChannel().sendMessage("Error invalid platform (pc/ps4/xb1)").queue();
-                    }
-                } catch (Exception e) {
-                    msg.getChannel().sendMessage("Error invalid username").queue();
 
+
+                    }
+                }catch (Exception e){
+                    msg.getChannel().sendMessage("Cannot find account").queue();
 
                 }
+            }
 
 
-            } catch (Exception e) {
-                msg.getChannel().sendMessage("Format: !fortnitestats (username) [(pc), (ps4), (xb1)]  [[all], [solo], [duo], [squad]]").queue();
+
+
+                    }else{
+
+            msg.getChannel().sendMessage("Format: !fortnitestats username [optional: pc, ps4, xb1]  [optional: all ,solo, duo, squad]").queue();
+
+        }
+        Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                msg.delete().queue();
 
             }
-            Timer time = new Timer();
-            time.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    msg.delete().queue();
-
+        }, 5000);
                 }
-            }, 5000);
-        }
-    }
-
-}
+            }

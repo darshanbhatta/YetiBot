@@ -265,7 +265,7 @@ public class StatsPS4 {
     }
 
     public String lifeTime(){
-        String print = "\nLIFETIME STATS PS4\n" + "Wins: " + (int)(br_placetop1_ps4_m0_p2+br_placetop1_ps4_m0_p9+br_placetop1_ps4_m0_p10) + "\n" +
+        String print = "\n" + "Wins: " + (int)(br_placetop1_ps4_m0_p2+br_placetop1_ps4_m0_p9+br_placetop1_ps4_m0_p10) + "\n" +
                 "Top 10/5/3: " + (int)(br_placetop10_ps4_m0_p2+br_placetop5_ps4_m0_p10+br_placetop3_ps4_m0_p9) + "\n" +
                 "Top 25/12/6: " + (int)(br_placetop25_ps4_m0_p2+br_placetop12_ps4_m0_p10+br_placetop6_ps4_m0_p9) + "\n" +
                 "Kills: " +(int)(br_kills_ps4_m0_p2+br_kills_ps4_m0_p9+br_kills_ps4_m0_p10)+ "\n" +
@@ -279,7 +279,7 @@ public class StatsPS4 {
     }
 
     public String soloStat(){
-        String print = "\nSOLO STATS PS4\n" + "Wins: " + (int)(br_placetop1_ps4_m0_p2) + "\n" +
+        String print = "\n" + "Wins: " + (int)(br_placetop1_ps4_m0_p2) + "\n" +
                 "Top 10: " + (int)(br_placetop10_ps4_m0_p2) + "\n" +
                 "Top 25: " + (int)(br_placetop25_ps4_m0_p2) + "\n" +
                 "Kills: " +(int)(br_kills_ps4_m0_p2)+ "\n" +
@@ -293,7 +293,7 @@ public class StatsPS4 {
     }
 
     public String duoStat(){
-        String print = "\nDUO STATS PS4\n" + "Wins: " + (int)(br_placetop1_ps4_m0_p10) + "\n" +
+        String print = "\n" + "Wins: " + (int)(br_placetop1_ps4_m0_p10) + "\n" +
                 "Top 5: " + (int)(br_placetop5_ps4_m0_p10) + "\n" +
                 "Top 12: " + (int)(br_placetop12_ps4_m0_p10) + "\n" +
                 "Kills: " +(int)(br_kills_ps4_m0_p10)+ "\n" +
@@ -307,7 +307,7 @@ public class StatsPS4 {
     }
 
     public String squadStat(){
-        String print = "\nSQUAD STATS PS4\n" + "Wins: " + (int)(br_placetop1_ps4_m0_p9) + "\n" +
+        String print = "\n" + "Wins: " + (int)(br_placetop1_ps4_m0_p9) + "\n" +
                 "Top 3: " + (int)(br_placetop3_ps4_m0_p9) + "\n" +
                 "Top 6: " + (int)(br_placetop6_ps4_m0_p9) + "\n" +
                 "Kills: " +(int)(br_kills_ps4_m0_p9)+ "\n" +

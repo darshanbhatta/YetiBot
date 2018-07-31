@@ -63,7 +63,7 @@ public class FortniteShop {
                 sb.append(" seconds");
                 else
                     sb.append(" second");
-                leaderList.append("Fortnite Item Shop\n" +"Shop resets in " + sb );
+                leaderList.append("Fortnite Item Shop\n" +"Shop resets in " + "*"+sb+"*" );
 
                 msg.getChannel().sendMessage(leaderList).queue();
                 for (int x = 0; x < shopItem.size(); x++) {

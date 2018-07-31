@@ -4,17 +4,32 @@ import bot.discord.yeti.game.blackjack.BlackjackGame;
 import bot.discord.yeti.game.blackjack.BlackjackGameHolder;
 import bot.discord.yeti.game.connect4.Connect4Game;
 import bot.discord.yeti.game.connect4.Connect4Holder;
+import bot.discord.yeti.util.broadcast.OptOutList;
+import net.dv8tion.jda.client.requests.restaction.pagination.MentionPaginationAction;
+import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.Region;
+import net.dv8tion.jda.core.entities.*;
+import net.dv8tion.jda.core.managers.AudioManager;
+import net.dv8tion.jda.core.managers.GuildController;
+import net.dv8tion.jda.core.managers.GuildManager;
+import net.dv8tion.jda.core.managers.GuildManagerUpdatable;
+import net.dv8tion.jda.core.requests.RestAction;
+import net.dv8tion.jda.core.requests.restaction.MemberAction;
+import net.dv8tion.jda.core.requests.restaction.pagination.AuditLogPaginationAction;
+import net.dv8tion.jda.core.utils.cache.MemberCacheView;
+import net.dv8tion.jda.core.utils.cache.SnowflakeCacheView;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class Sandbox {
 
@@ -205,7 +220,7 @@ for(int x=0;x<100;x++) {
 
     System.out.println(icon);
 }
-*/
+
         String keyword = "lil skies";
         keyword = keyword.replace(" ", "+");
 
@@ -293,6 +308,19 @@ String[] title = new String[5];
         }
         System.out.println(build);
 
+*/
+         OptOutList x = new OptOutList();
+        x.getGuildis().add("sdsds   ");
+        try {
+            FileOutputStream fileOut = new FileOutputStream("broadcast.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(x);
+            out.close();
+            fileOut.close();
+        } catch (IOException ww) {
+            ww.printStackTrace();
+        }
 
     }
-}
+
+    }

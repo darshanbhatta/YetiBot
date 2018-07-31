@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.util.ArrayList;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -15,8 +16,29 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class TrackScheduler extends AudioEventAdapter {
   private final AudioPlayer player;
-  private final BlockingQueue<AudioTrack> queue;
+  public final BlockingQueue<AudioTrack> queue;
   MessageReceivedEvent event;
+  boolean loop = false;
+  boolean repeat = false;
+
+  public boolean isRepeat() {
+    return repeat;
+  }
+
+  public void setRepeat(boolean repeat) {
+    this.repeat = repeat;
+  }
+
+  ArrayList<AudioTrack> audioTrack = new ArrayList();
+
+
+  public ArrayList<AudioTrack> getAudioTrack() {
+    return audioTrack;
+  }
+
+  public void setAudioTrack(ArrayList<AudioTrack> audioTrack) {
+    this.audioTrack = audioTrack;
+  }
 
   /**
    * @param player The audio player this scheduler uses
@@ -27,6 +49,15 @@ public class TrackScheduler extends AudioEventAdapter {
     this.queue = new LinkedBlockingQueue<>();
   }
 
+  public boolean isLoop() {
+    return loop;
+  }
+  public void setLoop(boolean loop) {
+    this.loop = loop;
+
+
+
+  }
   /**
    * Add the next track to queue or play right away if nothing is in the queue.
    *
@@ -38,37 +69,56 @@ public class TrackScheduler extends AudioEventAdapter {
     // track goes to the queue instead.
     if (!player.startTrack(track, true)) {
       queue.offer(track);
+
     }
+
   }
 
   /**
    * Start the next track, stopping the current one if it is playing.
    */
   public void nextTrack() {
+
     // Start the next track, regardless of if something is already playing or not. In case queue was empty, we are
     // giving null to startTrack, which is a valid argument and will simply stop the player.
-    player.startTrack(queue.poll(), false);
+   player.startTrack(queue.poll(), false);
+
+
+
   }
+
+
+
 
   @Override
   public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
 
     // Only start the next track if the end reason is suitable for it (FINISHED or LOAD_FAILED)
-    if (queue.isEmpty()&&event.getGuild().getAudioManager().isConnected()) {
-      Thread t1 = new Thread(new Runnable() {
-        public void run()
-        {
-          event.getGuild().getAudioManager().closeAudioConnection();
-          event.getChannel().sendMessage("No next song in queue, left the voice channel").queue();
-        }});
-      t1.start();
-
-
+    if(repeat){
+      audioTrack.remove(0);
+      audioTrack.add(0,track.makeClone());
+      player.startTrack(track.makeClone(), false);
     }
-    if (endReason.mayStartNext) {
+    else if (endReason.mayStartNext) {
+      nextTrack();
+      audioTrack.remove(0);
+      if(loop){
+        queue.add(track.makeClone());
+        audioTrack.add(track.makeClone());
 
       }
-      nextTrack();
+
+
+
+      }else{
+      if(loop){
+        queue.add(track.makeClone());
+        audioTrack.add(track.makeClone());
+
+      }
+    }
+
+
     }
   }
 

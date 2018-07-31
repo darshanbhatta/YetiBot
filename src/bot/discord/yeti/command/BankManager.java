@@ -1,6 +1,8 @@
 package bot.discord.yeti.command;
 
 import bot.discord.yeti.currency.Bank;
+import bot.discord.yeti.dictionary.API;
+import bot.discord.yeti.dictionary.Dic;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
@@ -45,10 +47,10 @@ public class BankManager {
             }
 
 
-            if (arg.length == 2 && arg[1].equals("init")) {
+            if (arg.length == 2 && arg[1].equals("create")) {
 
                 if (bank.getAccountIndex(e.getAuthor().getId()) != -1) {
-                    msg.getChannel().sendMessage("Error you already have an account").queue(m -> {
+                    msg.getChannel().sendMessage("You already have an account").queue(m -> {
 
 
                     });
@@ -113,12 +115,12 @@ public class BankManager {
                                 } catch (IOException ww) {
                                     ww.printStackTrace();
                                 }
-                                msg.getChannel().sendMessage("Sucessfully sent " + bank.getAllBalance().get(i).getName() + " " + Integer.parseInt(price) + " " + " \uD83D\uDC8E").queue(m -> {
+                                msg.getChannel().sendMessage("Successfully sent " + bank.getAllBalance().get(i).getName() + " " + Integer.parseInt(price) + " " + " \uD83D\uDC8E").queue(m -> {
                                 });
 
 
                             } else {
-                                msg.getChannel().sendMessage("Error recipient does not have an account, tell them to type !bank init to make one").queue(m -> {
+                                msg.getChannel().sendMessage(Dic.bank1).queue(m -> {
                                 });
 
                             }
@@ -126,11 +128,11 @@ public class BankManager {
 
                         }
                     } else {
-                        msg.getChannel().sendMessage("Error insufficient funds, you have " + bal + " \uD83D\uDC8E").queue(m -> {
+                        msg.getChannel().sendMessage("Insufficient funds, you have " + bal + " \uD83D\uDC8E").queue(m -> {
                         });
                     }
                 } else {
-                    msg.getChannel().sendMessage("Error you do not have an account, type !bank init to make one" + bal + " \uD83D\uDC8E").queue(m -> {
+                    msg.getChannel().sendMessage(Dic.noAccount).queue(m -> {
                     });
 
                 }
@@ -141,12 +143,18 @@ public class BankManager {
 
                 if (number != -1) {
                     Bank finalBank = bank;
+try{
 
-                    e.getMember().getUser().openPrivateChannel().queue((channel) ->{
+    e.getMember().getUser().openPrivateChannel().queue((channel) ->{
 
-                        channel.sendMessage("You have " + finalBank.getAllBalance().get(number).getBalance() + " \uD83D\uDC8E").queue();
+        channel.sendMessage("You have " + finalBank.getAllBalance().get(number).getBalance() + " \uD83D\uDC8E").queue();
 
-                    });
+    });
+}catch (Exception ww){
+    e.getChannel().sendMessage("You have " + finalBank.getAllBalance().get(number).getBalance() + " \uD83D\uDC8E").queue();
+
+}
+
 
 
 
@@ -154,13 +162,12 @@ public class BankManager {
 
                 } else {
 
-                    msg.getChannel().sendMessage("Error you do not have an account type !bank init to make one").queue(m -> {
-
+                    msg.getChannel().sendMessage(Dic.noAccount).queue(m -> {
                     });
                 }
             }else if (arg.length == 4 && arg[1].equals("add")) {
                 System.out.println(e.getAuthor().getId());
-                if(e.getAuthor().getId().equals("91684442644418560")||e.getAuthor().getId().equals("285169303500619777")){
+                if(e.getAuthor().getId().equals(API.darshDiscordID)||e.getAuthor().getId().equals(API.arcticDiscordID)){
                     String addToWho = arg[2].substring(2,arg[2].indexOf(">"));
 
                     int org = bank.getAccountIndex(addToWho);
@@ -185,19 +192,17 @@ public class BankManager {
 
                     } else {
 
-                        msg.getChannel().sendMessage("Error, you do not have an account type !bank init to make one").queue(m -> {
-
+                        msg.getChannel().sendMessage(Dic.noAccount).queue(m -> {
                         });
                     }
 
                 }else{
-                    msg.getChannel().sendMessage("Error, you do not have permission to make this command").queue(m -> {
+                    msg.getChannel().sendMessage(Dic.noPermission).queue(m -> {
 
                     });
                 }
 
             } else{
-                System.out.println("running");
                 switch(arg[1]) {
                     case "send":  msg.getChannel().sendMessage("Format: !bank send @user <amount>").queue();
                         break;
@@ -211,7 +216,7 @@ public class BankManager {
 
         }else{
 
-            String reserve = "Available commands:\n\t !bank init\n\t !bank bal\n\t !bank send\n\t";
+            String reserve = "Available commands:\n\t !bank create\n\t !bank bal\n\t !bank send\n\t";
             msg.getChannel().sendMessage(reserve).queue();
 
         }

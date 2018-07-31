@@ -25,15 +25,10 @@ public class GuildMusicManager {
    * @param manager Audio player manager to use for creating the player.
    */
 
-  ArrayList<String> trackList = new ArrayList();
 
-  public ArrayList<String> getTrackList() {
-    return trackList;
-  }
 
-  public void setTrackList(ArrayList trackList) {
-    this.trackList = trackList;
-  }
+
+
 
   public GuildMusicManager(AudioPlayerManager manager, MessageReceivedEvent g) {
     player = manager.createPlayer();

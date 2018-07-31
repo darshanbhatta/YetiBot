@@ -1,5 +1,6 @@
 package bot.discord.yeti.command;
 
+import bot.discord.yeti.currency.Bank;
 import bot.discord.yeti.game.connect4.Connect4Game;
 import bot.discord.yeti.game.connect4.Connect4Holder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -20,6 +21,21 @@ public class Connect4Manager {
             FileInputStream fileIn = new FileInputStream("connect4.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             connect4[0] = (Connect4Holder) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+            return;
+        }
+
+        final Bank[] bank = {new Bank()};
+        try {
+            FileInputStream fileIn = new FileInputStream("bank.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            bank[0] = (Bank) in.readObject();
             in.close();
             fileIn.close();
         } catch (IOException i) {
@@ -153,10 +169,34 @@ public class Connect4Manager {
                                 if (winner!=0) {
 
                                     if (winner == 1) {
-                                        e.getChannel().sendMessage(connect4[0].getConnect4GameArrayList().get(x).getName() + " beat " + connect4[0].getConnect4GameArrayList().get(x).getName2() + "\n" + connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
+                                        e.getChannel().sendMessage(connect4[0].getConnect4GameArrayList().get(x).getName() + "won 50 \uD83D\uDC8E by beating " + connect4[0].getConnect4GameArrayList().get(x).getName2() + "\n" + connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
+                                        int indx = bank[0].getAccountIndex(connect4[0].getConnect4GameArrayList().get(x).getUserid());
+                                        if(indx!=-1)
+                                        bank[0].getAllBalance().get(indx).setBalance(bank[0].getAllBalance().get(indx).getBalance()+50);
+                                        try {
+                                            FileOutputStream fileOut = new FileOutputStream("bank.ser");
+                                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                                            out.writeObject(bank[0]);
+                                            out.close();
+                                            fileOut.close();
+                                        } catch (IOException ww) {
+                                            ww.printStackTrace();
+                                        }
                                         connect4[0].getConnect4GameArrayList().remove(x);
                                     } else {
-                                        e.getChannel().sendMessage(connect4[0].getConnect4GameArrayList().get(x).getName2() + " beat " + connect4[0].getConnect4GameArrayList().get(x).getName() + "\n" + connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
+                                        e.getChannel().sendMessage(connect4[0].getConnect4GameArrayList().get(x).getName2() + " won 50 \uD83D\uDC8E by beating " + connect4[0].getConnect4GameArrayList().get(x).getName() + "\n" + connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
+                                        int indx = bank[0].getAccountIndex(connect4[0].getConnect4GameArrayList().get(x).getUserid2());
+                                        if(indx!=-1)
+                                        bank[0].getAllBalance().get(indx).setBalance(bank[0].getAllBalance().get(indx).getBalance()+50);
+                                        try {
+                                            FileOutputStream fileOut = new FileOutputStream("bank.ser");
+                                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                                            out.writeObject(bank[0]);
+                                            out.close();
+                                            fileOut.close();
+                                        } catch (IOException ww) {
+                                            ww.printStackTrace();
+                                        }
                                         connect4[0].getConnect4GameArrayList().remove(x);
                                     }
 
@@ -202,12 +242,20 @@ public class Connect4Manager {
 
                             found = true;
 
-
+break;
                         }
+
+
+
 
 
                         //error no running games
 
+
+                    }
+                    if(!found){
+
+                        e.getChannel().sendMessage("You are not in a game").queue();
 
                     }
 

@@ -1,5 +1,7 @@
 package bot.discord.yeti.command;
 
+import bot.discord.yeti.dictionary.Dic;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.User;
@@ -15,7 +17,7 @@ public class Unban {
     public static void run(Message msg, MessageReceivedEvent event) {
         Guild guild = event.getGuild();
         ArrayList<User> users = new ArrayList();
-
+        if(event.getMember().hasPermission(Permission.BAN_MEMBERS)){
         StringBuilder builder = new StringBuilder(guild.getName() + " (" + guild.getId() + ")\r\n---");
         List<Guild.Ban> bans = guild.getBanList().complete();
 
@@ -77,6 +79,13 @@ public class Unban {
 
 
         }
+
+    }else{
+            msg.getChannel().sendMessage(Dic.noPermission).queue(w -> {
+
+            });
+        }
+
 
         Timer time = new Timer();
         time.schedule(new TimerTask() {

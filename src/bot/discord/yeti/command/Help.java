@@ -25,7 +25,7 @@ public class Help {
         String server = ":floppy_disk: Discord Server :floppy_disk:   \n\t !addtext\n\t !addvoice\n\t !ban\n\t !unban\n\t !kick\n\t !role\n\t !snappy\n\t !invite";
         String videoGames = ":video_game: Fortnite :video_game:   \n\t !fortnitestats\n\t !fortniteshop\n\t !fortniteleaderboard";
 
-        msg.getChannel().sendMessage(casino + "\n\n" + reserve + "\n\n" + games + "\n\n" + community + "\n\n" + server+ "\n\n" +videoGames).queue();
+        msg.getChannel().sendMessage(casino + "\n\n" + reserve +"\n\n" + games + "\n\n" + community + "\n\n" + server+ "\n\n" +videoGames).queue();
         Timer time = new Timer();
         time.schedule(new TimerTask() {
             @Override

@@ -11,7 +11,4 @@ public class Connect4Holder implements Serializable {
         return connect4GameArrayList;
     }
 
-    public void setConnect4GameArrayList(ArrayList<Connect4Game> ticTacToeGameArrayList) {
-        this.connect4GameArrayList = ticTacToeGameArrayList;
-    }
 }

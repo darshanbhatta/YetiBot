@@ -1,6 +1,7 @@
 package bot.discord.yeti.command;
 
 import bot.discord.yeti.currency.Bank;
+import bot.discord.yeti.dictionary.Dic;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 
@@ -88,17 +89,17 @@ public class Coinflip {
 
 
                     } else {
-                        msg.getChannel().sendMessage("Error can only bet positive numbers").queue(m -> {
+                        msg.getChannel().sendMessage(Dic.postiveNum).queue(m -> {
                         });
                     }
 
 
                 } catch (Exception e) {
-                    msg.getChannel().sendMessage("Error can only bet numbers").queue(m -> {
+                    msg.getChannel().sendMessage(Dic.postiveNum).queue(m -> {
                     });
                 }
             }else{
-                msg.getChannel().sendMessage("Error recipient does not have an account, tell them to type !bank init to make one").queue(m -> {
+                msg.getChannel().sendMessage(Dic.noAccount).queue(m -> {
                 });
             }
 

@@ -1,6 +1,7 @@
 package bot.discord.yeti.command;
 
 import bot.discord.yeti.currency.Bank;
+import bot.discord.yeti.dictionary.Dic;
 import bot.discord.yeti.game.blackjack.BlackjackGame;
 import bot.discord.yeti.game.blackjack.BlackjackGameHolder;
 import bot.discord.yeti.game.jackpot.JackpotGameHolder;
@@ -122,13 +123,13 @@ public class BlackjackManager{
                             }
 
                         }else{
-
+                            e.getChannel().sendMessage(Dic.noMoney).queue();
                             //error no money
 
                         }
 
                     }else{
-
+                        e.getChannel().sendMessage(Dic.postiveNum).queue();
                         //erorr only postive num
 
                     }
@@ -137,7 +138,7 @@ public class BlackjackManager{
 
 
                 }catch (Exception woah){
-
+                    e.getChannel().sendMessage(Dic.postiveNum).queue();
                     //error only bet ints
 
                 }

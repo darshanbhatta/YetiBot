@@ -1,9 +1,11 @@
 package bot.discord.yeti;
 
+import bot.discord.yeti.dictionary.API;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
+import org.discordbots.api.client.DiscordBotListAPI;
 
 import javax.security.auth.login.LoginException;
 
@@ -14,11 +16,9 @@ public class Main {
 
     public static void main(String[] args) {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-//
-        //NDY1OTU1NzgzODQ3MzEzNDQ5.DikfTg.ahBOBRUhceNFxPsaWvpU3WCGDmA
-        //NDY1OTQ1OTQ4OTI1OTg0NzY5.Dih9TA.eB6WD26KkcN8_hVkv5tZs7Egkjc
-        
-        builder.setToken("NDY1OTU1NzgzODQ3MzEzNDQ5.DjT2Kw.fL16cKFM8DDUYrLf3MGzCH6bXEU");
+
+
+        builder.setToken(API.darshTestBot);
 
         builder.setAutoReconnect(true);
 
@@ -33,7 +33,6 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
     }
 

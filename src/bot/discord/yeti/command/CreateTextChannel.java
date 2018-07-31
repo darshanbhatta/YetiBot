@@ -13,7 +13,7 @@ public class CreateTextChannel {
         if(code.equals("!addtext")){
             e.getChannel().sendMessage("Format: !addtext (channel name)").queue();
         }
-        else if(e.getMember().hasPermission(Permission.ADMINISTRATOR)){
+        else if(e.getMember().hasPermission(Permission.MANAGE_CHANNEL)){
             System.out.println(code);
             e.getGuild().getController().createTextChannel(code.substring(code.indexOf("addtext")+8).trim()).queue();
             e.getChannel().sendMessage("Created text channel \""+(code.substring(code.indexOf("addtext")+8).trim())+"\"").queue(w -> {

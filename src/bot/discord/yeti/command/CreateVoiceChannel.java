@@ -12,7 +12,7 @@ public class CreateVoiceChannel {
         if(code.equals("!addvoice")){
             e.getChannel().sendMessage("Format: !addvoice (channel name)").queue();
         }
-        else if(e.getMember().hasPermission(Permission.ADMINISTRATOR)){
+        else if(e.getMember().hasPermission(Permission.MANAGE_CHANNEL)){
             System.out.println(code);
             e.getGuild().getController().createVoiceChannel(code.substring(code.indexOf("addvoice")+9).trim()).queue();
             e.getChannel().sendMessage("Created voice channel \""+(code.substring(code.indexOf("addvoice")+9).trim())+"\"").queue(w -> {
