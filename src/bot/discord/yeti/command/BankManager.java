@@ -204,11 +204,11 @@ try{
 
             } else{
                 switch(arg[1]) {
-                    case "send":  msg.getChannel().sendMessage("Format: !bank send @user <amount>").queue();
+                    case "send":  msg.getChannel().sendMessage("Format: y!bank send @user <amount>").queue();
                         break;
-                    case "add":   msg.getChannel().sendMessage("Format: !bank add @user <amount>").queue();
+                    case "add":   msg.getChannel().sendMessage("Format: y!bank add @user <amount>").queue();
                         break;
-                    default:     msg.getChannel().sendMessage("Error, invalid command. Try !bank to see all available commands").queue();
+                    default:     msg.getChannel().sendMessage("Error, invalid command. Try y!bank to see all available commands").queue();
 
                 }
 
@@ -216,7 +216,7 @@ try{
 
         }else{
 
-            String reserve = "Available commands:\n\t !bank create\n\t !bank bal\n\t !bank send\n\t";
+            String reserve = "Available commands:\n\t y!bank create\n\t y!bank bal\n\t y!bank send\n\t";
             msg.getChannel().sendMessage(reserve).queue();
 
         }

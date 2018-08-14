@@ -92,7 +92,7 @@ try{
                     }
 //!numguess guess %bet amount% %number from 1-100%
 
-                    e.getChannel().sendMessage("Game created 20 seconds to place bets, type !numguess guess %number from 1-100%").queue(m -> {
+                    e.getChannel().sendMessage("Game created 20 seconds to place bets, type y!numguess guess %number from 1-100%").queue(m -> {
 
                     });
 
@@ -377,7 +377,7 @@ break;
 
 
                         } else {
-                            e.getChannel().sendMessage("No game in progess. try !numguess %bet amount% to start a game").queue();
+                            e.getChannel().sendMessage("No game in progess. try y!numguess %bet amount% to start a game").queue();
                             //erorr you do not have a bank account
 
                         }
@@ -406,7 +406,7 @@ break;
 
         }else{
             if(!e.getAuthor().isBot())
-            e.getChannel().sendMessage("!numguess start <bet amount> - Start a match with a fixed bet amount\n!numguess guess <number> - Guess number within 1-100").queue();
+            e.getChannel().sendMessage("y!numguess start <bet amount> - Start a match with a fixed bet amount\n!numguess guess <number> - Guess number within 1-100").queue();
         }
 
         Timer time = new Timer();

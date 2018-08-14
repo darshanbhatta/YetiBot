@@ -10,8 +10,8 @@ import java.util.TimerTask;
 public class CreateTextChannel {
     public static void run(MessageReceivedEvent e){
         String code = e.getMessage().getContentRaw().toLowerCase();
-        if(code.equals("!addtext")){
-            e.getChannel().sendMessage("Format: !addtext (channel name)").queue();
+        if(code.equals("y!addtext")){
+            e.getChannel().sendMessage("Format: y!addtext (channel name)").queue();
         }
         else if(e.getMember().hasPermission(Permission.MANAGE_CHANNEL)){
             System.out.println(code);

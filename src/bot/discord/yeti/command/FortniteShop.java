@@ -2,6 +2,7 @@ package bot.discord.yeti.command;
 
 import bot.discord.yeti.fortniteAPI.SaleItem;
 import bot.discord.yeti.fortniteAPI.SalesFetch;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -23,10 +24,10 @@ import java.util.concurrent.TimeUnit;
 public class FortniteShop {
     public static void run(Message msg, MessageReceivedEvent event) throws IOException {
 
-        try {
+Color first = null;
+ ArrayList<String> images = new ArrayList<>();
+String name = "";
 
-
-            try {
                 SalesFetch shop = new SalesFetch();
 
                 System.setProperty("http.agent", "Chrome");
@@ -65,7 +66,12 @@ public class FortniteShop {
                     sb.append(" second");
                 leaderList.append("Fortnite Item Shop\n" +"Shop resets in " + "*"+sb+"*" );
 
-                msg.getChannel().sendMessage(leaderList).queue();
+                BufferedImage result = new BufferedImage(
+                        128*3, 128*((int)Math.ceil((double) shopItem.size()/3)), //work these out
+                        BufferedImage.TYPE_INT_RGB);
+                Graphics g = result.getGraphics();
+
+
                 for (int x = 0; x < shopItem.size(); x++) {
                     try {
                         URL url = new URL(shopItem.get(x).getImgSrc());
@@ -154,8 +160,8 @@ public class FortniteShop {
                                     color = new Color(83,139,75);
                                 }
                             }
-
-
+if(first==null)
+first = color;
                             imageBuff.getGraphics().drawImage(scaledImage, 0, 0, color, null);
 
                             ByteArrayOutputStream buffer = new ByteArrayOutputStream();
@@ -163,37 +169,51 @@ public class FortniteShop {
                             ImageIO.write(imageBuff, "jpg", buffer);
 
                             response = buffer.toByteArray();
-
-                            FileOutputStream fos = new FileOutputStream("temp.jpg");
+                            name +=x+1+")   "+shopItem.get(x).getTitle() + "  " + "|" + "  " + shopItem.get(x).getPrice() + " V-Bucks \n\n";
+                            FileOutputStream fos = new FileOutputStream("temp"+x+".jpg");
                             try {
                                 fos.write(response);
+                                images.add("temp"+x+".jpg");
                             } finally {
                                 fos.close();
                             }
 
 
-                            msg.getChannel().sendFile(new File("temp.jpg"),new MessageBuilder().append(shopItem.get(x).getTitle() + "  " + "|" + "  " + shopItem.get(x).getPrice() + " V-Bucks \n").build()).complete();
-                            Thread.sleep(1000);
-                        } catch (InterruptedException ie) {
+
+                        } catch (Exception aaaa) {
 
                         }
 
 
                     } catch (Exception e) {
                         System.out.println(e.toString());
-                        msg.getChannel().sendMessage("Format: !fortniteshop").queue();
+                        msg.getChannel().sendMessage("Format: y!fortniteshop").queue();
                     }
 
 
+
+
                 }
+        for(int w = images.size();w<3*((int)Math.ceil((double) shopItem.size()/3));w++){
 
-
-            } catch (IndexOutOfBoundsException e) {
-                msg.getChannel().sendMessage("Format: !fortniteshop").queue();
-            }
-        } catch (IndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Format: !fortniteshop").queue();
+            images.add("trans.jpg");
         }
+int x =0;
+                int y = 0;
+                for(String image : images){
+                    BufferedImage bi = ImageIO.read(new File(image));
+                    g.drawImage(bi, x, y, null);
+                    x += 128;
+                   // System.out.println(result.getWidth() + " " + x);
+                    if(x >= result.getWidth()){
+                        x = 0;
+                        y += bi.getHeight();
+                    }
+                }
+                ImageIO.write(result,"png",new File("result.png"));
+                msg.getChannel().sendFile(new File("result.png"),new MessageBuilder().append(leaderList).build()).queue();
+        event.getTextChannel().sendMessage(new EmbedBuilder().setColor(first).setDescription(name).build()).queue();
+
         Timer time = new Timer();
         time.schedule(new TimerTask() {
             @Override
@@ -203,6 +223,7 @@ public class FortniteShop {
             }
         }, 5000);
     }
+
 }
 
 

@@ -1,9 +1,13 @@
 package main.java;
 
+import bot.discord.yeti.currency.Bank;
+import bot.discord.yeti.currency.Jewels;
 import bot.discord.yeti.game.blackjack.BlackjackGame;
 import bot.discord.yeti.game.blackjack.BlackjackGameHolder;
 import bot.discord.yeti.game.connect4.Connect4Game;
 import bot.discord.yeti.game.connect4.Connect4Holder;
+import bot.discord.yeti.game.slot.Slot;
+import bot.discord.yeti.game.slot.SlotMachine;
 import bot.discord.yeti.util.broadcast.OptOutList;
 import net.dv8tion.jda.client.requests.restaction.pagination.MentionPaginationAction;
 import net.dv8tion.jda.core.JDA;
@@ -183,19 +187,7 @@ if(isVaild){
     }
 
 
-        Connect4Holder x = new Connect4Holder();
-        x.getConnect4GameArrayList().add(new Connect4Game("343434", "dsd", "ddsd"));
-        try {
-            FileOutputStream fileOut = new FileOutputStream("connect4.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(x);
-            out.close();
-            fileOut.close();
-        } catch (IOException ww) {
-            ww.printStackTrace();
-        }
 
-    }
 
 for(int x=0;x<100;x++) {
     int rollNumber = (int) ((Math.random() * (37)));
@@ -308,7 +300,7 @@ String[] title = new String[5];
         }
         System.out.println(build);
 
-*/
+
          OptOutList x = new OptOutList();
         x.getGuildis().add("sdsds   ");
         try {
@@ -321,6 +313,73 @@ String[] title = new String[5];
             ww.printStackTrace();
         }
 
+
+Connect4Holder x = new Connect4Holder();
+        x.getConnect4GameArrayList().add(new Connect4Game("343434", "dsd", "ddsd"));
+        try {
+            FileOutputStream fileOut = new FileOutputStream("connect4.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(x);
+            out.close();
+            fileOut.close();
+        } catch (IOException ww) {
+            ww.printStackTrace();
+        }
+
+        Bank bank = new Bank();
+        try {
+            FileInputStream fileIn = new FileInputStream("bank.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            bank = (Bank) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+            return;
+        }
+
+        int count =0;
+       for(Jewels bank1: bank.getAllBalance()){
+           count++;
+           System.out.println(bank1.getName() + " | " + bank1.getBalance());
+
+
+       }
+        System.out.println(count);
+
+ArrayList moneyWin = new ArrayList();
+        ArrayList moneyLose = new ArrayList();
+for(int w=0;w<100;w++){
+
+    int count =0;
+    int money = 1000;
+    for(int x=0;x<10;x++){
+        SlotMachine slot = new SlotMachine();
+        slot.play();
+        money-=100;
+        if(slot.getWinMultiplier()>5)
+            count++;
+        money+=slot.getWinMultiplier()*100;
+
     }
+    System.out.println(money);
+    if(money>0){
+        moneyWin.add(money);
+    }else{
+        moneyLose.add(money);
+    }
+
+
+
+
+}
+        System.out.println((double) moneyWin.size()/(moneyWin.size()+moneyLose.size()));
+*/
+
+}
+
 
     }

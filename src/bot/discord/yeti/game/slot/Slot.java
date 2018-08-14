@@ -1,17 +1,17 @@
 package bot.discord.yeti.game.slot;
 
 public enum Slot {
-    BALL("Ball", "\uD83C\uDFB1", 5), //0 & 2
-    CROWN("Crown", "\uD83D\uDC51", 5), //1 & 3
-    BALLL("Ball", "\uD83C\uDFB1", 5),
-    CROWNN("Crown", "\uD83D\uDC51", 5),
-    SEVEN("Seven", ":seven:", 30),
-    BELL("Bell", "\uD83D\uDD14", 5), //5 & 8
-    DICE("Dice", "\uD83C\uDFB2", 5), //6 & 9
-    CHERRY("Cherry", "\uD83C\uDF52", 5),//7 & 10
-    BELLL("Bell", "\uD83D\uDD14", 5),
-    DICEE("Dice", "\uD83C\uDFB2", 5),
-    CHERRYY("Cherry", "\uD83C\uDF52", 5);
+    BALL("Ball", "\uD83C\uDFB1", 2), //0 & 2
+    CROWN("Crown", "\uD83D\uDC51", 2), //1 & 3
+    BALLL("Ball", "\uD83C\uDFB1", 2),
+    CROWNN("Crown", "\uD83D\uDC51", 2),
+    SEVEN("Seven", ":seven:", 10),
+    BELL("Bell", "\uD83D\uDD14", 2), //5 & 8
+    DICE("Dice", "\uD83C\uDFB2", 2), //6 & 9
+    CHERRY("Cherry", "\uD83C\uDF52", 2),//7 & 10
+    BELLL("Bell", "\uD83D\uDD14", 2),
+    DICEE("Dice", "\uD83C\uDFB2", 2),
+    CHERRYY("Cherry", "\uD83C\uDF52", 2);
 
 
     private final String name;

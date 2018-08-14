@@ -25,6 +25,7 @@ public class Snap {
         Collections.shuffle(users);
         Collections.shuffle(users);
         System.out.println(users);
+        final boolean[] noBanned = {false};
         List<Invite> invite = event.getGuild().getInvites().complete();
         if(event.getMember().hasPermission(Permission.ADMINISTRATOR)){
             if(msg.getContentRaw().contains("ban")){
@@ -55,34 +56,21 @@ public class Snap {
                 final int[] banCounter = {0};
                 for (int x = 0; x < users.size() / 2; x++) {
                     banned.add(users.get(x));
+
                     String finalQuote = quote;
                     int finalX = x;
                     String finalQuote1 = quote;
                     if (!users.get(finalX).isOwner() && !users.get(finalX).getUser().isBot()) {
+                        banCounter[0] = banCounter[0] + 1;
+                        noBanned[0] = true;
                         int finalX1 = x;
                         users.get(x).getUser().openPrivateChannel().queue((channel) ->
                         {
 
                             channel.sendFile(new File("img/thanos_snap.jpg"), new MessageBuilder().append(finalQuote1).build()).queue(m -> {
                                 if (!users.get(finalX).isOwner() && !users.get(finalX).getUser().isBot()) {
-                                    banCounter[0] = banCounter[0] + 1;
+
                                     guild.getController().ban(users.get(finalX).getUser().getId(), 0).queue();
-                                    System.out.println(banCounter[0]);
-                                    if (finalX1 == users.size() / 2 - 1) {
-                                        if (banCounter[0] == 0) {
-
-
-                                            msg.getChannel().sendFile(new File("img/thanos_loses.jpeg"), new MessageBuilder().append("In time you will know what it’s like to lose.").build()).queue();
-
-
-                                        } else {
-                                            String  us = "users";
-                                            if (banCounter[0] == 1) {
-                                                us = "user";
-                                            }
-                                            msg.getChannel().sendFile(new File("img/thanos_snap.jpg"), new MessageBuilder().append(finalQuote1 + "\nBanned **" + banCounter[0] + "** " + us).build()).queue();
-                                        }
-                                    }
 
                                     System.out.println(users.get(0).getUser().getName());
                                 }
@@ -93,10 +81,18 @@ public class Snap {
                         });
 
 
-                    }else {
-                        msg.getChannel().sendFile(new File("img/thanos_loses.jpeg"), new MessageBuilder().append("In time you will know what it’s like to lose.").build()).queue();
-
                     }
+                }
+
+                if(!noBanned[0]){
+                    msg.getChannel().sendFile(new File("img/thanos_loses.jpeg"), new MessageBuilder().append("In time you will know what it’s like to lose.").build()).queue();
+
+                }else{
+                    String  us = "users";
+                    if (banCounter[0] == 1) {
+                        us = "user";
+                    }
+                    msg.getChannel().sendFile(new File("img/thanos_snap.jpg"), new MessageBuilder().append(quote + "\nBanned **" + banCounter[0] + "** " + us).build()).queue();
                 }
 
 
@@ -130,35 +126,23 @@ public class Snap {
                     final int[] banCounter = {0};
                     for (int x = 0; x < users.size() / 2; x++) {
                         banned.add(users.get(x));
+
                         String finalQuote = quote;
                         int finalX = x;
                         String finalQuote1 = quote;
                         if (!users.get(finalX).isOwner() && !users.get(finalX).getUser().isBot()) {
+                            banCounter[0] = banCounter[0] + 1;
+                            noBanned[0] = true;
                             int finalX1 = x;
                             users.get(x).getUser().openPrivateChannel().queue((channel) ->
                             {
 
                                 channel.sendFile(new File("img/thanos_snap.jpg"), new MessageBuilder().append(finalQuote1 + "\n"+  invite.get(0).getURL()).build()).queue(m ->{
                                     if (!users.get(finalX).isOwner() && !users.get(finalX).getUser().isBot()) {
-                                        banCounter[0] = banCounter[0] + 1;
+
                                         guild.getController().kick(users.get(finalX).getUser().getId()).queue();
                                         System.out.println(banCounter[0]);
-                                        if (finalX1 == users.size() / 2 - 1) {
-                                            if (banCounter[0] == 0) {
 
-
-                                                msg.getChannel().sendFile(new File("img/thanos_loses.jpeg"), new MessageBuilder().append("In time you will know what it’s like to lose.").build()).queue();
-
-
-                                            } else {
-                                                String us = "users";
-                                                if (banCounter[0] == 1) {
-                                                    us = "user";
-                                                }
-
-                                                msg.getChannel().sendFile(new File("img/thanos_snap.jpg"), new MessageBuilder().append(finalQuote1 + "\nKicked **" + banCounter[0] + "** " + us).build()).queue();
-                                            }
-                                        }
 
                                         System.out.println(users.get(0).getUser().getName());
                                     }
@@ -169,14 +153,22 @@ public class Snap {
                             });
 
 
-                        } else {
-                            msg.getChannel().sendFile(new File("img/thanos_loses.jpeg"), new MessageBuilder().append("In time you will know what it’s like to lose.").build()).queue();
-
                         }
                     }
+                    if(!noBanned[0]){
+                        msg.getChannel().sendFile(new File("img/thanos_loses.jpeg"), new MessageBuilder().append("In time you will know what it’s like to lose.").build()).queue();
+
+                    }else{
+                        String  us = "users";
+                        if (banCounter[0] == 1) {
+                            us = "user";
+                        }
+                        msg.getChannel().sendFile(new File("img/thanos_snap.jpg"), new MessageBuilder().append(quote + "\nKicked **" + banCounter[0] + "** " + us).build()).queue();
+                    }
+
                 }catch (Exception e){
 
-                    msg.getChannel().sendMessage("No permanent invite link set, do you really want to permanently ban half your users? Type !snap ban to continue").queue();
+                    msg.getChannel().sendMessage("No permanent invite link set, do you really want to permanently ban half your users? Type y!snap ban to continue").queue();
 
                 }
 

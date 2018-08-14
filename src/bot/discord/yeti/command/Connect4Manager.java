@@ -269,7 +269,7 @@ break;
 
             }catch (Exception w){
 
-                e.getChannel().sendMessage("Invalid move number. Format: !c4 <column number>").queue();
+                e.getChannel().sendMessage("Invalid move number. Format: y!c4 <column number>").queue();
 
 
             }
@@ -279,7 +279,7 @@ break;
             //!tic board
         }else{
             if(!e.getAuthor().isBot())
-            e.getChannel().sendMessage("!c4 start @user - Start a match\n!c4 <column number> - Play Column\n!c4 board - Print our your current match board\n!c4 quit - End any unfinished games").queue();
+            e.getChannel().sendMessage("y!c4 start @user - Start a match\ny!c4 <column number> - Play Column\ny!c4 board - Print our your current match board\n!c4 quit - End any unfinished games").queue();
 
         }
         Timer time = new Timer();

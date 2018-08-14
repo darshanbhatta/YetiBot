@@ -19,7 +19,7 @@ public class Role {
         //!role add name <> []
 
         if(co.length == 1){
-            e.getChannel().sendMessage("Create a role\n!role create (name) <Opt: Permission> [Opt: Hex Color]\n\nAdd user to a role\n!role add @username [role names separated by commas]\n\nRemove user from a role\n!role remove @username [role names separated by commas]").queue();
+            e.getChannel().sendMessage("Create a role\ny!role create (name) <Opt: Permission> [Opt: Hex Color]\n\nAdd user to a role\ny!role add @username [role names separated by commas]\n\nRemove user from a role\ny!role remove @username [role names separated by commas]").queue();
         }
         if (co.length >= 3 && co[1].equals("create") && !code.contains("<") && !code.contains(">") && !code.contains("[") && !code.contains("]")) {
             if (e.getMember().hasPermission(Permission.MANAGE_ROLES)) {
@@ -82,7 +82,7 @@ public class Role {
                 } else {
 
 
-                    e.getChannel().sendMessage("Invaild permission code, try !role perm to see all permission codes").queue(w -> {
+                    e.getChannel().sendMessage("Invaild permission code, try y!role perm to see all permission codes").queue(w -> {
 
                     });
 
@@ -130,7 +130,7 @@ public class Role {
                 } else {
 
 
-                    e.getChannel().sendMessage("Invalid permission code, try !role perm to see all permission codes").queue(w -> {
+                    e.getChannel().sendMessage("Invalid permission code, try y!role perm to see all permission codes").queue(w -> {
 
                     });
 
@@ -155,8 +155,8 @@ public class Role {
 
                 try {
                     int[] rgb = getRGB(colorID);
-                    e.getGuild().getController().createRole().setName(e.getMessage().getContentRaw().substring(code.indexOf("!role create ") + 13,code.indexOf("["))).setColor(new Color(rgb[0], rgb[1], rgb[2])).queue();
-                    e.getChannel().sendMessage("Created role \"" + (e.getMessage().getContentRaw().substring(code.indexOf("!role create ") + 13,code.indexOf("[")).trim()) + "\"").queue(w -> {
+                    e.getGuild().getController().createRole().setName(e.getMessage().getContentRaw().substring(code.indexOf("y!role create ") + 13,code.indexOf("["))).setColor(new Color(rgb[0], rgb[1], rgb[2])).queue();
+                    e.getChannel().sendMessage("Created role \"" + (e.getMessage().getContentRaw().substring(code.indexOf("y!role create ") + 13,code.indexOf("[")).trim()) + "\"").queue(w -> {
 
                     });
                 } catch (Exception aa) {
@@ -295,7 +295,7 @@ try{
 
     }else{
             if(co.length >= 2)
-            e.getChannel().sendMessage("Invalid Command. See !role for commands.").queue();
+            e.getChannel().sendMessage("Invalid Command. See y!role for commands.").queue();
 
         }
 

@@ -19,7 +19,7 @@ public class RedditManager {
         //!reddit funny
         String[] code = event.getMessage().getContentRaw().split(" ");
         if(code.length == 1){
-            event.getChannel().sendMessage("!reddit (subreddit name) - Displays a popular post from the subreddit").queue();
+            event.getChannel().sendMessage("y!reddit (subreddit name) - Displays a popular post from the subreddit").queue();
         }
         if(code.length==2){
             String subReddit = code[1];

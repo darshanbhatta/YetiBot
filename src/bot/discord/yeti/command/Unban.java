@@ -25,7 +25,7 @@ public class Unban {
             users.add(bans.get(x).getUser());
         }
         try {
-            String command = msg.getContentRaw().substring(msg.getContentRaw().indexOf("!unban") + 7);
+            String command = msg.getContentRaw().substring(msg.getContentRaw().indexOf("y!unban") + 7);
             if (command.toLowerCase().equals("all")) {
                 if (users.size() != 0) {
                     for (int x = 0; x < users.size(); x++) {
@@ -69,10 +69,10 @@ public class Unban {
 
 
             } else {
-                msg.getChannel().sendMessage("Format: !unban @username").queue();
+                msg.getChannel().sendMessage("Format: y!unban @username").queue();
             }
         } catch (StringIndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Format: !unban @username").queue(w -> {
+            msg.getChannel().sendMessage("Format: y!unban @username").queue(w -> {
 
 
             });

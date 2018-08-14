@@ -50,7 +50,7 @@ public class RouletteManager {
         }
         int bankAccountIndex = bank[0].getAccountIndex(e.getAuthor().getId());
         if(code.length == 1){
-            e.getChannel().sendMessage("Start a game\n!roulette start\n\nPlace a bet\n!roulette bet <bet amount> [red, black, green, odd, even, <1-36>]").queue();
+            e.getChannel().sendMessage("Start a game\ny!roulette start\n\nPlace a bet\ny!roulette bet <bet amount> [red, black, green, odd, even, <1-36>]").queue();
         }
         if (code.length == 2 && code[1].equals("start")) {
             boolean gameInProg = false;
@@ -78,7 +78,7 @@ public class RouletteManager {
                     ww.printStackTrace();
                 }
 
-                e.getChannel().sendMessage("Game created! 30 seconds to place bets, type !roulette bet").queue(m -> {
+                e.getChannel().sendMessage("Game created! 30 seconds to place bets, type y!roulette bet").queue(m -> {
 
                 });
 
@@ -232,7 +232,7 @@ public class RouletteManager {
 
 
             } else {
-                e.getChannel().sendMessage("Error game already in progress, try !roulette bet").queue();
+                e.getChannel().sendMessage("Error game already in progress, try y!roulette bet").queue();
 
             }
 
@@ -341,13 +341,13 @@ public class RouletteManager {
 
             }else{
 
-                e.getChannel().sendMessage("You do not have a bank account to bet with, try !bank init to make one");
+                e.getChannel().sendMessage("You do not have a bank account to bet with, try y!bank init to make one");
 
 
             }
         }else{
             if(code.length >= 2) {
-                e.getChannel().sendMessage("Invalid Command. See !roulette for commands.").queue();
+                e.getChannel().sendMessage("Invalid Command. See y!roulette for commands.").queue();
             }
         }
     }

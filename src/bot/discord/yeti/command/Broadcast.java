@@ -37,7 +37,7 @@ public class Broadcast {
                 for (Guild g : e.getJDA().getGuilds()) {
                     if(!broadCast[0].getGuildis().contains(g.getId())){
 
-                        g.getDefaultChannel().sendMessage("If you don't want to receive messages from us, please type **!unsubscribe**\n\n"+e.getMessage().getContentRaw().substring(11)).queue();
+                        g.getDefaultChannel().sendMessage("If you don't want to receive messages from us, please type **y!unsubscribe**\n\n"+e.getMessage().getContentRaw().substring(11)).queue();
 
 
                     }
@@ -67,7 +67,7 @@ public class Broadcast {
             }
 
 
-            e.getChannel().sendMessage("You've successfully opted out of all Yeti notifications If you want to receive messages from us, please type **!subscribe**").queue();
+            e.getChannel().sendMessage("You've successfully opted out of all Yeti notifications If you want to receive messages from us, please type **y!subscribe**").queue();
         }else{
             try{
                 broadCast[0].getGuildis().remove(e.getGuild().getId());

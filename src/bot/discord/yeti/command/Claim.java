@@ -46,7 +46,7 @@ public class Claim {
 
         //!claim daily
         if(code.length == 1){
-            event.getChannel().sendMessage("!claim hourly - Claim 50 :gem: - Available every 60 minutes\n!claim daily - Claim 500 :gem: - Available every 24 hours").queue();
+            event.getChannel().sendMessage("y!claim hourly - Claim 50 :gem: - Available every 60 minutes\ny!claim daily - Claim 500 :gem: - Available every 24 hours").queue();
         }
         if(code.length==2&&code[1].equals("daily")){
 int indx = -1;

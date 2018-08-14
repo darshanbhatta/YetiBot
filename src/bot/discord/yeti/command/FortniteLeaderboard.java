@@ -89,12 +89,12 @@ public class FortniteLeaderboard {
 
             } catch (Exception e) {
                 System.out.println(e.toString());
-                msg.getChannel().sendMessage("Format: !fortniteleaderboard [pc, ps4, xb1] [solo, duo, squad]").queue();
+                msg.getChannel().sendMessage("Format: y!fortniteleaderboard [pc, ps4, xb1] [solo, duo, squad]").queue();
             }
 
 
         } catch (IndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Format: !fortniteleaderboard [pc, ps4, xb1] [solo, duo, squad]").queue();
+            msg.getChannel().sendMessage("Format: y!fortniteleaderboard [pc, ps4, xb1] [solo, duo, squad]").queue();
         }
         Timer time = new Timer();
         time.schedule(new TimerTask() {

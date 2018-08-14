@@ -228,7 +228,7 @@ String build = "";
 
             }else{
 
-                event.getChannel().sendMessage("No active polls. Try !poll (title) [list of options] <time limit in seconds>").queue();
+                event.getChannel().sendMessage("No active polls. Try y!poll (title) [list of options] <time limit in seconds>").queue();
                 try {
                     FileOutputStream fileOut = new FileOutputStream("poll.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -288,7 +288,7 @@ String build = "";
 
                 }else{
 
-                    event.getChannel().sendMessage("No active polls. Format: !poll (title) [list of options] <time limit (sec)>").queue();
+                    event.getChannel().sendMessage("No active polls. Format: y!poll (title) [list of options] <time limit (sec)>").queue();
 
                 }
 
@@ -303,7 +303,7 @@ String build = "";
 
         }else{
             if(!event.getAuthor().isBot())
-            event.getChannel().sendMessage("Start a poll - !poll (title) [list of options separated by commas] <time limit (sec)>\nExample: !poll (Do you enjoy using YetiBot?) [Yes, Sure, Absolutely] <20>\n\nVote in a poll - !poll <vote number>\nEnd a poll - !poll end").queue();
+            event.getChannel().sendMessage("Start a poll - y!poll (title) [list of options separated by commas] <time limit (sec)>\nExample: !poll (Do you enjoy using YetiBot?) [Yes, Sure, Absolutely] <20>\n\nVote in a poll - !poll <vote number>\nEnd a poll - !poll end").queue();
 
 
 

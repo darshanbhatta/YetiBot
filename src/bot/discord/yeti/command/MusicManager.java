@@ -44,11 +44,11 @@ public class MusicManager {
 
     public void run(MessageReceivedEvent event) throws IOException {
         this.event = event;
-        String[] code = event.getMessage().getContentRaw().replaceFirst("!", "").split(" ");
+        String[] code = event.getMessage().getContentRaw().replaceFirst("y!", "").split(" ");
         // System.out.println(Arrays.toString(code));
         if(code.length==1&&code[0].equalsIgnoreCase("music")){
 
-            event.getChannel().sendMessage("Music commands:\n!play (url/search query)\n!pause - pauses the current music\n!skip - skip song to the next queue\n!queue - lists all songs that are in queue\n!shuffle - shuffles current queue\n!repeat - repeats the current song indefinitely until command is turned off\n!loops - loops the queue indefinitely until command is turned off\n!stop - Stops playing music and removes all queued songs\n!volume (volume %) - Changes music volume to the desired percentage\n!choose (choice number) - used when picking a searched song").queue();
+            event.getChannel().sendMessage("Music commands:\ny!play (url/search query)\ny!pause - pauses the current music\ny!skip - skip song to the next queue\ny!queue - lists all songs that are in queue\ny!shuffle - shuffles current queue\ny!repeat - repeats the current song indefinitely until command is turned off\ny!loops - loops the queue indefinitely until command is turned off\ny!stop - Stops playing music and removes all queued songs\ny!volume (volume %) - Changes music volume to the desired percentage\ny!choose (choice number) - used when picking a searched song").queue();
 
 
 
@@ -138,7 +138,7 @@ public class MusicManager {
                         JSONObject jsonObjec = new JSONObject(jsonn);
                         //  System.out.println(jsonn);
                         ArrayList<String> URLCoice = new ArrayList();
-                        String build = "Choose a song from below \nFormat: !choose [song number]\n\n";
+                        String build = "Choose a song from below \nFormat: y!choose [song number]\n\n";
 
                         for(int x=0;x<jsonObjec.getJSONArray("items").length();x++){
                             // String title = jsonObject.getJSONArray("items").getJSONObject(x).getJSONObject("snippet").get("title").toString();
@@ -358,7 +358,7 @@ public class MusicManager {
 
         }else{
 
-            event.getChannel().sendMessage("Music commands:\n!play (url/search query)\n!pause - pauses the current music\n!skip - skip song to the next queue\n!stop - Stops playing music and removes all queued songs\n!volume (volume %) - Changes music volume to the desired percentage\n!choose (choice number) - used when picking a searched song").queue();
+            event.getChannel().sendMessage("Music commands:\ny!play (url/search query)\ny!pause - pauses the current music\ny!skip - skip song to the next queue\ny!queue - lists all songs that are in queue\ny!shuffle - shuffles current queue\ny!repeat - repeats the current song indefinitely until command is turned off\ny!loops - loops the queue indefinitely until command is turned off\ny!stop - Stops playing music and removes all queued songs\ny!volume (volume %) - Changes music volume to the desired percentage\ny!choose (choice number) - used when picking a searched song").queue();
 
 
         }
@@ -415,7 +415,7 @@ public class MusicManager {
                 }
 
 
-                channel.sendMessage("Adding to queue " + "*"+track.getInfo().title+"*" +" **["+hms+"]**").queue();
+                channel.sendMessage("Adding to queue " + "*"+track.getInfo().title+"*" +" ** ["+hms+"]**").queue();
                 musicManager.scheduler.getAudioTrack().add(track);
                 play(channel.getGuild(), musicManager, track);
             }

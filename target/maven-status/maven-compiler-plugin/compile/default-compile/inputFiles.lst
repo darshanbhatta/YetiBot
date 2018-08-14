@@ -7,6 +7,7 @@ C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\connect4\Connect4Game
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\Coinflip.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\poll\Poll.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\blackjack\BlackjackGameHolder.java
+C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\Broadcast.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\numguesser\NumGuessUser.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\RouletteManager.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\trivia\TriviaHolder.java
@@ -26,6 +27,7 @@ C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\trivia\TriviaQuestion
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\fortniteAPI\SalesFetch.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\NumGuessManager.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\jackpot\JackpotUser.java
+C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\broadcast\OptOutList.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\reward\RewardUser.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\Main.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\Kick.java
@@ -34,6 +36,7 @@ C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\poll\PollHolder.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\Connect4Manager.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\fortniteAPI\AllStats.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\music\TrackScheduler.java
+C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\dictionary\API.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\FortniteLeaderboard.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\Claim.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\numguesser\NumGuessGame.java
@@ -58,6 +61,7 @@ C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\TriviaManager.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\command\Snap.java
 C:\Users\Darshan\Desktop\YetiBot\src\main\java\Sandbox.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\jackpot\JackpotGame.java
+C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\dictionary\Dic.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\fortniteAPI\StatsPS4.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\game\roulette\Roulette.java
 C:\Users\Darshan\Desktop\YetiBot\src\bot\discord\yeti\util\music\AudioPlayerSendHandler.java

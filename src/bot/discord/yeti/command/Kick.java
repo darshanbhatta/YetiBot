@@ -16,8 +16,8 @@ public class Kick {
     public static void run(Message msg, MessageReceivedEvent event) {
 
 
-        if (msg.getContentRaw().toLowerCase().equals("!kick")) {
-            msg.getChannel().sendMessage("Format: !kick @username (Optional: Reason)").queue();
+        if (msg.getContentRaw().toLowerCase().equals("y!kick")) {
+            msg.getChannel().sendMessage("Format: y!kick @username (Optional: Reason)").queue();
 
         } else {
             if (event.getMember().hasPermission(Permission.KICK_MEMBERS)) {
@@ -83,10 +83,10 @@ public class Kick {
 
 
                     } else {
-                        msg.getChannel().sendMessage("Format: !kick @username (Optional: Reason)").queue();
+                        msg.getChannel().sendMessage("Format: y!kick @username (Optional: Reason)").queue();
                     }
                 } catch (StringIndexOutOfBoundsException e) {
-                    msg.getChannel().sendMessage("Format: !kick @username (Optional: Reason)").queue(w -> {
+                    msg.getChannel().sendMessage("Format: y!kick @username (Optional: Reason)").queue(w -> {
 
 
                     });

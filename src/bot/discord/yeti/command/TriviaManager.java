@@ -125,7 +125,7 @@ if( triviaHolders[0].getGames().get(triviaHolders[0].getGames().size() - 1).getQ
                                    String users = "";
                                    for (int i = 0; i < triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getUsers().size(); i++) {
                                        if (triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getUsers().get(i).getAnswer().equals(triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getCorrecAnswer())) {
-                                           users += triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getUsers().get(i).getName();
+                                           users += triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getUsers().get(i).getName()+"\n";
 
 
                                        }
@@ -361,7 +361,7 @@ triviaHolders[0].getGames().remove(ind);
 
        }else{
 
-           event.getChannel().sendMessage("Format:\n\t!trivia start - starts the game\n\t!trivia (answer choice number) - answer questions\n\t!trivia quit - end any unfinished games").queue();
+           event.getChannel().sendMessage("Format:\n\ty!trivia start - starts the game\n\ty!trivia (answer choice number) - answer questions\n\ty!trivia quit - end any unfinished games").queue();
        }
 
 

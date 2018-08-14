@@ -244,7 +244,7 @@ public class FortniteStats {
 
                     }else{
 
-            msg.getChannel().sendMessage("Format: !fortnitestats username [optional: pc, ps4, xb1]  [optional: all ,solo, duo, squad]").queue();
+            msg.getChannel().sendMessage("Format: y!fortnitestats username [optional: pc, ps4, xb1]  [optional: all ,solo, duo, squad]").queue();
 
         }
         Timer time = new Timer();

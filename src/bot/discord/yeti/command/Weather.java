@@ -18,7 +18,7 @@ public class Weather {
 
         String[] code = event.getMessage().getContentRaw().split(" ");
         if(code.length == 1){
-            event.getChannel().sendMessage("Display current weather in a certain area\n!weather current <location name/zipcode>\n\nDisplay tomorrows weather in a certain area\n!weather tmr <location name/zipcode>\n\nDisplay weather of the upcoming week in a certain area\n!weather forecast <location name/zipcode>").queue();
+            event.getChannel().sendMessage("Display current weather in a certain area\ny!weather current <location name/zipcode>\n\nDisplay tomorrows weather in a certain area\ny!weather tmr <location name/zipcode>\n\nDisplay weather of the upcoming week in a certain area\ny!weather forecast <location name/zipcode>").queue();
         }
         if(code.length>=3&&code[1].equals("current")){
             String id = "";

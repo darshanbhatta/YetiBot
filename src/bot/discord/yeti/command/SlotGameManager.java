@@ -114,7 +114,7 @@ public class SlotGameManager {
         } else if(arg.length==2){
 
 
-            msg.getChannel().sendMessage("Error you do not have a bank account to bet with, try !bank init to make one");
+            msg.getChannel().sendMessage("Error you do not have a bank account to bet with, try y!bank init to make one");
 
 
         }else

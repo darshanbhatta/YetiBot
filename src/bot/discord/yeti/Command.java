@@ -15,11 +15,28 @@ import java.io.IOException;
 
 public class Command extends ListenerAdapter {
     MusicManager musicManager = new MusicManager();
+
     String allGuilds = "";
     public void onMessageReceived(MessageReceivedEvent e) {
+        try{
 
-        if (e.getMessage().getContentRaw().toLowerCase().startsWith("!")) {
-            String[] arg = e.getMessage().getContentRaw().toLowerCase().replaceFirst("!", "").split(" ");
+            if(e.getMessage().getMentionedMembers().size()>0&&e.getMessage().getMentionedMembers().get(0).equals(e.getGuild().getSelfMember())&&!e.getAuthor().isBot()){
+                try {
+                    Help.run(e.getMessage(), e);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+
+        }catch (Exception weee){
+
+
+        }
+
+          if (e.getMessage().getContentRaw().toLowerCase().startsWith("y!")&&!e.getAuthor().isBot()) {
+            String[] arg = e.getMessage().getContentRaw().toLowerCase().replaceFirst("y!", "").split(" ");
 
             switch (arg[0]) {
                 case "help":
@@ -106,9 +123,9 @@ public class Command extends ListenerAdapter {
 
                     break;
                 case "jackpot":
+e.getChannel().sendMessage("Jackpot is currently unavailable").queue();
 
-
-                    JackpotManager.run(e);
+                 //   JackpotManager.run(e);
 
                     break;
                 case "tic":
@@ -117,7 +134,7 @@ public class Command extends ListenerAdapter {
                     TicTacToeManager.run(e);
 
                     break;
-                case "tictactoe": e.getChannel().sendMessage("!tic start @user - Start a match\n!tic play <move number> to move\n!tic board - Print out your current match board\n!tic quit - End any unfinished games").queue();
+                case "tictactoe": e.getChannel().sendMessage("y!tic start @user - Start a match\ny!tic <move number> to move\ny!tic board - Print out your current match board\ny!tic quit - End any unfinished games").queue();
                     break;
                 case "c4":
 
@@ -126,14 +143,14 @@ public class Command extends ListenerAdapter {
 
                     break;
                 case "connectfour":
-                    e.getChannel().sendMessage("!c4 start @user - Start a match\n!c4 <column number> - Play Column\n!c4 board - Print our your current match board\n!c4 quit - End any unfinished games").queue();
+                    e.getChannel().sendMessage("y!c4 start @user - Start a match\ny!c4 <column number> - Play Column\ny!c4 board - Print our your current match board\n!c4 quit - End any unfinished games").queue();
                     break;
                 case "numguess":
 
                     NumGuessManager.run(e);
 
                     break;
-                case "numberguess": e.getChannel().sendMessage("!numguess start <bet amount> - Start a match with a fixed bet amount\n!numguess guess <number> - Guess number within 1-100").queue();
+                case "numberguess":        e.getChannel().sendMessage("y!numguess start <bet amount> - Start a match with a fixed bet amount\n!numguess guess <number> - Guess number within 1-100").queue();
                     break;
                 case "weather":
 
@@ -144,7 +161,7 @@ public class Command extends ListenerAdapter {
                 case "poll":
                     PollManager.run(e);
                     break;
-                case "polling": e.getChannel().sendMessage("Start a poll - !poll (title) [list of options separated by commas] <time limit (sec)>\nExample: !poll (Do you enjoy using YetiBot?) [Yes, Sure, Absolutely] <20>\n\nVote in a poll - !poll <vote number>\nEnd a poll - !poll end").queue();
+                case "polling":     e.getChannel().sendMessage("Start a poll - y!poll (title) [list of options separated by commas] <time limit (sec)>\nExample: !poll (Do you enjoy using YetiBot?) [Yes, Sure, Absolutely] <20>\n\nVote in a poll - !poll <vote number>\nEnd a poll - !poll end").queue();
 
                     break;
                 case "reddit":
@@ -189,7 +206,7 @@ public class Command extends ListenerAdapter {
                     Role.run(e);
                     break;
                 case "snappy":
-                    e.getChannel().sendMessage("Bans half of the members in the discord server under Thanos' will - !snap").queue();
+                    e.getChannel().sendMessage("Bans half of the members in the discord server under Thanos' will - y!snap").queue();
 
                     break;
                 case "invite":
@@ -361,18 +378,18 @@ public class Command extends ListenerAdapter {
         }
         allGuilds = out;
         DiscordBotListAPI api = new DiscordBotListAPI.Builder()
-                .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ2NTk0NTk0ODkyNTk4NDc2OSIsImJvdCI6dHJ1ZSwiaWF0IjoxNTMyMzA3NTcyfQ.Md14g0ZnY8mksl4wWsQQSBCe1Of2z7jUgCIVdZH0KIg")
+                .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ2NTk0NTk0ODkyNTk4NDc2OSIsImJvdCI6dHJ1ZSwiaWF0IjoxNTMzNTg1NjU1fQ.b2MDLNGIWjmIcS9XAHgFIfR9ld3fKgkTSO7nLW9nc2Q")
                 .build();
 
 
 
         api.setStats("465945948925984769",count );
-
+        System.out.println(out);
         event.getGuild().getDefaultChannel().sendMessage("Hello, I'm Yeti! Thanks for adding me.\n" +
                 "\n" +
-                "Enter **!help** for the list of commands that I am authorized to execute.\n" +
+                "Enter **y!help** for the list of commands that I am authorized to execute.\n" +
                 "\n" +
-                "Want to play some tunes? Enter **!music**.\n" +
+                "Want to play some tunes? Enter **y!music**.\n" +
                 "\n" +
                 "You can join my community server if you'd like to support me or if you need space to interact.\n\n" +
                 "https://discord.gg/sbrNjcd").queue ();
@@ -394,7 +411,7 @@ public class Command extends ListenerAdapter {
         allGuilds = out;
 
         DiscordBotListAPI api = new DiscordBotListAPI.Builder()
-                .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ2NTk0NTk0ODkyNTk4NDc2OSIsImJvdCI6dHJ1ZSwiaWF0IjoxNTMyMzA3NTcyfQ.Md14g0ZnY8mksl4wWsQQSBCe1Of2z7jUgCIVdZH0KIg")
+                .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ2NTk0NTk0ODkyNTk4NDc2OSIsImJvdCI6dHJ1ZSwiaWF0IjoxNTMzNTg1NjU1fQ.b2MDLNGIWjmIcS9XAHgFIfR9ld3fKgkTSO7nLW9nc2Q")
                 .build();
 
 

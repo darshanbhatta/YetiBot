@@ -26,7 +26,7 @@ public class Ban {
 
             try {
 
-                String username = msg.getContentRaw().substring(msg.getContentRaw().indexOf("!ban") + 5);
+                String username = msg.getContentRaw().substring(msg.getContentRaw().indexOf("y!ban") + 6);
                 if (username.contains("<")) {
                     username = username.substring(2, username.indexOf(">"));
                 }

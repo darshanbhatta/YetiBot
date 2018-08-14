@@ -9,8 +9,8 @@ import java.util.TimerTask;
 public class CreateVoiceChannel {
     public static void run(MessageReceivedEvent e){
         String code = e.getMessage().getContentRaw().toLowerCase();
-        if(code.equals("!addvoice")){
-            e.getChannel().sendMessage("Format: !addvoice (channel name)").queue();
+        if(code.equals("y!addvoice")){
+            e.getChannel().sendMessage("Format: y!addvoice (channel name)").queue();
         }
         else if(e.getMember().hasPermission(Permission.MANAGE_CHANNEL)){
             System.out.println(code);

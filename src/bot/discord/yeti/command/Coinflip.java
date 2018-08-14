@@ -45,11 +45,11 @@ public class Coinflip {
         i = bank.getAccountIndex(msg.getAuthor().getId());
 
         if(arg.length == 1){
-            publicmsg.getChannel().sendMessage("Format !coinflip [heads, tails] <Optional: bet amount>").queue();
+            publicmsg.getChannel().sendMessage("Format y!coinflip [heads, tails] <Optional: bet amount>").queue();
         }
         else if(arg.length == 2){
             if(!arg[1].equals("heads") && !arg[1].equals("tails")) {
-                msg.getChannel().sendMessage("Format: !coinflip [heads, tails] <Optional: bet amount>").queue();
+                msg.getChannel().sendMessage("Format: y!coinflip [heads, tails] <Optional: bet amount>").queue();
             }
             else{
                 publicmsg.getChannel().sendMessage(":moneybag:Coinflip:moneybag:").queue();
@@ -106,7 +106,7 @@ public class Coinflip {
 
         }
         else{
-            msg.getChannel().sendMessage("Please use the format !coinflip [heads, tails] <Optional: bet amount>").queue();
+            msg.getChannel().sendMessage("Please use the format y!coinflip [heads, tails] <Optional: bet amount>").queue();
         }
 
         Timer time = new Timer();

@@ -18,12 +18,12 @@ public class Help {
 
     public static void run(Message msg, MessageReceivedEvent e) throws IOException {
 
-        String casino = ":game_die: Yeti Casino :game_die:  \n\t !blackjack\n\t !coinflip\n\t !jackpot\n\t !numberguess\n\t !roulette\n\t !slot";
-        String reserve = ":gem: Yeti Reserve :gem:  \n\t !bank init\n\t !bank bal\n\t !bank send\n\t !claim";
-        String games = ":joystick: Yeti Games :joystick:  \n\t !connectfour\n\t !tictactoe\n\t !trivia";
-        String community = ":earth_americas: Yeti Community :earth_americas:  \n\t !polling\n\t !reddit\n\t !weather";
-        String server = ":floppy_disk: Discord Server :floppy_disk:   \n\t !addtext\n\t !addvoice\n\t !ban\n\t !unban\n\t !kick\n\t !role\n\t !snappy\n\t !invite";
-        String videoGames = ":video_game: Fortnite :video_game:   \n\t !fortnitestats\n\t !fortniteshop\n\t !fortniteleaderboard";
+        String casino = ":game_die: Yeti Casino :game_die:  \n\t y!blackjack\n\t y!coinflip\n\t y!jackpot\n\t y!numberguess\n\t y!roulette\n\t y!slot";
+        String reserve = ":gem: Yeti Reserve :gem:  \n\t y!bank init\n\t y!bank bal\n\t y!bank send\n\t y!claim";
+        String games = ":joystick: Yeti Games :joystick:  \n\t y!connectfour\n\t y!tictactoe\n\t y!trivia";
+        String community = ":earth_americas: Yeti Community :earth_americas:  \n\t y!polling\n\t y!reddit\n\t y!weather";
+        String server = ":floppy_disk: Discord Server :floppy_disk:   \n\t y!addtext\n\t y!addvoice\n\t y!ban\n\t y!unban\n\t y!kick\n\t y!role\n\t y!snappy\n\t y!invite";
+        String videoGames = ":video_game: Fortnite :video_game:   \n\t y!fortnitestats\n\t y!fortniteshop\n\t y!fortniteleaderboard";
 
         msg.getChannel().sendMessage(casino + "\n\n" + reserve +"\n\n" + games + "\n\n" + community + "\n\n" + server+ "\n\n" +videoGames).queue();
         Timer time = new Timer();

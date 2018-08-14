@@ -84,7 +84,7 @@ public class TicTacToeManager {
 
 
                 } else {
-                    e.getChannel().sendMessage("You already are in a game, type !tic play %move number% or !tic quit").queue();
+                    e.getChannel().sendMessage("You already are in a game, type y!tic play %move number% or y!tic quit").queue();
 
                 }
 
@@ -163,12 +163,12 @@ try{
             String user = e.getAuthor().getId();
             if (user.equals(ticTacToe[0].getTicTacToeGameArrayList().get(x).getUserid()) || user.equals(ticTacToe[0].getTicTacToeGameArrayList().get(x).getUserid2())) {
                 //     System.out.println(se + " " + rouletteGame[0].getRouletteGames().get(x).getServerid() + " " + x);
-
+                found = true;
                 int whereGo = ticTacToe[0].getTicTacToeGameArrayList().get(x).move(move, e.getAuthor().getId(), e.getAuthor().getName());
                 System.out.println(whereGo);
                 if (whereGo == 0) {
                     if (ticTacToe[0].getTicTacToeGameArrayList().get(x).isWinnerX()) {
-                        found = true;
+
                         e.getChannel().sendMessage(ticTacToe[0].getTicTacToeGameArrayList().get(x).getName2() + " won 50 \uD83D\uDC8E by beating " + ticTacToe[0].getTicTacToeGameArrayList().get(x).getName() + "\n" + ticTacToe[0].getTicTacToeGameArrayList().get(x).toString()).queue();
                         int indx = bank[0].getAccountIndex(ticTacToe[0].getTicTacToeGameArrayList().get(x).getUserid2());
                         if(indx!=-1)
@@ -271,7 +271,7 @@ break;
 
         } else{
             if(!e.getAuthor().isBot())
-                e.getChannel().sendMessage("!tic start @user - Start a match\n!tic <move number> to move\n!tic board - Print out your current match board\n!tic quit - End any unfinished games").queue();
+                e.getChannel().sendMessage("y!tic start @user - Start a match\ny!tic <move number> to move\ny!tic board - Print out your current match board\ny!tic quit - End any unfinished games").queue();
 
         }
     }
