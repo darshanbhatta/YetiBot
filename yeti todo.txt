@@ -1,0 +1,29 @@
+TODO://
+
+New claim system
+Profile page
+user profile image fetcher ... maybe to see in a bigger size
+richest users of the month
+Custom server prefixes
+Hangman
+Akinator
+Math game
+Gif search like steam
+wikipedia ... search the wiki for a summary ie the first para
+Let me google that for you 
+yoda ... says it backwards
+morse code
+encrypter and decypter for secret messages
+Custom emojis to buy
+Roles to buy
+Fix jackpot ... find a way to do proportional probability
+Optimize all other game functions... they waste disk space initiate them when you start bot
+Dice roll
+More game stats, rocket leauge, overwatch, leauge,pubg, r6, etc
+mass deleting command
+random number gen
+mute
+yeti greeting
+Fortune Cookie
+
+

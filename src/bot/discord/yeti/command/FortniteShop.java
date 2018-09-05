@@ -170,7 +170,7 @@ first = color;
 
                             response = buffer.toByteArray();
                             name +=x+1+")   "+shopItem.get(x).getTitle() + "  " + "|" + "  " + shopItem.get(x).getPrice() + " V-Bucks \n\n";
-                            FileOutputStream fos = new FileOutputStream("temp"+x+".jpg");
+                            FileOutputStream fos = new FileOutputStream("temp"+x+".jpg",false);
                             try {
                                 fos.write(response);
                                 images.add("temp"+x+".jpg");
@@ -211,8 +211,16 @@ int x =0;
                     }
                 }
                 ImageIO.write(result,"png",new File("result.png"));
-                msg.getChannel().sendFile(new File("result.png"),new MessageBuilder().append(leaderList).build()).queue();
-        event.getTextChannel().sendMessage(new EmbedBuilder().setColor(first).setDescription(name).build()).queue();
+                try{
+                    msg.getChannel().sendFile(new File("result.png"),new MessageBuilder().append(leaderList).build()).queue();
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setColor(first).setDescription(name).build()).queue();
+                }catch (Exception ea){
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setColor(first).setTitle(leaderList.toString()).setDescription(name).build()).queue();
+
+
+                }
+
+
 
         Timer time = new Timer();
         time.schedule(new TimerTask() {
