@@ -3,9 +3,11 @@ package bot.discord.yeti.command;
 import com.github.fedy2.weather.YahooWeatherService;
 import com.github.fedy2.weather.data.Channel;
 import com.github.fedy2.weather.data.unit.DegreeUnit;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import javax.xml.bind.JAXBException;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,7 +20,13 @@ public class Weather {
 
         String[] code = event.getMessage().getContentRaw().split(" ");
         if(code.length == 1){
-            event.getChannel().sendMessage("Display current weather in a certain area\ny!weather current <location name/zipcode>\n\nDisplay tomorrows weather in a certain area\ny!weather tmr <location name/zipcode>\n\nDisplay weather of the upcoming week in a certain area\ny!weather forecast <location name/zipcode>").queue();
+
+            event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Weather","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png")
+                    .addField("Current Weather","```yweather current <location name/zipcode>```",false)
+                    .addField("Tomorrow's Weather","```yweather tmr <location name/zipcode>```",false)
+                    .addField("Weekly Forecast","```yweather forecast <location name/zipcode>```",false)
+                    .build()).queue();
+
         }
         if(code.length>=3&&code[1].equals("current")){
             String id = "";
@@ -80,10 +88,13 @@ public class Weather {
                     v = " there are ";
 
                 }
-                event.getChannel().sendMessage("Currently in "+ location + v+cond+ " with a temperature of " + temp + " °F").queue();
+
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Currently in "+ location + v+cond+ " with a temperature of " + temp + " °F","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png").build()).queue();
 
             } catch (Exception e) {
-                event.getChannel().sendMessage("Location not found.").queue();
+
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Location not found.","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png").build()).queue();
+
                 System.out.println(e.toString());
 
             }
@@ -152,10 +163,13 @@ public class Weather {
 
                 }
                 location = location.substring(0,location.indexOf(","));
-                event.getChannel().sendMessage("Future forecasts for "+ location + "\n"+build).queue();
+
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Future forecasts for "+ location,"https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png").setDescription(build).build()).queue();
+
 
             } catch (Exception e) {
-                event.getChannel().sendMessage("Location not found.").queue();
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Location not found.","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png").build()).queue();
+
                 System.out.println(e.toString());
 
             }
@@ -223,10 +237,12 @@ public class Weather {
 
 
                 location = location.substring(0,location.indexOf(","));
-                event.getChannel().sendMessage("Tomorrow in "+ location + " "+build).queue();
+
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Tomorrow in "+ location + " "+build,"https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png").build()).queue();
 
             } catch (Exception e) {
-                event.getChannel().sendMessage("Location not found.").queue();
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Location not found.","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png").build()).queue();
+
                 System.out.println(e.toString());
 
             }
@@ -236,7 +252,11 @@ public class Weather {
 
         }else{
             if(code.length >= 2) {
-                event.getChannel().sendMessage("Invalid command. See !weather for commands.").queue();
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Weather","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png","https://purepng.com/public/uploads/large/purepng.com-weather-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596142qx4ep.png")
+                        .addField("Current Weather","```yweather current <location name/zipcode>```",false)
+                        .addField("Tomorrow's Weather","```yweather tmr <location name/zipcode>```",false)
+                        .addField("Weekly Forecast","```yweather forecast <location name/zipcode>```",false)
+                        .build()).queue();
             }
         }
 

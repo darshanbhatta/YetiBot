@@ -4,10 +4,13 @@ import bot.discord.yeti.currency.Bank;
 import bot.discord.yeti.dictionary.API;
 import bot.discord.yeti.game.blackjack.BlackjackGameHolder;
 import bot.discord.yeti.util.broadcast.OptOutList;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.io.*;
+import java.time.LocalDate;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -34,10 +37,22 @@ public class Broadcast {
 
 
 
+               // patch name, new features
+                LocalDate currentDate = LocalDate.now();
                 for (Guild g : e.getJDA().getGuilds()) {
                     if(!broadCast[0].getGuildis().contains(g.getId())){
+                        try{
+                            g.getDefaultChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Notification")
+                                    .setThumbnail("https://i.imgur.com/xRpsqdl.png")
+                                    .setDescription("If you don't want to receive messages from us, please type **yunsubscribe**\n\n"+e.getMessage().getContentRaw().substring(10)+"\n\n")
+                                    .setFooter(currentDate.getMonth() + " " + currentDate.getDayOfMonth() + ", "+ currentDate.getYear(),"http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png")
+                                    .build()).queue();
+                            System.out.println("sent");
+                        }catch (Exception eeee){
+                            System.out.println("failed");
+                        }
 
-                        g.getDefaultChannel().sendMessage("If you don't want to receive messages from us, please type **y!unsubscribe**\n\n"+e.getMessage().getContentRaw().substring(11)).queue();
+
 
 
                     }
@@ -47,7 +62,7 @@ public class Broadcast {
         }
 
 
-        }else if(e.getMessage().getContentRaw().toLowerCase().contains("unsubscribe")){
+        } else if(e.getMessage().getContentRaw().toLowerCase().contains("unsubscribe")){
             broadCast[0].getGuildis().add(e.getGuild().getId());
             FileOutputStream fileOutputStream = null;
             try {
@@ -66,8 +81,11 @@ public class Broadcast {
                 e1.printStackTrace();
             }
 
+            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Notification")
+                    .setThumbnail("https://i.imgur.com/xRpsqdl.png")
+                    .setDescription("You've successfully opted out of all Yeti notifications If you want to receive messages from us, please type **ysubscribe**")
+                    .build()).queue();
 
-            e.getChannel().sendMessage("You've successfully opted out of all Yeti notifications If you want to receive messages from us, please type **y!subscribe**").queue();
         }else{
             try{
                 broadCast[0].getGuildis().remove(e.getGuild().getId());
@@ -88,14 +106,19 @@ public class Broadcast {
                     e1.printStackTrace();
                 }
 
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Notification")
+                        .setThumbnail("https://i.imgur.com/xRpsqdl.png")
+                        .setDescription("You've successfully opted in of all Yeti notifications")
+                        .build()).queue();
 
-                e.getChannel().sendMessage("You've successfully opted in of all Yeti notifications").queue();
 
 
 
             }catch (Exception ea){
-                e.getChannel().sendMessage("You are already subscribed to Yeti notifications").queue();
-
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Notification")
+                        .setThumbnail("https://i.imgur.com/xRpsqdl.png")
+                        .setDescription("You are already subscribed to Yeti notifications")
+                        .build()).queue();
             }
 
         }

@@ -18,6 +18,7 @@ public class Command extends ListenerAdapter {
 
     String allGuilds = "";
     public void onMessageReceived(MessageReceivedEvent e) {
+        /*
         try{
 
             if(e.getMessage().getMentionedMembers().size()>0&&e.getMessage().getMentionedMembers().get(0).equals(e.getGuild().getSelfMember())&&!e.getAuthor().isBot()){
@@ -34,9 +35,9 @@ public class Command extends ListenerAdapter {
 
 
         }
-
-          if (e.getMessage().getContentRaw().toLowerCase().startsWith("y!")&&!e.getAuthor().isBot()) {
-            String[] arg = e.getMessage().getContentRaw().toLowerCase().replaceFirst("y!", "").split(" ");
+*/
+        if (e.getMessage().getContentRaw().toLowerCase().startsWith("y")&&!e.getAuthor().isBot()) {
+            String[] arg = e.getMessage().getContentRaw().toLowerCase().replaceFirst("y", "").split(" ");
 
             switch (arg[0]) {
                 case "help":
@@ -60,7 +61,7 @@ public class Command extends ListenerAdapter {
                     Unban.run(e.getMessage(), e);
                     break;
 
-                case "fortnitestats":
+                case "fstats":
                     try {
                         FortniteStats.run(e.getMessage(), e);
                     } catch (IOException e1) {
@@ -68,7 +69,7 @@ public class Command extends ListenerAdapter {
                     }
                     break;
 
-                case "fortniteleaderboard":
+                case "flb":
                     try {
                         FortniteLeaderboard.run(e.getMessage(), e);
                     } catch (IOException e1) {
@@ -77,8 +78,8 @@ public class Command extends ListenerAdapter {
                     break;
 
 
-                case "fortniteshop":
-                    System.out.println("shoprunning");
+                case "fshop":
+
                     try {
                         FortniteShop.run(e.getMessage(), e);
                     } catch (IOException e1) {
@@ -123,9 +124,13 @@ public class Command extends ListenerAdapter {
 
                     break;
                 case "jackpot":
-e.getChannel().sendMessage("Jackpot is currently unavailable").queue();
 
-                 //   JackpotManager.run(e);
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor((Color.RED)).setTitle("Jackpot")
+                            .setThumbnail("https://i.imgur.com/t4yagto.png")
+                            .setTitle("Jackpot")
+                            .setDescription("Jackpot is currently unavailable")
+                            .build()).queue();
+                    //   JackpotManager.run(e);
 
                     break;
                 case "tic":
@@ -134,7 +139,14 @@ e.getChannel().sendMessage("Jackpot is currently unavailable").queue();
                     TicTacToeManager.run(e);
 
                     break;
-                case "tictactoe": e.getChannel().sendMessage("y!tic start @user - Start a match\ny!tic <move number> to move\ny!tic board - Print out your current match board\ny!tic quit - End any unfinished games").queue();
+                case "tictactoe":
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Tic-Tac-Toe")
+                            .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                            .addField("Creating","```ytic start @user```",true)
+                            .addField("Playing","```ytic <move number>```",true)
+                            .addField("Board","```ytic board```",true)
+                            .addField("End game","```ytic quit```",true)
+                            .build()).queue();
                     break;
                 case "c4":
 
@@ -142,15 +154,27 @@ e.getChannel().sendMessage("Jackpot is currently unavailable").queue();
                     Connect4Manager.run(e);
 
                     break;
-                case "connectfour":
-                    e.getChannel().sendMessage("y!c4 start @user - Start a match\ny!c4 <column number> - Play Column\ny!c4 board - Print our your current match board\n!c4 quit - End any unfinished games").queue();
+                case "connect4":
+                      e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                            .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                            .addField("Creating","```yc4 start @user```",true)
+                            .addField("Playing","```yc4 <column number>```",true)
+                            .addField("Board","```yc4 board```",true)
+                            .addField("End game","```c4 quit```",true)
+                            .build()).queue();
                     break;
                 case "numguess":
 
                     NumGuessManager.run(e);
 
                     break;
-                case "numberguess":        e.getChannel().sendMessage("y!numguess start <bet amount> - Start a match with a fixed bet amount\n!numguess guess <number> - Guess number within 1-100").queue();
+                case "numberguess":
+
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Number Guessing")
+                            .setThumbnail("http://swarm.rocks/storage/badges/casino_300.png")
+                            .addField("Creating","Game is started with a fixed bet amount ```ynumguess start <bet amount>```",true)
+                            .addField("Playing","Guess number within 1-100 ```ynumguess guess <number>```",true)
+                            .build()).queue();
                     break;
                 case "weather":
 
@@ -161,8 +185,13 @@ e.getChannel().sendMessage("Jackpot is currently unavailable").queue();
                 case "poll":
                     PollManager.run(e);
                     break;
-                case "polling":     e.getChannel().sendMessage("Start a poll - y!poll (title) [list of options separated by commas] <time limit (sec)>\nExample: !poll (Do you enjoy using YetiBot?) [Yes, Sure, Absolutely] <20>\n\nVote in a poll - !poll <vote number>\nEnd a poll - !poll end").queue();
-
+                case "polling":
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Poll").setThumbnail("https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png").addField(
+                            "Creating","```ypoll (title) [list of options separated by commas] <time limit (sec)>```",true)
+                            .addField("Example","```ypoll (Do you enjoy using YetiBot?) [Yes, Sure, Absolutely] <20>```",true)
+                            .addField("Voting","```ypoll <vote number>```",true)
+                            .addField("Ending","```ypoll end```",true)
+                            .build()).queue();
                     break;
                 case "reddit":
                     try {
@@ -206,11 +235,14 @@ e.getChannel().sendMessage("Jackpot is currently unavailable").queue();
                     Role.run(e);
                     break;
                 case "snappy":
-                    e.getChannel().sendMessage("Bans half of the members in the discord server under Thanos' will - y!snap").queue();
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Snap").setThumbnail("https://i.imgur.com/ISOFDE5.png").addField(
+                           "```ysnap```","Bans half of the members in the discord server under Thanos' will",false).build()).queue();
 
                     break;
                 case "invite":
-                    e.getChannel().sendMessage("You can add me to your guild/server with the following link : \n\nhttps://discordapp.com/oauth2/authorize?client_id=465945948925984769&scope=bot&permissions=2146958591").queue();
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("You can add me to your guild/server with the following link").setDescription(
+                           "https://discordapp.com/oauth2/authorize?client_id=465945948925984769&scope=bot&permissions=2146958591").build()).queue();
+
 
                     break;
                 case "ping":
@@ -321,7 +353,7 @@ e.getChannel().sendMessage("Jackpot is currently unavailable").queue();
                         e1.printStackTrace();
                     }
                     break;
-                    case "current":
+                case "current":
 
                     try {
                         musicManager.run(e);
@@ -385,14 +417,12 @@ e.getChannel().sendMessage("Jackpot is currently unavailable").queue();
 
         api.setStats("465945948925984769",count );
         System.out.println(out);
-        event.getGuild().getDefaultChannel().sendMessage("Hello, I'm Yeti! Thanks for adding me.\n" +
-                "\n" +
-                "Enter **y!help** for the list of commands that I am authorized to execute.\n" +
-                "\n" +
-                "Want to play some tunes? Enter **y!music**.\n" +
-                "\n" +
+        event.getGuild().getDefaultChannel().sendMessage(new EmbedBuilder().setTitle("Hello, I'm Yeti! Thanks for adding me!")
+                .addField("Help","```yhelp```",true)
+                .addField("Music","```ymusic```",true).setDescription(
                 "You can join my community server if you'd like to support me or if you need space to interact.\n\n" +
-                "https://discord.gg/sbrNjcd").queue ();
+                "**https://discord.gg/sbrNjcd**").setThumbnail("https://darshanbhatta.com/img/hero-img.png").setColor(new Color(0x8CC8FF)).setFooter("Server count: " + count,"https://discordbots.org/images/dblnew.png").build()).queue();
+
 
 
 

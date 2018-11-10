@@ -1,5 +1,6 @@
 package bot.discord.yeti.command;
 
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
@@ -8,9 +9,11 @@ import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.List;
 
 public class Snap {
 
@@ -167,8 +170,8 @@ public class Snap {
                     }
 
                 }catch (Exception e){
+                    msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("No permanent invite link set, do you really want to permanently ban half your users?","https://i.imgur.com/ISOFDE5.png","https://i.imgur.com/ISOFDE5.png").setDescription("Type `ysnap ban` to continue").build()).queue();
 
-                    msg.getChannel().sendMessage("No permanent invite link set, do you really want to permanently ban half your users? Type y!snap ban to continue").queue();
 
                 }
 

@@ -2,9 +2,11 @@ package bot.discord.yeti.command;
 
 import bot.discord.yeti.currency.Bank;
 import bot.discord.yeti.dictionary.Dic;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -45,22 +47,135 @@ public class Coinflip {
         i = bank.getAccountIndex(msg.getAuthor().getId());
 
         if(arg.length == 1){
-            publicmsg.getChannel().sendMessage("Format y!coinflip [heads, tails] <Optional: bet amount>").queue();
+
+            msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Coin Flip")
+                    .setThumbnail("https://lh6.ggpht.com/WI_lOeFpGKlj-mMGUJC1OqopcbXdwyPPxbcAqWSozCZhZh9fV_0O__HImZE2qjyv7rkf=w300")
+                    .addField("Format","```ycoinflip [heads, tails] <Optional: bet amount>```",true)
+                    .build()).queue();
+
         }
         else if(arg.length == 2){
             if(!arg[1].equals("heads") && !arg[1].equals("tails")) {
-                msg.getChannel().sendMessage("Format: y!coinflip [heads, tails] <Optional: bet amount>").queue();
+                msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Coin Flip")
+                        .setThumbnail("https://lh6.ggpht.com/WI_lOeFpGKlj-mMGUJC1OqopcbXdwyPPxbcAqWSozCZhZh9fV_0O__HImZE2qjyv7rkf=w300")
+                        .addField("Format","```ycoinflip [heads, tails] <Optional: bet amount>```",true)
+                        .build()).queue();
             }
             else{
-                publicmsg.getChannel().sendMessage(":moneybag:Coinflip:moneybag:").queue();
+                msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                        .setThumbnail("https://lh6.ggpht.com/WI_lOeFpGKlj-mMGUJC1OqopcbXdwyPPxbcAqWSozCZhZh9fV_0O__HImZE2qjyv7rkf=w300")
+                        .setDescription("3")
+                        .build()).queue(m -> {
+
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+
+                        @Override
+                        public void run() {
+                            m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                    .setThumbnail("https://lh6.ggpht.com/WI_lOeFpGKlj-mMGUJC1OqopcbXdwyPPxbcAqWSozCZhZh9fV_0O__HImZE2qjyv7rkf=w300")
+                                    .setDescription("2")
+                                    .build()).queue(m -> {
+                                Timer timer = new Timer();
+                                timer.schedule(new TimerTask() {
+
+                                    @Override
+                                    public void run() {
+                                        m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                .setThumbnail("https://lh6.ggpht.com/WI_lOeFpGKlj-mMGUJC1OqopcbXdwyPPxbcAqWSozCZhZh9fV_0O__HImZE2qjyv7rkf=w300")
+                                                .setDescription("1")
+                                                .build()).queue(m -> {
+                                            Timer timer = new Timer();
+                                            timer.schedule(new TimerTask() {
+
+                                                @Override
+                                                public void run() {
+                                                    double random = Math.random();
+                                                    if (random < 0.5) {//tails
+                                                        if (bet.equals("heads")) {
+                                                            if (placeBet) {
+                                                                m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                        .setThumbnail("https://i.imgur.com/bfHNlJW.png")
+                                                                        .setDescription("Tails!\nYou lost " + (Integer.valueOf(price)) + " :gem:")
+                                                                        .build()).queue();
+
+                                                            } else {
+                                                                m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                        .setThumbnail("https://i.imgur.com/bfHNlJW.png")
+                                                                        .setDescription("Tails!\nYou lost.")
+                                                                        .build()).queue();
+                                                                //m.editMessage("Tails\nYou lost.").queue();
+                                                            }
+                                                        } else {
+                                                            if (placeBet) {
+                                                                m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                        .setThumbnail("https://i.imgur.com/bfHNlJW.png")
+                                                                        .setDescription("Tails!\n You won " + 2 * (Integer.valueOf(price)) + " :gem:")
+                                                                        .build()).queue();
+
+                                                                bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + 2 * (Integer.valueOf(price)));
+                                                                completeTransaction();
+                                                            } else {
+                                                                m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                        .setThumbnail("https://i.imgur.com/bfHNlJW.png")
+                                                                        .setDescription("Tails!\n You won ")
+                                                                        .build()).queue();
+                                                            }
+
+                                                        }
+                                                    } else {//heads
+                                                        if (bet.equals("tails")) {
+                                                            if (placeBet) {
+                                                                m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                        .setThumbnail("https://i.imgur.com/u2LaWB9.png")
+                                                                        .setDescription("Heads!\nYou lost " + (Integer.valueOf(price)) + " :gem:")
+                                                                        .build()).queue();
+                                                            } else {
+                                                                m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                        .setThumbnail("https://i.imgur.com/bfHNlJW.png")
+                                                                        .setDescription("Heads!\nYou lost!")
+                                                                        .build()).queue();
+                                                            }
+                                                        } else {
+                                                            if (placeBet) {
+                                                                m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                        .setThumbnail("https://i.imgur.com/u2LaWB9.png")
+                                                                        .setDescription("Heads!\n You won " + 2 * (Integer.valueOf(price)) + " :gem:")
+                                                                        .build()).queue();
+                                                                bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + 2 * (Integer.valueOf(price)));
+                                                                completeTransaction();
+                                                            } else {
+                                                                m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                        .setThumbnail("https://i.imgur.com/u2LaWB9.png")
+                                                                        .setDescription("Heads!\n You won!")
+                                                                        .build()).queue();
+                                                            }
+                                                        }
+
+                                                    }
+                                                }
+                                            }, 1000);
+                                        });
+                                    }
+                                }, 1000);
+                            });
+                        }
+                    }, 1000);
+
+
+
+
+
+                });
                 bet = arg[1];
-                countDown();
+
             }
         }
         else if(arg.length == 3) {
             if (i != -1) {
                 bet = arg[1];
                 price = arg[2];
+                placeBet = true;
                 try {
                     int betAmount = Integer.parseInt(arg[2]);
                     int bal = bank.getAllBalance().get(i).getBalance();
@@ -69,44 +184,161 @@ public class Coinflip {
                         if (bal >= betAmount) {
                             bank.getAllBalance().get(i).setBalance(bal - Integer.parseInt(price));
                             completeTransaction();
-                            completeTransaction();
 
-                            msg.getChannel().sendMessage(":moneybag:Coinflip:moneybag:").queue(m -> {
+
+
+
+                            msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                    .setThumbnail("https://lh6.ggpht.com/WI_lOeFpGKlj-mMGUJC1OqopcbXdwyPPxbcAqWSozCZhZh9fV_0O__HImZE2qjyv7rkf=w300")
+                                    .setDescription("3")
+                                    .build()).queue(m -> {
+
+                                Timer timer = new Timer();
+                                timer.schedule(new TimerTask() {
+
+                                    @Override
+                                    public void run() {
+                                        m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                .setThumbnail("https://lh6.ggpht.com/WI_lOeFpGKlj-mMGUJC1OqopcbXdwyPPxbcAqWSozCZhZh9fV_0O__HImZE2qjyv7rkf=w300")
+                                                .setDescription("2")
+                                                .build()).queue(m -> {
+                                            Timer timer = new Timer();
+                                            timer.schedule(new TimerTask() {
+
+                                                @Override
+                                                public void run() {
+                                                    m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                            .setThumbnail("https://lh6.ggpht.com/WI_lOeFpGKlj-mMGUJC1OqopcbXdwyPPxbcAqWSozCZhZh9fV_0O__HImZE2qjyv7rkf=w300")
+                                                            .setDescription("1")
+                                                            .build()).queue(m -> {
+                                                        Timer timer = new Timer();
+                                                        timer.schedule(new TimerTask() {
+
+                                                            @Override
+                                                            public void run() {
+                                                                double random = Math.random();
+                                                                if (random < 0.5) {//tails
+                                                                    if (bet.equals("heads")) {
+                                                                        if (placeBet) {
+                                                                            m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                                    .setThumbnail("https://i.imgur.com/bfHNlJW.png")
+                                                                                    .setDescription("Tails!\nYou lost " + (Integer.valueOf(price)) + " :gem:")
+                                                                                    .build()).queue();
+
+                                                                        } else {
+                                                                            m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                                    .setThumbnail("https://i.imgur.com/bfHNlJW.png")
+                                                                                    .setDescription("Tails!\nYou lost.")
+                                                                                    .build()).queue();
+                                                                            //m.editMessage("Tails\nYou lost.").queue();
+                                                                        }
+                                                                    } else {
+                                                                        if (placeBet) {
+                                                                            m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                                    .setThumbnail("https://i.imgur.com/bfHNlJW.png")
+                                                                                    .setDescription("Tails!\n You won " + 2 * (Integer.valueOf(price)) + " :gem:")
+                                                                                    .build()).queue();
+
+                                                                            bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + 2 * (Integer.valueOf(price)));
+                                                                            completeTransaction();
+                                                                        } else {
+                                                                            m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                                    .setThumbnail("https://i.imgur.com/bfHNlJW.png")
+                                                                                    .setDescription("Tails!\n You won!")
+                                                                                    .build()).queue();
+                                                                        }
+
+                                                                    }
+                                                                } else {//heads
+                                                                    if (bet.equals("tails")) {
+                                                                        if (placeBet) {
+                                                                            m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                                    .setThumbnail("https://i.imgur.com/u2LaWB9.png")
+                                                                                    .setDescription("Heads!\nYou lost " + (Integer.valueOf(price)) + " :gem:")
+                                                                                    .build()).queue();
+                                                                        } else {
+                                                                            m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                                    .setThumbnail("https://i.imgur.com/u2LaWB9.png")
+                                                                                    .setDescription("Heads!\n You lost!")
+                                                                                    .build()).queue();
+                                                                        }
+                                                                    } else {
+                                                                        if (placeBet) {
+                                                                            m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                                    .setThumbnail("https://i.imgur.com/u2LaWB9.png")
+                                                                                    .setDescription("Heads!\n You won " + 2 * (Integer.valueOf(price)) + " :gem:")
+                                                                                    .build()).queue();
+                                                                            bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + 2 * (Integer.valueOf(price)));
+                                                                            completeTransaction();
+                                                                        } else {
+                                                                            m.editMessage( new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(":moneybag:Coinflip:moneybag:")
+                                                                                    .setThumbnail("https://i.imgur.com/u2LaWB9.png")
+                                                                                    .setDescription("Heads!\n You won!")
+                                                                                    .build()).queue();
+                                                                        }
+                                                                    }
+
+                                                                }
+                                                            }
+                                                        }, 1000);
+                                                    });
+                                                }
+                                            }, 1000);
+                                        });
+                                    }
+                                }, 1000);
+
+
+
+
+
                             });
-                            try {
-                                Thread.sleep(500);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            placeBet = true;
-                            countDown();
+
                         } else {
-                            msg.getChannel().sendMessage("Error insufficient funds, you have " + bal + " \uD83D\uDC8E").queue(m -> {
-                            });
+                            msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Bank")
+                                    .setThumbnail("https://images.emojiterra.com/twitter/v11/512px/1f48e.png")
+                                    .setDescription("Insufficient funds, you have " + bal + " \uD83D\uDC8E")
+                                    .build()).queue();
 
 
                         }
 
 
                     } else {
-                        msg.getChannel().sendMessage(Dic.postiveNum).queue(m -> {
-                        });
+
+                        msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Bank")
+                                .setThumbnail("https://images.emojiterra.com/twitter/v11/512px/1f48e.png")
+                                .setDescription(Dic.postiveNum)
+                                .build()).queue();
                     }
 
 
                 } catch (Exception e) {
-                    msg.getChannel().sendMessage(Dic.postiveNum).queue(m -> {
-                    });
+
+
+                    msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Bank")
+                            .setThumbnail("https://images.emojiterra.com/twitter/v11/512px/1f48e.png")
+                            .setDescription(Dic.postiveNum)
+                            .build()).queue();
+
                 }
             }else{
-                msg.getChannel().sendMessage(Dic.noAccount).queue(m -> {
-                });
+
+
+                msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Bank")
+                        .setThumbnail("https://images.emojiterra.com/twitter/v11/512px/1f48e.png")
+                        .setDescription(Dic.noAccount)
+                        .build()).queue();
+
             }
 
 
         }
         else{
-            msg.getChannel().sendMessage("Please use the format y!coinflip [heads, tails] <Optional: bet amount>").queue();
+            msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Coin Flip")
+                    .setThumbnail("https://lh6.ggpht.com/WI_lOeFpGKlj-mMGUJC1OqopcbXdwyPPxbcAqWSozCZhZh9fV_0O__HImZE2qjyv7rkf=w300")
+                    .addField("Format","```ycoinflip [heads, tails] <Optional: bet amount>```",true)
+                    .build()).queue();
         }
 
         Timer time = new Timer();
@@ -130,80 +362,8 @@ public class Coinflip {
         }
     }
 
-    public static void countDown(){
-        publicmsg.getChannel().sendMessage("3").queue(m -> {
 
 
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-
-                @Override
-                public void run() {
-                    m.editMessage("2").queue(m -> {
-                        Timer timer = new Timer();
-                        timer.schedule(new TimerTask() {
-
-                            @Override
-                            public void run() {
-                                m.editMessage("1").queue(m -> {
-                                    Timer timer = new Timer();
-                                    timer.schedule(new TimerTask() {
-
-                                        @Override
-                                        public void run() {
-                                            double random = Math.random();
-                                            if(random < 0.5){//tails
-                                                if(bet.equals("heads")) {
-                                                    if(placeBet) {
-                                                        m.editMessage("Tails\nYou lost " + (Integer.valueOf(price)) + " :gem:").queue();
-                                                    }
-                                                    else{
-                                                        m.editMessage("Tails\nYou lost.").queue();
-                                                    }
-                                                }
-                                                else{
-                                                    if(placeBet) {
-                                                        m.editMessage("You won " + 2 * (Integer.valueOf(price)) + " :gem:").queue();
-                                                        bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + 2 * (Integer.valueOf(price)));
-                                                        completeTransaction();
-                                                    }
-                                                    else{
-                                                        m.editMessage("You won.").queue();
-                                                    }
-
-                                                }
-                                            }
-                                            else{//heads
-                                                if(bet.equals("tails")) {
-                                                    if(placeBet) {
-                                                        m.editMessage("Heads\nYou lost " + (Integer.valueOf(price)) + " :gem:").queue();
-                                                    }
-                                                    else{
-                                                        m.editMessage("Heads\nYou lost.").queue();
-                                                    }
-                                                }
-                                                else {
-                                                    if (placeBet) {
-                                                        m.editMessage("You win " + 2 * (Integer.valueOf(price)) + " :gem:").queue();
-                                                        bank.getAllBalance().get(i).setBalance(bank.getAllBalance().get(i).getBalance() + 2 * (Integer.valueOf(price)));
-                                                        completeTransaction();
-                                                    } else {
-                                                        m.editMessage("You win.").queue();
-                                                    }
-                                                }
-
-                                            }
-                                        }
-                                    }, 1000);
-                                });
-                            }
-                        }, 1000);
-                    });
-                }
-            }, 1000);
-
-        });
-    }
 
 
 }

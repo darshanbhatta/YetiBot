@@ -5,8 +5,10 @@ import bot.discord.yeti.currency.Bank;
 
 import bot.discord.yeti.game.tictactoe.TicTacToeGame;
 import bot.discord.yeti.game.tictactoe.TicTacToeHolder;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.io.*;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -76,16 +78,20 @@ public class TicTacToeManager {
                         ww.printStackTrace();
                     }
 
-                    e.getChannel().sendMessage(e.getAuthor().getName()+"'s Tic-Tac-Toe game\n" +ticTacToe[0].getTicTacToeGameArrayList().get(indx).toString()).queue(m -> {
 
-                    });
 
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor(e.getAuthor().getName() + "'s Tic-Tac-Toe game","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                            .setDescription(ticTacToe[0].getTicTacToeGameArrayList().get(indx).toString())
+                            .build()).queue();
 
 
 
                 } else {
-                    e.getChannel().sendMessage("You already are in a game, type y!tic play %move number% or y!tic quit").queue();
 
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Tic-Tac-Toe")
+                            .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                            .setDescription("You already are in a game, type `ytic play <move number>` or ytic quit")
+                            .build()).queue();
                 }
 
 
@@ -94,8 +100,11 @@ public class TicTacToeManager {
 
             }else{
 
-                e.getChannel().sendMessage("You cannot play Tic-Tac-Toe with yourself.").queue();
 
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Tic-Tac-Toe")
+                        .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                        .setDescription("You cannot play Tic-Tac-Toe with yourself.")
+                        .build()).queue();
             }
 
 
@@ -108,7 +117,10 @@ public class TicTacToeManager {
                 String user = e.getAuthor().getId();
                 if (user.equals(ticTacToe[0].getTicTacToeGameArrayList().get(x).getUserid()) || user.equals(ticTacToe[0].getTicTacToeGameArrayList().get(x).getUserid2())) {
 
-                    e.getChannel().sendMessage("Successfully ended " + ticTacToe[0].getTicTacToeGameArrayList().get(x).getName()+ "'s Tic-Tac-Toe game").queue();
+
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Successfully ended " + ticTacToe[0].getTicTacToeGameArrayList().get(x).getName()+ "'s Tic-Tac-Toe game","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                            .setDescription(ticTacToe[0].getTicTacToeGameArrayList().get(x).toString())
+                            .build()).queue();
                     hasGame= true;
 
                     user.equals(ticTacToe[0].getTicTacToeGameArrayList().remove(x));
@@ -127,7 +139,10 @@ public class TicTacToeManager {
 
                 } if(!hasGame){
 
-                e.getChannel().sendMessage("You are not in a game").queue();
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Tic-Tac-Toe")
+                        .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                        .setDescription("You are not in a game")
+                        .build()).queue();
             }
 
 
@@ -137,7 +152,11 @@ public class TicTacToeManager {
                 String user = e.getAuthor().getId();
                 if (user.equals(ticTacToe[0].getTicTacToeGameArrayList().get(x).getUserid()) || user.equals(ticTacToe[0].getTicTacToeGameArrayList().get(x).getUserid2())) {
 
-                    e.getChannel().sendMessage(e.getAuthor().getName()+"'s Tic-Tac-Toe game\n" +ticTacToe[0].getTicTacToeGameArrayList().get(x).toString()).queue();
+
+
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor(ticTacToe[0].getTicTacToeGameArrayList().get(x).getName() + "'s Tic-Tac-Toe game","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                            .setDescription(ticTacToe[0].getTicTacToeGameArrayList().get(x).toString())
+                            .build()).queue();
                     hasGame= true;
 
                     user.equals(ticTacToe[0].getTicTacToeGameArrayList().remove(x));
@@ -148,7 +167,11 @@ public class TicTacToeManager {
 
             } if(!hasGame){
 
-                e.getChannel().sendMessage("You are not in a game").queue();
+
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Tic-Tac-Toe")
+                        .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                        .setDescription("You are not in a game")
+                        .build()).queue();
             }
 
     }else if (code.length == 2) {
@@ -169,7 +192,12 @@ try{
                 if (whereGo == 0) {
                     if (ticTacToe[0].getTicTacToeGameArrayList().get(x).isWinnerX()) {
 
-                        e.getChannel().sendMessage(ticTacToe[0].getTicTacToeGameArrayList().get(x).getName2() + " won 50 \uD83D\uDC8E by beating " + ticTacToe[0].getTicTacToeGameArrayList().get(x).getName() + "\n" + ticTacToe[0].getTicTacToeGameArrayList().get(x).toString()).queue();
+
+
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor(ticTacToe[0].getTicTacToeGameArrayList().get(x).getName2() + " won 50 \uD83D\uDC8E by beating " + ticTacToe[0].getTicTacToeGameArrayList().get(x).getName(),"http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                                .setDescription(ticTacToe[0].getTicTacToeGameArrayList().get(x).toString())
+                                .build()).queue();
+
                         int indx = bank[0].getAccountIndex(ticTacToe[0].getTicTacToeGameArrayList().get(x).getUserid2());
                         if(indx!=-1)
                             bank[0].getAllBalance().get(indx).setBalance(bank[0].getAllBalance().get(indx).getBalance()+50);
@@ -185,7 +213,9 @@ try{
                         ticTacToe[0].getTicTacToeGameArrayList().remove(x);
 
                     } else if (ticTacToe[0].getTicTacToeGameArrayList().get(x).isWinnerY()) {
-                        e.getChannel().sendMessage(ticTacToe[0].getTicTacToeGameArrayList().get(x).getName() + " won 50 \uD83D\uDC8E by beating " + ticTacToe[0].getTicTacToeGameArrayList().get(x).getName2() + "\n" + ticTacToe[0].getTicTacToeGameArrayList().get(x).toString()).queue();
+                       e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor(ticTacToe[0].getTicTacToeGameArrayList().get(x).getName() + " won 50 \uD83D\uDC8E by beating " + ticTacToe[0].getTicTacToeGameArrayList().get(x).getName(),"http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                                .setDescription(ticTacToe[0].getTicTacToeGameArrayList().get(x).toString())
+                                .build()).queue();
                         int indx = bank[0].getAccountIndex(ticTacToe[0].getTicTacToeGameArrayList().get(x).getUserid());
                         if(indx!=-1)
                             bank[0].getAllBalance().get(indx).setBalance(bank[0].getAllBalance().get(indx).getBalance()+50);
@@ -201,8 +231,10 @@ try{
                         ticTacToe[0].getTicTacToeGameArrayList().remove(x);
                     } else {
 
-                        e.getChannel().sendMessage(ticTacToe[0].getTicTacToeGameArrayList().get(x).getName() + "'s Tic-Tac-Toe game\n" + ticTacToe[0].getTicTacToeGameArrayList().get(x).toString()).queue();
 
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor(ticTacToe[0].getTicTacToeGameArrayList().get(x).getName() + "'s Tic-Tac-Toe game","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                                .setDescription(ticTacToe[0].getTicTacToeGameArrayList().get(x).toString())
+                                .build()).queue();
 
                     }
                     try {
@@ -217,7 +249,10 @@ try{
 
 
                 } else if (whereGo == 3) {
-                    e.getChannel().sendMessage("It's a tie!\n" + ticTacToe[0].getTicTacToeGameArrayList().get(x).toString()).queue();
+
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("It's a tie!","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png","http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                            .setDescription(ticTacToe[0].getTicTacToeGameArrayList().get(x).toString())
+                            .build()).queue();
                     ticTacToe[0].getTicTacToeGameArrayList().remove(x);
                     try {
                         FileOutputStream fileOut = new FileOutputStream("tictactoe.ser");
@@ -230,10 +265,18 @@ try{
                     }
                 } else {
                     if (whereGo == 1) {
-                        e.getChannel().sendMessage(e.getAuthor().getName() + ", it is not your turn.").queue();
+
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                                .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                                .setDescription(e.getAuthor().getName() + ", it is not your turn.")
+                                .build()).queue();
                     }else {
 
-                        e.getChannel().sendMessage(move + " is already taken").queue();
+
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                                .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                                .setDescription(move + " is already taken")
+                                .build()).queue();
                     }
 
 
@@ -252,27 +295,39 @@ break;
         }
         if(!found){
 
-            e.getChannel().sendMessage("You are not in a game").queue();
 
+            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Tic-Tac-Toe")
+                    .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                    .setDescription("You are not in a game")
+                    .build()).queue();
         }
 
 
     } else {
 
-        e.getChannel().sendMessage("Invalid move number, only type numbers on the board").queue();
+        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                .setDescription("Invalid move number, only type numbers on the board")
+                .build()).queue();
 
 
     }
 }catch (Exception ea){
-
-    e.getChannel().sendMessage("Invalid move number, only type numbers on the board").queue();
-
+    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+            .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+            .setDescription("Invalid move number, only type numbers on the board")
+            .build()).queue();
 }
 
         } else{
             if(!e.getAuthor().isBot())
-                e.getChannel().sendMessage("y!tic start @user - Start a match\ny!tic <move number> to move\ny!tic board - Print out your current match board\ny!tic quit - End any unfinished games").queue();
-
+                 e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Tic-Tac-Toe")
+                    .setThumbnail("http://aux2.iconspalace.com/uploads/tic-tac-toe-game-icon-256.png")
+                    .addField("Creating","```ytic start @user```",true)
+                    .addField("Playing","```ytic <move number>```",true)
+                    .addField("Board","```ytic board```",true)
+                    .addField("End game","```ytic quit```",true)
+                    .build()).queue();
         }
     }
 }

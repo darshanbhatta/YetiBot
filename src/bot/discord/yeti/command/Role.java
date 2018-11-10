@@ -1,5 +1,6 @@
 package bot.discord.yeti.command;
 
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -19,22 +20,31 @@ public class Role {
         //!role add name <> []
 
         if(co.length == 1){
-            e.getChannel().sendMessage("Create a role\ny!role create (name) <Opt: Permission> [Opt: Hex Color]\n\nAdd user to a role\ny!role add @username [role names separated by commas]\n\nRemove user from a role\ny!role remove @username [role names separated by commas]").queue();
+
+
+            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Role Commands","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+                    .addField("Create a role","```yrole create (name) <Opt: Permission> [Opt: Hex Color]```",false)
+                    .addField("Add user to a role","```yrole add @username [role names separated by commas]```",false)
+                    .addField("Remove user from a role","```yrole remove @username [role names separated by commas]```",false)
+                    .build()).queue();
         }
         if (co.length >= 3 && co[1].equals("create") && !code.contains("<") && !code.contains(">") && !code.contains("[") && !code.contains("]")) {
             if (e.getMember().hasPermission(Permission.MANAGE_ROLES)) {
                 System.out.println(code);
 
-                e.getGuild().getController().createRole().setName(e.getMessage().getContentRaw().substring(code.indexOf("!role create ") + 13)).queue();
-                e.getChannel().sendMessage("Created role \"" + (e.getMessage().getContentRaw().substring(code.indexOf("!role create ") + 13).trim()) + "\"").queue(w -> {
+                e.getGuild().getController().createRole().setName(e.getMessage().getContentRaw().substring(code.indexOf("yrole create ") + 13)).queue();
 
-                });
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Created role \"" + (e.getMessage().getContentRaw().substring(code.indexOf("yrole create ") + 13).trim()) + "\"","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                            .build()).queue();
+
 
 
             } else {
-                e.getChannel().sendMessage("You do not have permission.").queue(w -> {
 
-                });
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You do not have permission.","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                        .build()).queue();
             }
 
 
@@ -67,33 +77,37 @@ public class Role {
                     }
                     try {
                         int[] rgb = getRGB(colorID);
-                        e.getGuild().getController().createRole().setName(e.getMessage().getContentRaw().substring(code.indexOf("!role create ") + 13,code.indexOf("<"))).setPermissions(permissions).setColor(new Color(rgb[0], rgb[1], rgb[2])).queue();
-                        e.getChannel().sendMessage("Created role \"" + (e.getMessage().getContentRaw().substring(code.indexOf("!role create ") + 13,code.indexOf("<")).trim()) + "\"").queue(w -> {
-                        });
+                        e.getGuild().getController().createRole().setName(e.getMessage().getContentRaw().substring(code.indexOf("yrole create ") + 13,code.indexOf("<"))).setPermissions(permissions).setColor(new Color(rgb[0], rgb[1], rgb[2])).queue();
+
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Created role \"" + (e.getMessage().getContentRaw().substring(code.indexOf("yrole create ") + 13,code.indexOf("<")).trim()) + "\"","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                                .build()).queue();
                     } catch (Exception aa) {
 
-                        e.getChannel().sendMessage("Invalid hex color: e.g. #fffff or ffffff").queue(w -> {
 
-                        });
+
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Invalid hex color: e.g. #fffff or ffffff","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                                .build()).queue();
 
                     }
 
 
                 } else {
 
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Invalid permission code, try yrole perm to see all permission codes","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
 
-                    e.getChannel().sendMessage("Invaild permission code, try y!role perm to see all permission codes").queue(w -> {
+                            .build()).queue();
 
-                    });
 
 
                 }
 
 
             } else {
-                e.getChannel().sendMessage("You do not have permission.").queue(w -> {
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You do not have permission.","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
 
-                });
+                        .build()).queue();
             }
 
 
@@ -122,26 +136,28 @@ public class Role {
                         permissions[x] = Permission.getFromOffset(allPerNum[x]);
                     }
 
-                    e.getGuild().getController().createRole().setName(e.getMessage().getContentRaw().substring(code.indexOf("!role create ") + 13,code.indexOf("<"))).setPermissions(permissions).queue();
-                    e.getChannel().sendMessage("Created role \"" + (e.getMessage().getContentRaw().substring(code.indexOf("!role create ") + 13,code.indexOf("<")).trim()) + "\"").queue(w -> {
+                    e.getGuild().getController().createRole().setName(e.getMessage().getContentRaw().substring(code.indexOf("yrole create ") + 13,code.indexOf("<"))).setPermissions(permissions).queue();
 
-                    });
+
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Created role \"" + (e.getMessage().getContentRaw().substring(code.indexOf("yrole create ") + 13,code.indexOf("<")).trim()) + "\"","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                            .build()).queue();
 
                 } else {
 
 
-                    e.getChannel().sendMessage("Invalid permission code, try y!role perm to see all permission codes").queue(w -> {
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Invalid permission code, try yrole perm to see all permission codes","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
 
-                    });
+                            .build()).queue();
 
 
                 }
 
 
             } else {
-                e.getChannel().sendMessage("You do not have permission.").queue(w -> {
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You do not have permission.","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
 
-                });
+                        .build()).queue();
             }
 
 
@@ -155,23 +171,29 @@ public class Role {
 
                 try {
                     int[] rgb = getRGB(colorID);
-                    e.getGuild().getController().createRole().setName(e.getMessage().getContentRaw().substring(code.indexOf("y!role create ") + 13,code.indexOf("["))).setColor(new Color(rgb[0], rgb[1], rgb[2])).queue();
-                    e.getChannel().sendMessage("Created role \"" + (e.getMessage().getContentRaw().substring(code.indexOf("y!role create ") + 13,code.indexOf("[")).trim()) + "\"").queue(w -> {
+                    e.getGuild().getController().createRole().setName(e.getMessage().getContentRaw().substring(code.indexOf("yrole create ") + 13,code.indexOf("["))).setColor(new Color(rgb[0], rgb[1], rgb[2])).queue();
 
-                    });
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Created role \"" + (e.getMessage().getContentRaw().substring(code.indexOf("yrole create ") + 13,code.indexOf("[")).trim()) + "\"","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                                .build()).queue();
+
                 } catch (Exception aa) {
 
-                    e.getChannel().sendMessage("Invalid hex color: e.g. #fffff or ffffff").queue(w -> {
 
-                    });
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Invalid hex color: e.g. #fffff or ffffff","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                            .build()).queue();
 
                 }
 
 
         } else {
-            e.getChannel().sendMessage("You do not have permission.").queue(w -> {
 
-            });
+
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You do not have permission.","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                        .build()).queue();
+
         }
 
 
@@ -205,7 +227,11 @@ public class Role {
                     "28 - \"Manage Roles\"\n" +
                     "29 - \"Manage Webhooks\"\n" +
                     "30 - \"Manage Emojis\"";
-            e.getChannel().sendMessage("Type the number corresponding to the permission when adding permissions for roles\n"+permission).queue();
+
+
+            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Type the number corresponding to the permission when adding permissions for roles","https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+.setDescription(permission)
+                    .build()).queue();
 
         }else if(co.length >= 3 && co[1].equals("add") && code.contains("<") && code.contains(">")){
             ArrayList<Member> users = new ArrayList();
@@ -276,16 +302,23 @@ try{
         if(ind!=-1){
             try{
                 e.getGuild().getController().removeRolesFromMember(users.get(ind),roles ).queue();
-                e.getChannel().sendMessage("Successfully removed " +users.get(ind).getUser().getName() +  " from "+builder ).queue();
-            }catch (Exception eae){
-                e.getChannel().sendMessage("Error: Bot can't modify a role with higher or equal highest role than itself! " ).queue();
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Successfully removed " +users.get(ind).getUser().getName() +  " from "+builder ,"https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
 
+                        .build()).queue();
+            }catch (Exception eae){
+
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Bot can't modify a role with higher or equal highest role than itself!" ,"https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                        .build()).queue();
             }
 
 
 
         }else{
-            e.getChannel().sendMessage("Username not found.").queue();
+            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("User not found." ,"https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                    .build()).queue();
+
 
         }
 
@@ -295,8 +328,10 @@ try{
 
     }else{
             if(co.length >= 2)
-            e.getChannel().sendMessage("Invalid Command. See y!role for commands.").queue();
 
+            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Invalid Command. See yrole for commands." ,"https://melbournechapter.net/images/responsibility-clipart-role-10.png","https://melbournechapter.net/images/responsibility-clipart-role-10.png")
+
+                    .build()).queue();
         }
 
         Timer time = new Timer();

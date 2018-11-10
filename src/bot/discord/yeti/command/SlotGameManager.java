@@ -2,9 +2,11 @@ package bot.discord.yeti.command;
 
 import bot.discord.yeti.currency.Bank;
 import bot.discord.yeti.game.slot.SlotMachine;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.io.*;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -38,84 +40,102 @@ public class SlotGameManager {
                 int currentBal = bank.getAllBalance().get(indx).getBalance();
 
                 if (price <= currentBal) {
-                    SlotMachine slot = new SlotMachine();
-                    int finalPrice = price;
-                    Bank finalBank = bank;
-                    int finalPrice1 = price;
-                    msg.getChannel().sendMessage(slot.empty()).queue(message -> {
+                    if(price>0){
+
+                        SlotMachine slot = new SlotMachine();
+                        int finalPrice = price;
+                        Bank finalBank = bank;
+                        int finalPrice1 = price;
+
+                        msg.getChannel().sendMessage(   new EmbedBuilder().setColor(new Color(0x8CC8FF)).setDescription(slot.empty()).build()).queue(message -> {
 
 
-                        Timer time = new Timer();
-                        time.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                slot.play();
-                                message.editMessage(slot.firstIter()).queue(message1 -> {
-                                    Timer time = new Timer();
-                                    time.schedule(new TimerTask() {
-                                        @Override
-                                        public void run() {
-                                            message.editMessage(slot.secondIter()).queue(message2 -> {
-                                                Timer time = new Timer();
-                                                time.schedule(new TimerTask() {
-                                                    @Override
-                                                    public void run() {
-                                                        String winningMessage;
-                                                        if (slot.getWinMultiplier() == 0) {
-                                                            finalBank.getAllBalance().get(indx).setBalance(currentBal - finalPrice1);
-                                                            winningMessage = "You lose.";
+                            Timer time = new Timer();
+                            time.schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                    slot.play();
+
+                                    message.editMessage(    new EmbedBuilder().setColor(new Color(0x8CC8FF)).setDescription(slot.firstIter()).build()).queue(message1 -> {
+                                        Timer time = new Timer();
+                                        time.schedule(new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                message.editMessage(  new EmbedBuilder().setColor(new Color(0x8CC8FF)).setDescription(slot.secondIter()).build()
+                                                ).queue(message2 -> {
+                                                    Timer time = new Timer();
+                                                    time.schedule(new TimerTask() {
+                                                        @Override
+                                                        public void run() {
+                                                            String winningMessage;
+                                                            if (slot.getWinMultiplier() == 0) {
+                                                                finalBank.getAllBalance().get(indx).setBalance(currentBal - finalPrice1);
+                                                                winningMessage = "You lose.";
 
 
-                                                        } else if (slot.getWinMultiplier() == 1) {
+                                                            } else if (slot.getWinMultiplier() == 1) {
 
-                                                            winningMessage = "You broke even. Returned " +  (Integer.valueOf(finalPrice)) + " :gem:";
+                                                                winningMessage = "You broke even. Returned " +  (Integer.valueOf(finalPrice)) + " :gem:";
 
-                                                        } else {
-                                                            finalBank.getAllBalance().get(indx).setBalance(currentBal + (finalPrice1 * slot.getWinMultiplier()));
-                                                            winningMessage = "You win " + finalPrice * slot.getWinMultiplier() + " \uD83D\uDC8E";
+                                                            } else {
+                                                                finalBank.getAllBalance().get(indx).setBalance(currentBal + (finalPrice1 * slot.getWinMultiplier()));
+                                                                winningMessage = "You win " + finalPrice * slot.getWinMultiplier() + " \uD83D\uDC8E";
 
+                                                            }
+                                                            message.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setDescription(slot.thirdIter() + "\n" + " " + winningMessage).build()
+                                                            ).queue();
+
+                                                            try {
+                                                                FileOutputStream fileOut =
+                                                                        new FileOutputStream("bank.ser");
+                                                                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                                                                out.writeObject(finalBank);
+                                                                out.close();
+                                                                fileOut.close();
+                                                            } catch (IOException i) {
+                                                                i.printStackTrace();
+                                                            }
                                                         }
-                                                        message.editMessage(slot.thirdIter() + "\n" + " " + winningMessage).queue();
-                                                        try {
-                                                            FileOutputStream fileOut =
-                                                                    new FileOutputStream("bank.ser");
-                                                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                                                            out.writeObject(finalBank);
-                                                            out.close();
-                                                            fileOut.close();
-                                                        } catch (IOException i) {
-                                                            i.printStackTrace();
-                                                        }
-                                                    }
-                                                }, 750);
+                                                    }, 750);
 
-                                            });
-                                        }
-                                    }, 750);
+                                                });
+                                            }
+                                        }, 750);
 
 
-                                });
-                            }
-                        }, 750);
+                                    });
+                                }
+                            }, 750);
 
 
+                        });
+                    }else {
+                        msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You can only bet positive integers","https://s3.amazonaws.com/ais-technolabs-2018/20180627073839/jsm.png","https://s3.amazonaws.com/ais-technolabs-2018/20180627073839/jsm.png").build()).queue(m -> {
+                        });
+
+                    }
+
+
+
+
+                    }else{
+                    msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Insufficient funds, you have " + currentBal + " \uD83D\uDC8E","https://s3.amazonaws.com/ais-technolabs-2018/20180627073839/jsm.png","https://s3.amazonaws.com/ais-technolabs-2018/20180627073839/jsm.png").build()
+                    ).queue(m -> {
                     });
-                }else {
 
-                    msg.getChannel().sendMessage("Error, insufficient funds, you have " + currentBal + " \uD83D\uDC8E").queue(m -> {
-                    });
-                }
+
+                    }
+
             } catch (NumberFormatException woah) {
-                msg.getChannel().sendMessage("Error, you can only bet integers").queue(m -> {
+                msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You can only bet integers","https://s3.amazonaws.com/ais-technolabs-2018/20180627073839/jsm.png","https://s3.amazonaws.com/ais-technolabs-2018/20180627073839/jsm.png").build()).queue(m -> {
                 });
             }
-
 
         } else if(arg.length==2){
 
 
-            msg.getChannel().sendMessage("Error you do not have a bank account to bet with, try y!bank init to make one");
-
+            msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You do not have a bank account to bet with, try ybank create to make one","https://s3.amazonaws.com/ais-technolabs-2018/20180627073839/jsm.png","https://s3.amazonaws.com/ais-technolabs-2018/20180627073839/jsm.png").build()).queue(m -> {
+            });
 
         }else
 
@@ -124,7 +144,7 @@ public class SlotGameManager {
             SlotMachine slot = new SlotMachine();
 
 
-            msg.getChannel().sendMessage(slot.empty()).queue(message -> {
+            msg.getChannel().sendMessage(   new EmbedBuilder().setColor(new Color(0x8CC8FF)).setDescription(slot.empty()).build()).queue(message -> {
 
 
                 Timer time = new Timer();
@@ -132,13 +152,13 @@ public class SlotGameManager {
                     @Override
                     public void run() {
                         slot.play();
-                        message.editMessage(slot.firstIter()).queue(message1 -> {
+                        message.editMessage(    new EmbedBuilder().setColor(new Color(0x8CC8FF)).setDescription(slot.firstIter()).build()).queue(message1 -> {
                             Timer time = new Timer();
                             time.schedule(new TimerTask() {
                                 @Override
                                 public void run() {
 
-                                    message.editMessage(slot.secondIter()).queue(message2 -> {
+                                    message.editMessage(    new EmbedBuilder().setColor(new Color(0x8CC8FF)).setDescription(slot.secondIter()).build()).queue(message1 -> {
                                         Timer time = new Timer();
                                         time.schedule(new TimerTask() {
                                             @Override
@@ -155,7 +175,8 @@ public class SlotGameManager {
                                                     winningMessage = "You won on " + "✖" + slot.getWinMultiplier() + " \uD83D\uDC8E";
 
                                                 }
-                                                message.editMessage(slot.thirdIter() + "\n" + " " + winningMessage).queue();
+                                                message.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setDescription(slot.thirdIter() + "\n" + " " + winningMessage).build()
+                                                ).queue();
                                             }
                                         }, 750);
 

@@ -10,6 +10,16 @@ public class Poll implements Serializable {
     ArrayList<String> users = new ArrayList<>();
     String serverID;
 
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    String question;
+
     public String getServerID() {
         return serverID;
     }

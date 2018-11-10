@@ -4,7 +4,10 @@ import bot.discord.yeti.currency.Bank;
 import bot.discord.yeti.game.numguesser.NumGuessGame;
 import bot.discord.yeti.game.numguesser.NumGuessHolder;
 import bot.discord.yeti.game.numguesser.NumGuessUser;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -91,29 +94,35 @@ try{
                         ww.printStackTrace();
                     }
 //!numguess guess %bet amount% %number from 1-100%
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Game created 20 seconds to place bets","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+.setTitle("Type `ynumguess guess <number from 1-100>`")
+                            .build()).queue();
 
-                    e.getChannel().sendMessage("Game created 20 seconds to place bets, type y!numguess guess %number from 1-100%").queue(m -> {
-
-                    });
 
                     Timer timer = new Timer();
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
 
-                            e.getChannel().sendMessage("Place your final bets rolling in 3 seconds!...").queue(m -> {
+                            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Place your final bets rolling in 3 seconds!...","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                                    .build()).queue(m -> {
                                 Timer timer = new Timer();
                                 timer.schedule(new TimerTask() {
 
                                     @Override
                                     public void run() {
-                                        m.editMessage("Place your final bets rolling in 2 seconds!...").queue(m -> {
+                                        m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Place your final bets rolling in 2 seconds!...","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                                                .build()).queue(m -> {
                                             Timer timer = new Timer();
                                             timer.schedule(new TimerTask() {
 
                                                 @Override
                                                 public void run() {
-                                                    m.editMessage("Place your final bets rolling in 1 seconds!...").queue(m -> {
+                                                    m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Place your final bets rolling in 1 seconds!...","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                                                            .build()).queue(m -> {
                                                         Timer timer = new Timer();
                                                         timer.schedule(new TimerTask() {
 
@@ -209,7 +218,11 @@ if(numGuessHolder[0].getNumGuessHolders().get(ind).getNumGuessUsers().size()!=0)
 
 
     }
-    m.editMessage("The number was " + number+"\n\t"+build).queue();
+
+
+    m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("The number was " + ""+number+ "","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+            .setDescription(build)
+            .build()).queue();
 
     numGuessHolder[0].getNumGuessHolders().remove(ind);
 
@@ -234,7 +247,9 @@ if(numGuessHolder[0].getNumGuessHolders().get(ind).getNumGuessUsers().size()!=0)
 
 }else{
 
-    m.editMessage("No one guessed!").queue();
+    m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("No one guessed!","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+            .build()).queue();
     numGuessHolder[0].getNumGuessHolders().remove(ind);
 
     try {
@@ -285,8 +300,10 @@ if(numGuessHolder[0].getNumGuessHolders().get(ind).getNumGuessUsers().size()!=0)
 
 
                 }else{
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Too slow turtle, game is rolling right now","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
 
-                    e.getChannel().sendMessage("Game already in progress").queue();
+                            .build()).queue();
+
                     //error game already in progress
                 }
 
@@ -294,25 +311,36 @@ if(numGuessHolder[0].getNumGuessHolders().get(ind).getNumGuessUsers().size()!=0)
 
 
             } else {
-                e.getChannel().sendMessage("Not enough funds").queue();
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Too poor, not enough funds to play","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                        .build()).queue();
                 //error not enough funds
 
             }
 
 
         } else {
-            e.getChannel().sendMessage("You do not have a bank account").queue();
+
+            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You do not have a bank account. Try `ybank create`","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                    .build()).queue();
           //erorr you do not have a bank account
 
         }
     }else{
-        e.getChannel().sendMessage("Can only bet positive integers").queue();
+
+        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You can only bet positive integers","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                .build()).queue();
         //error have to bed postive
     }
 
 
 }catch (Exception woah){
-    e.getChannel().sendMessage("Error can only bet integers").queue();
+
+    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You can only bet integers","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+            .build()).queue();
     //error not an integer
 
 }
@@ -370,34 +398,47 @@ break;
 
 
                             } else {
-                                e.getChannel().sendMessage("Not enough funds").queue();
+                                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Too poor, not enough funds to play","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                                        .build()).queue();
+
                                 //error not enough funds
 
                             }
 
 
                         } else {
-                            e.getChannel().sendMessage("No game in progess. try y!numguess %bet amount% to start a game").queue();
-                            //erorr you do not have a bank account
+                            e.getChannel().sendMessage("").queue();
+                            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("No game in progess, try `ynumguess <bet amount>` to start a game","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                                    .build()).queue();
 
                         }
                     }else{
-                        e.getChannel().sendMessage("Error you do not have a bank account").queue();
+
                         //error have to bed postive
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You do not have a bank account. Try `ybank create`","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                                .build()).queue();
                     }
 
                         }else{
 
 
-                    e.getChannel().sendMessage("Error can only guess number from 1-100").queue();
 
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You can only guess number from 1-100","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                            .build()).queue();
 
                         }
 
 
 
             }catch (Exception woah){
-                e.getChannel().sendMessage("Error can only guess integers").queue();
+
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You can only guess integers","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw","https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+
+                        .build()).queue();
                 //error not an integer
 
             }
@@ -406,7 +447,14 @@ break;
 
         }else{
             if(!e.getAuthor().isBot())
-            e.getChannel().sendMessage("y!numguess start <bet amount> - Start a match with a fixed bet amount\n!numguess guess <number> - Guess number within 1-100").queue();
+
+
+            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Number Guess Commands")
+                    .setThumbnail("https://lh3.googleusercontent.com/p-WM2Wf_K1e2KAhM6ieSerOa7q-C9FMXuqyNUtsEalG9TB8WyHhQAhM7CvMDhMIILA=s180-rw")
+                    .addField("Start a match with a fixed bet amount","```ynumguess start <bet amount>```",false)
+                    .addField("Guess number within 1-100","```ynumguess guess <number> ```",false)
+                    .build()).queue();
+
         }
 
         Timer time = new Timer();

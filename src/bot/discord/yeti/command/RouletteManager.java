@@ -5,8 +5,10 @@ import bot.discord.yeti.game.roulette.Roulette;
 import bot.discord.yeti.game.roulette.RouletteGame;
 import bot.discord.yeti.game.roulette.RouletteGameHolder;
 import bot.discord.yeti.game.roulette.RouletteUsers;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -50,7 +52,14 @@ public class RouletteManager {
         }
         int bankAccountIndex = bank[0].getAccountIndex(e.getAuthor().getId());
         if(code.length == 1){
-            e.getChannel().sendMessage("Start a game\ny!roulette start\n\nPlace a bet\ny!roulette bet <bet amount> [red, black, green, odd, even, <1-36>]").queue();
+
+
+            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Roulette Commands")
+                    .setThumbnail("https://media1.tenor.com/images/acc9dbe546a6d84b7025a088770ac0d4/tenor.gif?itemid=5280264")
+                    .addField("Start a game","```yroulette start```",false)
+                    .addField("Place a bet","```yroulette bet <bet amount> [red, black, green, odd, even, <1-36>]```",false)
+                    .build()).queue();
+
         }
         if (code.length == 2 && code[1].equals("start")) {
             boolean gameInProg = false;
@@ -78,9 +87,11 @@ public class RouletteManager {
                     ww.printStackTrace();
                 }
 
-                e.getChannel().sendMessage("Game created! 30 seconds to place bets, type y!roulette bet").queue(m -> {
 
-                });
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Game created! 30 seconds to place bets" ,"http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+.setTitle("```yroulette bet <bet amount> [red, black, green, odd, even, <1-36>]```")
+                        .build()).queue();
+
 
                 Timer ee = new Timer();
                 String finalServerid = serverid;
@@ -92,19 +103,25 @@ public class RouletteManager {
                         String finalServerid = e.getGuild().getId();
                         final Bank[] finalBank = {bank[0]};
 
-                        e.getChannel().sendMessage("Final bets! Rolling in 3 seconds!...").queue(m -> {
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Final bets! Rolling in 3 seconds!..." ,"http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+
+                                .build()).queue(m -> {
                             Timer timer = new Timer();
                             timer.schedule(new TimerTask() {
 
                                 @Override
                                 public void run() {
-                                    m.editMessage("Final bets! Rolling in 2 seconds!...").queue(m -> {
+                                    m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Final bets! Rolling in 2 seconds!..." ,"http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+
+                                            .build()).queue(m -> {
                                         Timer timer = new Timer();
                                         timer.schedule(new TimerTask() {
 
                                             @Override
                                             public void run() {
-                                                m.editMessage("Final bets! Rolling in 1 seconds!...").queue(m -> {
+                                                m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Final bets! Rolling in 1 seconds!..." ,"http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+
+                                                        .build()).queue(m -> {
                                                     Timer timer = new Timer();
                                                     timer.schedule(new TimerTask() {
 
@@ -130,7 +147,9 @@ public class RouletteManager {
 
                                                             }
 
-                                                            m.editMessage(rollNumber + " | " + icon).queue(message -> {
+                                                            m.editMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor(rollNumber + " | " + icon ,"http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+
+                                                                    .build()).queue(message -> {
                                                                 try {
                                                                     FileInputStream fileIn = new FileInputStream("roulette.ser");
                                                                     ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -232,8 +251,10 @@ public class RouletteManager {
 
 
             } else {
-                e.getChannel().sendMessage("Error game already in progress, try y!roulette bet").queue();
 
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Game already in progress place your bets" ,"http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+                        .setTitle("```yroulette bet <bet amount> [red, black, green, odd, even, <1-36>]```")
+                        .build()).queue();
             }
 
         } else if (code.length == 4 && code[1].equals("bet")) {
@@ -296,15 +317,19 @@ public class RouletteManager {
                                 }
 
                                 if (!found)
-                                    e.getChannel().sendMessage("No game in progress. Format: !roulette init").queue();
+
+                                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("No game in progress, create a game" ,"http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+                                        .setTitle("```yroulette start```")
+                                        .build()).queue();
                                 //error no running games
 
 
                             } else {
 
-                                e.getChannel().sendMessage("Error insufficient funds, you have " + currentBal + " \uD83D\uDC8E").queue(m -> {
-                                });
 
+                                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Insufficient funds, you have " + currentBal + " \uD83D\uDC8E" ,"http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+                                        .setTitle("```yroulette start```")
+                                        .build()).queue();
 
                             }
 
@@ -316,14 +341,17 @@ public class RouletteManager {
 
                         }else{
 
-                            e.getChannel().sendMessage("Invalid bet, roulette only supports red, black, even, odd, or a number from 1-36");
+
+                            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Invalid bet, roulette only supports red, black, even, odd, or a number from 1-36" ,"http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+                                    .build()).queue();
 
                         }
 
                     }else{
 
-                        e.getChannel().sendMessage("Invalid bet, you can only bet positive integers");
 
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Invalid bet, you can only bet positive integers","http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+                                .build()).queue();
 
                     }
 
@@ -335,19 +363,22 @@ public class RouletteManager {
 
 
                 } catch (Exception e1) {
-                    e.getChannel().sendMessage("You can only bet integers");
 
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You can only bet integers","http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+                            .build()).queue();
                 }
 
             }else{
 
-                e.getChannel().sendMessage("You do not have a bank account to bet with, try y!bank init to make one");
 
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You do not have a bank account to bet with, try ybank create to make one","http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+                        .build()).queue();
 
             }
         }else{
             if(code.length >= 2) {
-                e.getChannel().sendMessage("Invalid Command. See y!roulette for commands.").queue();
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Invalid Command. See yroulette for commands.","http://pngimg.com/uploads/roulette/roulette_PNG15.png","http://pngimg.com/uploads/roulette/roulette_PNG15.png")
+                        .build()).queue();
             }
         }
     }

@@ -24,7 +24,7 @@ public class Main {
         builder.setAutoReconnect(true);
 
         builder.setStatus(OnlineStatus.ONLINE);
-        builder.setGame(Game.listening("y!help | y!invite"));
+        builder.setGame(Game.listening("yhelp | yinvite"));
       //  builder.addEventListener(new ReadyListener());
 
       builder.addEventListener(new Command());

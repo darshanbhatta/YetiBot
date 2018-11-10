@@ -10,9 +10,9 @@ public class Dic {
 
     //ban txt
 public static String ban1 = "Unable to ban a member with higher or equal highest role than yourself.";
-public static String ban2 = "Format: !ban @username (Optional: reason)";
+public static String ban2 = "```yban @user (optional: reason)```";
     //bank txt
-public static String bank1 = "Recipient does not have an account, tell them to type !bank create to make one";
+public static String bank1 = "Recipient does not have an account, tell them to type **ybank create** to make one";
 
     public static String bank3 = "";
     public static String bank4 = "";

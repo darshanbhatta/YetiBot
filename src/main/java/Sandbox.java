@@ -6,9 +6,13 @@ import bot.discord.yeti.game.blackjack.BlackjackGame;
 import bot.discord.yeti.game.blackjack.BlackjackGameHolder;
 import bot.discord.yeti.game.connect4.Connect4Game;
 import bot.discord.yeti.game.connect4.Connect4Holder;
+import bot.discord.yeti.game.roulette.RouletteGame;
+import bot.discord.yeti.game.roulette.RouletteGameHolder;
 import bot.discord.yeti.game.slot.Slot;
 import bot.discord.yeti.game.slot.SlotMachine;
 import bot.discord.yeti.util.broadcast.OptOutList;
+import bot.discord.yeti.util.poll.Poll;
+import bot.discord.yeti.util.poll.PollHolder;
 import net.dv8tion.jda.client.requests.restaction.pagination.MentionPaginationAction;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.Region;
@@ -378,6 +382,19 @@ for(int w=0;w<100;w++){
 }
         System.out.println((double) moneyWin.size()/(moneyWin.size()+moneyLose.size()));
 */
+
+        RouletteGameHolder x = new RouletteGameHolder();
+        x.getRouletteGames().add(new RouletteGame(true," "));
+        try {
+            FileOutputStream fileOut = new FileOutputStream("roulette.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(x);
+            out.close();
+            fileOut.close();
+        } catch (IOException ww) {
+            ww.printStackTrace();
+        }
+
 
 }
 

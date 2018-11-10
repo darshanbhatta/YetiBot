@@ -19,7 +19,10 @@ public class RedditManager {
         //!reddit funny
         String[] code = event.getMessage().getContentRaw().split(" ");
         if(code.length == 1){
-            event.getChannel().sendMessage("y!reddit (subreddit name) - Displays a popular post from the subreddit").queue();
+            event.getChannel().sendMessage(" - ").queue();
+            event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Reddit Format").setThumbnail("http://i.imgur.com/sdO8tAw.png").addField(
+                    "Displays a popular post from the subreddit","```yreddit (subreddit name)```",true)
+                    .build()).queue();
         }
         if(code.length==2){
             String subReddit = code[1];
@@ -47,9 +50,10 @@ public class RedditManager {
                 String linkSrc = "https://www.reddit.com"+arr.getJSONObject("data").getJSONArray("children").getJSONObject(ran).getJSONObject("data").get("permalink").toString();
                 in.close();
                 EmbedBuilder eb = new EmbedBuilder();
-                eb.setTitle(title,linkSrc);
+                eb.setAuthor(title,linkSrc,"http://i.imgur.com/sdO8tAw.png");
                 eb.setImage(imgSrc);
                 eb.setColor(new Color(255, 102, 102));
+                eb.setFooter(subReddit,"https://cdn.freebiesupply.com/logos/large/2x/reddit-alien-logo-png-transparent.png");
                 String nsfw = arr.getJSONObject("data").getJSONArray("children").getJSONObject(ran).getJSONObject("data").get("over_18").toString();
 
                 if(nsfw.equals("true")){
@@ -57,7 +61,9 @@ public class RedditManager {
                     if(event.getTextChannel().isNSFW()){
                         event.getChannel().sendMessage(eb.build()).queue();
                     }else{
-                        event.getChannel().sendMessage("Cannot post NSFW content to SFW channels").queue();
+
+                        event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Cannot post NSFW content to SFW channels","http://i.imgur.com/sdO8tAw.png","http://i.imgur.com/sdO8tAw.png")
+                                .build()).queue();
                     }
 
                 }else{
@@ -69,8 +75,8 @@ public class RedditManager {
 
             }catch (Exception ea){
 
-                event.getChannel().sendMessage("Cannot find subreddit.").queue();
-
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Cannot find subreddit.","http://i.imgur.com/sdO8tAw.png","http://i.imgur.com/sdO8tAw.png")
+                        .build()).queue();
             }
 
 

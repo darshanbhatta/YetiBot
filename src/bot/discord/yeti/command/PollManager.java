@@ -4,8 +4,10 @@ import bot.discord.yeti.game.jackpot.JackpotGame;
 import bot.discord.yeti.game.jackpot.JackpotGameHolder;
 import bot.discord.yeti.util.poll.Poll;
 import bot.discord.yeti.util.poll.PollHolder;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.io.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -60,13 +62,17 @@ public class PollManager {
 
                 pollHolders[0].getPolls().add(new Poll(event.getGuild().getId()));
                 pollHolders[0].getPolls().get(pollHolders[0].getPolls().size()-1).setUpChoices(choi.length);
+                pollHolders[0].getPolls().get(pollHolders[0].getPolls().size()-1).setQuestion(title);
                 String build = "\n\t";
              for(int x=0;x<choi.length;x++){
-                 build+=(x+1)+") " + choi[x]+"\n\t";
+                 build+="**"+(x+1)+")** " + choi[x]+"\n\t";
                  pollHolders[0].getPolls().get(pollHolders[0].getPolls().size()-1).getChoi().add(choi[x]);
 
              }
-             event.getChannel().sendMessage("[Poll] " + title+" \n"+second +" seconds to vote!\n"+build).queue();
+
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Poll] " + title+" \n"+second +" seconds to vote!","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png")
+                        .setDescription(build)
+                        .build()).queue();
                 try {
                     FileOutputStream fileOut = new FileOutputStream("poll.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -123,7 +129,9 @@ String build = "";
                             }
 
 
-                            event.getChannel().sendMessage("Poll results \n\t" + build).queue();
+                            event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Poll Results] " + pollHolders[0].getPolls().get(ind).getQuestion(),"https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png")
+                                    .setDescription(build)
+                                    .build()).queue();
                             pollHolders[0].getPolls().remove(ind);
                             try {
                                 FileOutputStream fileOut = new FileOutputStream("poll.ser");
@@ -146,7 +154,10 @@ String build = "";
                             } catch (IOException ww) {
                                 ww.printStackTrace();
                             }
-                            event.getChannel().sendMessage("No one voted").queue();
+
+                            event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("No one voted!","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png")
+
+                                    .build()).queue();
                             //no one voted
 
                         }
@@ -159,9 +170,11 @@ String build = "";
 
 
             }else{
-                event.getChannel().sendMessage("A poll is already in progress.").queue();
-                //error game in prog
 
+                //error game in prog
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("A poll is already in progress.","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png")
+
+                        .build()).queue();
             }
 
 
@@ -189,11 +202,16 @@ String build = "";
                             for(int x=0;x<pollHolders[0].getPolls().get(ind).getChoices().length;x++){
                                 BigDecimal a = new BigDecimal((((double)pollHolders[0].getPolls().get(ind).getChoices()[x]/total*100)));
                                 BigDecimal b = a.setScale(2, RoundingMode.DOWN);
-                                build+=pollHolders[0].getPolls().get(ind).getChoi().get(x) + " | " + (b +"%\n\t");
+                                build+=pollHolders[0].getPolls().get(ind).getChoi().get(x) + " | **" + (b +"%**\n\t");
                             }
 
 
-                            event.getChannel().sendMessage("Poll results \n\t" + build).queue();
+
+
+                            event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Poll Results] " + pollHolders[0].getPolls().get(ind).getQuestion(),"https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png")
+                                   .setDescription(build)
+                                    .build()).queue();
+
                             pollHolders[0].getPolls().remove(ind);
                             try {
                                 FileOutputStream fileOut = new FileOutputStream("poll.ser");
@@ -216,7 +234,9 @@ String build = "";
                             } catch (IOException ww) {
                                 ww.printStackTrace();
                             }
-                            event.getChannel().sendMessage("No one voted").queue();
+
+                            event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("No one voted!","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png")
+                                    .build()).queue();
                             //no one voted
 
                         }
@@ -228,7 +248,9 @@ String build = "";
 
             }else{
 
-                event.getChannel().sendMessage("No active polls. Try y!poll (title) [list of options] <time limit in seconds>").queue();
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("No active polls.","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png")
+                        .addField("Creating a poll","```ypoll (title) [list of options] <time limit (sec)>```",false)
+                        .build()).queue();
                 try {
                     FileOutputStream fileOut = new FileOutputStream("poll.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -263,9 +285,10 @@ String build = "";
                 if(ind!=-1){
                     if(pollHolders[0].getPolls().get(ind).getUsers().contains(event.getAuthor().getId())){
 
-                        event.getChannel().sendMessage("You cannot vote more than once").queue();
 
 
+                        event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("You cannot vote more than once","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png")
+                                .build()).queue();
 
                     }else{
 
@@ -288,22 +311,33 @@ String build = "";
 
                 }else{
 
-                    event.getChannel().sendMessage("No active polls. Format: y!poll (title) [list of options] <time limit (sec)>").queue();
+
+                    event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("No active polls.","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png")
+                            .addField("Creating a poll","```ypoll (title) [list of options] <time limit (sec)>```",false)
+                            .build()).queue();
 
                 }
 
 
             }catch (Exception e){
 
-                event.getChannel().sendMessage("Vote has to be an integer").queue();
 
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Vote has to be an integer","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png","https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png")
+
+                        .build()).queue();
             }
 
 
 
         }else{
-            if(!event.getAuthor().isBot())
-            event.getChannel().sendMessage("Start a poll - y!poll (title) [list of options separated by commas] <time limit (sec)>\nExample: !poll (Do you enjoy using YetiBot?) [Yes, Sure, Absolutely] <20>\n\nVote in a poll - !poll <vote number>\nEnd a poll - !poll end").queue();
+            if(!event.getAuthor().isBot()){
+                event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Poll").setThumbnail("https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1519671338/poll-everywhere.png").addField(
+                        "Creating","```ypoll (title) [list of options separated by commas] <time limit (sec)>```",true)
+                        .addField("Example","```ypoll (Do you enjoy using YetiBot?) [Yes, Sure, Absolutely] <20>```",true)
+                        .addField("Voting","```ypoll <vote number>```",true)
+                        .addField("Ending","```ypoll end```",true)
+                        .build()).queue();
+            }
 
 
 

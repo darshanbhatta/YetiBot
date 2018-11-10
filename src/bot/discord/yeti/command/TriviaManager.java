@@ -82,7 +82,7 @@ if( triviaHolders[0].getGames().get(triviaHolders[0].getGames().size() - 1).getQ
 }else{
     eb.setColor(new Color(255, 77, 77));
 }
-               eb.setAuthor(triviaHolders[0].getGames().get(triviaHolders[0].getGames().size() - 1).getQuestions().get(num[0]).getCategory());
+               eb.setAuthor(triviaHolders[0].getGames().get(triviaHolders[0].getGames().size() - 1).getQuestions().get(num[0]).getCategory(),"https://i.imgur.com/O0BhlYP.png","https://i.imgur.com/O0BhlYP.png");
                        eb.setDescription(build);
 
                        event.getChannel().sendMessage(eb.build()).queue();
@@ -125,7 +125,7 @@ if( triviaHolders[0].getGames().get(triviaHolders[0].getGames().size() - 1).getQ
                                    String users = "";
                                    for (int i = 0; i < triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getUsers().size(); i++) {
                                        if (triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getUsers().get(i).getAnswer().equals(triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getCorrecAnswer())) {
-                                           users += triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getUsers().get(i).getName()+"\n";
+                                           users += +(i+1)+") "+triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getUsers().get(i).getName()+"\n";
 
 
                                        }
@@ -142,13 +142,13 @@ if( triviaHolders[0].getGames().get(triviaHolders[0].getGames().size() - 1).getQ
                                        }
 
                                    }
-                                   embedBuilder.setTitle(which + ") " + triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getCorrecAnswer());
+                                   embedBuilder.setAuthor(which + ") " + triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getCorrecAnswer(),"https://i.imgur.com/O0BhlYP.png","https://i.imgur.com/O0BhlYP.png");
                                    if (users.equals("")) {
                                        embedBuilder.setDescription("No one got it correct");
                                        embedBuilder.setColor(new Color(255, 77, 77));
                                    } else {
                                        embedBuilder.setColor(new Color(51, 204, 51));
-                                       embedBuilder.setDescription("Correct answers\n" + users);
+                                       embedBuilder.setDescription("**Correct answers**\n" + users);
 
                                    }
 
@@ -184,7 +184,7 @@ if( triviaHolders[0].getGames().get(triviaHolders[0].getGames().size() - 1).getQ
                                        }else{
                                            eb.setColor(new Color(255, 77, 77));
                                        }
-                                       eb.setAuthor(triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getCategory());
+                                       eb.setAuthor(triviaHolders[0].getGames().get(ind).getQuestions().get(num[0]).getCategory(),"https://i.imgur.com/O0BhlYP.png","https://i.imgur.com/O0BhlYP.png");
                                        event.getChannel().sendMessage(eb.build()).queue();
 
 
@@ -222,9 +222,10 @@ triviaHolders[0].getGames().remove(ind);
 
 
                            } else {
-                               event.getChannel().sendMessage("Error no current game!").queue();
-                               //error no game
 
+                               //error no game
+                               event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Trivia] Error no current game!","https://i.imgur.com/O0BhlYP.png","https://i.imgur.com/O0BhlYP.png")
+                                       .build()).queue();
                            }
 
 
@@ -246,9 +247,10 @@ triviaHolders[0].getGames().remove(ind);
 
 
            }else{
-               event.getChannel().sendMessage("Game in progress").queue();
-               //game in prog
 
+               //game in prog
+               event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Trivia] Game in progress","https://i.imgur.com/O0BhlYP.png","https://i.imgur.com/O0BhlYP.png")
+                       .build()).queue();
            }
 
 
@@ -282,14 +284,15 @@ triviaHolders[0].getGames().remove(ind);
                    ww.printStackTrace();
                }
                timer.cancel();
-               event.getChannel().sendMessage("Ended trivia game").queue();
 
+               event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Trivia] Ended trivia game","https://i.imgur.com/O0BhlYP.png","https://i.imgur.com/O0BhlYP.png")
+                       .build()).queue();
 
 
            }else{
 
-               event.getChannel().sendMessage("Error no current games").queue();
-
+               event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Trivia] Error no current game!","https://i.imgur.com/O0BhlYP.png","https://i.imgur.com/O0BhlYP.png")
+                       .build()).queue();
 
            }
 
@@ -338,13 +341,16 @@ triviaHolders[0].getGames().remove(ind);
 
                    }else{
 
-                       event.getChannel().sendMessage("Error you have already answered").queue();
 
+                       event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Trivia] Error you have already answered","https://i.imgur.com/O0BhlYP.png","https://i.imgur.com/O0BhlYP.png")
+                               .build()).queue();
                    }
 
 
                }else{
-                   event.getChannel().sendMessage("Error no current game!").queue();
+                   event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Trivia] Error no current game!","https://i.imgur.com/O0BhlYP.png","https://i.imgur.com/O0BhlYP.png")
+                           .build()).queue();
+
                    //no current game
 
                }
@@ -352,7 +358,9 @@ triviaHolders[0].getGames().remove(ind);
 
            }catch (Exception e){
                System.out.println(e.toString());
-               event.getChannel().sendMessage("Answer choice has to be a number").queue();
+
+               event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Trivia] Answer choice has to be a number","https://i.imgur.com/O0BhlYP.png","https://i.imgur.com/O0BhlYP.png")
+                       .build()).queue();
                //else not an answerchoice
            }
 
@@ -361,7 +369,15 @@ triviaHolders[0].getGames().remove(ind);
 
        }else{
 
-           event.getChannel().sendMessage("Format:\n\ty!trivia start - starts the game\n\ty!trivia (answer choice number) - answer questions\n\ty!trivia quit - end any unfinished games").queue();
+
+
+           event.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Trivia")
+                   .setThumbnail("https://i.imgur.com/O0BhlYP.png")
+                   .addField("Creating","```ytrivia start```",true)
+                   .addField("Answer Questions","```ytrivia <answer choice number>```",true)
+                   .addField("End game","```ytrivia quit```",true)
+                   .build()).queue();
+
        }
 
 

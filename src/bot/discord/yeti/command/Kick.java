@@ -1,12 +1,14 @@
 package bot.discord.yeti.command;
 
 import bot.discord.yeti.dictionary.Dic;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,8 +18,11 @@ public class Kick {
     public static void run(Message msg, MessageReceivedEvent event) {
 
 
-        if (msg.getContentRaw().toLowerCase().equals("y!kick")) {
-            msg.getChannel().sendMessage("Format: y!kick @username (Optional: Reason)").queue();
+        if (msg.getContentRaw().toLowerCase().equals("ykick")) {
+            msg.getChannel().sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Something went wrong")
+                    .setThumbnail("https://i.imgur.com/t4yagto.png")
+                    .addField("Format","```ykick @username (Optional: Reason)```",false)
+                    .build()).queue();
 
         } else {
             if (event.getMember().hasPermission(Permission.KICK_MEMBERS)) {
@@ -30,7 +35,7 @@ public class Kick {
 
                 try {
 
-                    String username = msg.getContentRaw().substring(msg.getContentRaw().indexOf("!ban") + 5);
+                    String username = msg.getContentRaw().substring(msg.getContentRaw().indexOf("yban") + 5);
                     if (username.contains("<")) {
                         username = username.substring(2, username.indexOf(">"));
                     }
@@ -51,21 +56,29 @@ public class Kick {
 
                                         try {
                                             guild.getController().kick(users.get(x), reason).queue();
-                                            msg.getChannel().sendMessage("Successfully kicked " + users.get(x).getUser().getName()).queue(w -> {
+
                                                 count[0]++;
 
-                                            });
-                                        } catch (Exception e) {
-                                            msg.getChannel().sendMessage("Unable to kick a member with higher or equal highest role than yourself!").queue(w -> {
+                                                msg.getChannel().sendMessage(new EmbedBuilder().setColor(Color.GREEN).setTitle("Kicked")
+                                                        .setThumbnail("https://i.imgur.com/t4yagto.png")
+                                                        .setDescription("Successfully kicked " + users.get(x).getUser().getName())
+                                                        .build()).queue();
 
-                                            });
+                                        } catch (Exception e) {
+
+
+                                            msg.getChannel().sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Something went wrong")
+                                                    .setThumbnail("https://i.imgur.com/t4yagto.png")
+                                                    .setDescription("Unable to kick a member with higher or equal highest role than yourself!")
+                                                    .build()).queue();
 
                                         }
 
                                     } else {
-                                        msg.getChannel().sendMessage("You do not have permission.").queue(w -> {
-
-                                        });
+                                        msg.getChannel().sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Something went wrong")
+                                                .setThumbnail("https://i.imgur.com/t4yagto.png")
+                                                .setDescription(Dic.noPermission)
+                                                .build()).queue();
                                     }
 
 
@@ -75,21 +88,28 @@ public class Kick {
 
                         } else {
 
-                            msg.getChannel().sendMessage("Unable to kick.").queue(w -> {
 
 
-                            });
+                                msg.getChannel().sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Something went wrong")
+                                        .setThumbnail("https://i.imgur.com/t4yagto.png")
+                                     .setDescription("Unable to kick.")
+                                        .build()).queue();
+
+
                         }
 
 
                     } else {
-                        msg.getChannel().sendMessage("Format: y!kick @username (Optional: Reason)").queue();
+                        msg.getChannel().sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Something went wrong")
+                                .setThumbnail("https://i.imgur.com/t4yagto.png")
+                                .addField("Format","```ykick @username (Optional: Reason)```",false)
+                                .build()).queue();
                     }
                 } catch (StringIndexOutOfBoundsException e) {
-                    msg.getChannel().sendMessage("Format: y!kick @username (Optional: Reason)").queue(w -> {
-
-
-                    });
+                    msg.getChannel().sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Something went wrong")
+                            .setThumbnail("https://i.imgur.com/t4yagto.png")
+                            .addField("Format","```ykick @username (Optional: Reason)```",false)
+                            .build()).queue();
 
 
                 }
@@ -97,9 +117,10 @@ public class Kick {
 
             } else {
 
-                msg.getChannel().sendMessage(Dic.noPermission).queue(w -> {
-
-                });
+                msg.getChannel().sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Something went wrong")
+                        .setThumbnail("https://i.imgur.com/t4yagto.png")
+                        .setDescription(Dic.noPermission)
+                        .build()).queue();
             }
 
 

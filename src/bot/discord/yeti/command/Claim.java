@@ -4,8 +4,10 @@ import bot.discord.yeti.currency.Bank;
 import bot.discord.yeti.game.trivia.TriviaHolder;
 import bot.discord.yeti.util.reward.RewardUser;
 import bot.discord.yeti.util.reward.RewardUserHolder;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.io.*;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -46,7 +48,17 @@ public class Claim {
 
         //!claim daily
         if(code.length == 1){
-            event.getChannel().sendMessage("y!claim hourly - Claim 50 :gem: - Available every 60 minutes\ny!claim daily - Claim 500 :gem: - Available every 24 hours").queue();
+         //   event.getChannel().sendMessage("y!claim hourly -  - Available every 60 minutes\ny!claim daily - ").queue();
+
+            event.getGuild().getDefaultChannel().sendMessage(new EmbedBuilder().setTitle("Claim")
+                    .setThumbnail("https://image.flaticon.com/icons/png/512/189/189093.png")
+                    .addField("Claim 50 :gem: every 60 minutes","```yclaim hourly```",false)
+                    .addField("Claim 500 :gem: every 24 hours","```yclaim daily```",false)
+                    .setColor(new Color(0x8CC8FF)).build()).queue();
+
+
+
+
         }
         if(code.length==2&&code[1].equals("daily")){
 int indx = -1;
@@ -70,7 +82,13 @@ int indx = -1;
 
                int w =  bank[0].getAccountIndex(event.getAuthor().getId());
               bank[0].getAllBalance().get(w).setBalance(bank[0].getAllBalance().get(w).getBalance()+500);
-              event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 500 \uD83D\uDC8E").queue();
+           //   event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 500 \uD83D\uDC8E").queue();
+
+                event.getGuild().getDefaultChannel().sendMessage(new EmbedBuilder().setTitle("Claim")
+                        .setThumbnail("https://image.flaticon.com/icons/png/512/189/189093.png")
+                        .setDescription("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 500 \uD83D\uDC8E")
+                        .setColor(new Color(0x8CC8FF)).build()).queue();
+
                 try {
                     FileOutputStream fileOut = new FileOutputStream("bank.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -96,7 +114,13 @@ int indx = -1;
                    rewardUserHolders[0].getRewardUsers().get(indx).setDailyTime(System.currentTimeMillis()+TimeUnit.DAYS.toMillis(1));
                    int w =  bank[0].getAccountIndex(event.getAuthor().getId());
                    bank[0].getAllBalance().get(w).setBalance(bank[0].getAllBalance().get(w).getBalance()+500);
-                   event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 500 \uD83D\uDC8E").queue();
+             //      event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 500 \uD83D\uDC8E").queue();
+
+                   event.getGuild().getDefaultChannel().sendMessage(new EmbedBuilder().setTitle("Claim")
+                           .setThumbnail("https://image.flaticon.com/icons/png/512/189/189093.png")
+                           .setDescription("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 500 \uD83D\uDC8E")
+                           .setColor(new Color(0x8CC8FF)).build()).queue();
+
                    try {
                        FileOutputStream fileOut = new FileOutputStream("bank.ser");
                        ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -120,7 +144,11 @@ int indx = -1;
                    rewardUserHolders[0].getRewardUsers().get(indx).setDailyTime(System.currentTimeMillis());
                    int w =  bank[0].getAccountIndex(event.getAuthor().getId());
                    bank[0].getAllBalance().get(w).setBalance(bank[0].getAllBalance().get(w).getBalance()+500);
-                   event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 500 \uD83D\uDC8E").queue();
+                 //  event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 500 \uD83D\uDC8E").queue();
+                   event.getGuild().getDefaultChannel().sendMessage(new EmbedBuilder().setTitle("Claim")
+                           .setThumbnail("https://image.flaticon.com/icons/png/512/189/189093.png")
+                           .setDescription("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 500 \uD83D\uDC8E")
+                           .setColor(new Color(0x8CC8FF)).build()).queue();
                    try {
                        FileOutputStream fileOut = new FileOutputStream("bank.ser");
                        ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -218,8 +246,11 @@ int indx = -1;
                    }
 
 
-                   event.getChannel().sendMessage("Error you still have " +bulid+"until you can redeem daily reward").queue();
-
+              //     event.getChannel().sendMessage("Error you still have " +bulid+"until you can redeem daily reward").queue();
+                   event.getGuild().getDefaultChannel().sendMessage(new EmbedBuilder().setTitle("Claim")
+                           .setThumbnail("https://image.flaticon.com/icons/png/512/189/189093.png")
+                           .setDescription("Error you still have " +bulid+"until you can redeem daily reward")
+                           .setColor(Color.RED).build()).queue();
 
 
                }
@@ -253,7 +284,11 @@ int indx = -1;
 
                 int w =  bank[0].getAccountIndex(event.getAuthor().getId());
                 bank[0].getAllBalance().get(w).setBalance(bank[0].getAllBalance().get(w).getBalance()+50);
-                event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s hourly reward of 50 \uD83D\uDC8E").queue();
+           //     event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s hourly reward of 50 \uD83D\uDC8E").queue();
+                event.getGuild().getDefaultChannel().sendMessage(new EmbedBuilder().setTitle("Claim")
+                        .setThumbnail("https://image.flaticon.com/icons/png/512/189/189093.png")
+                        .setDescription("Successfully redeemed " + event.getAuthor().getName()+"'s hourly reward of 50 \uD83D\uDC8E")
+                        .setColor(new Color(0x8CC8FF)).build()).queue();
                 try {
                     FileOutputStream fileOut = new FileOutputStream("bank.ser");
                     ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -279,7 +314,13 @@ int indx = -1;
                     rewardUserHolders[0].getRewardUsers().get(indx).setHourTime(System.currentTimeMillis()+TimeUnit.HOURS.toMillis(1));
                     int w =  bank[0].getAccountIndex(event.getAuthor().getId());
                     bank[0].getAllBalance().get(w).setBalance(bank[0].getAllBalance().get(w).getBalance()+50);
-                    event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s hourly reward of 50 \uD83D\uDC8E").queue();
+              //      event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s hourly reward of 50 \uD83D\uDC8E").queue();
+
+                    event.getGuild().getDefaultChannel().sendMessage(new EmbedBuilder().setTitle("Claim")
+                            .setThumbnail("https://image.flaticon.com/icons/png/512/189/189093.png")
+                            .setDescription("Successfully redeemed " + event.getAuthor().getName()+"'s hourly reward of 50 \uD83D\uDC8E")
+                            .setColor(new Color(0x8CC8FF)).build()).queue();
+
                     try {
                         FileOutputStream fileOut = new FileOutputStream("bank.ser");
                         ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -303,7 +344,13 @@ int indx = -1;
                     rewardUserHolders[0].getRewardUsers().get(indx).setHourTime(System.currentTimeMillis());
                     int w =  bank[0].getAccountIndex(event.getAuthor().getId());
                     bank[0].getAllBalance().get(w).setBalance(bank[0].getAllBalance().get(w).getBalance()+50);
-                    event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 500 \uD83D\uDC8E").queue();
+                  //  event.getChannel().sendMessage("Successfully redeemed " + event.getAuthor().getName()+"'s daily reward of 50 \uD83D\uDC8E").queue();
+
+                    event.getGuild().getDefaultChannel().sendMessage(new EmbedBuilder().setTitle("Claim")
+                            .setThumbnail("https://image.flaticon.com/icons/png/512/189/189093.png")
+                            .setDescription("Successfully redeemed " + event.getAuthor().getName()+"'s hourly reward of 50 \uD83D\uDC8E")
+                            .setColor(new Color(0x8CC8FF)).build()).queue();
+
                     try {
                         FileOutputStream fileOut = new FileOutputStream("bank.ser");
                         ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -401,7 +448,12 @@ int indx = -1;
                     }
 
 
-                    event.getChannel().sendMessage("Error you still have " +bulid+"until you can redeem hourly reward").queue();
+
+
+                    event.getGuild().getDefaultChannel().sendMessage(new EmbedBuilder().setTitle("Claim")
+                            .setThumbnail("https://image.flaticon.com/icons/png/512/189/189093.png")
+                            .setDescription("Error you still have " +bulid+"until you can redeem hourly reward")
+                            .setColor(Color.RED).build()).queue();
 
 
                 }

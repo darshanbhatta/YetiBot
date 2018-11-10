@@ -3,8 +3,10 @@ package bot.discord.yeti.command;
 import bot.discord.yeti.currency.Bank;
 import bot.discord.yeti.game.connect4.Connect4Game;
 import bot.discord.yeti.game.connect4.Connect4Holder;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.io.*;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -77,15 +79,21 @@ public class Connect4Manager {
                         ww.printStackTrace();
                     }
                     System.out.println("working");
-                    e.getChannel().sendMessage(e.getAuthor().getName()+"'s Connect 4 game\n" +connect4[0].getConnect4GameArrayList().get(indx).toString()).queue(m -> {
 
-                    });
-
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(e.getAuthor().getName()+"'s Connect 4 game")
+                           // .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                            .setDescription(connect4[0].getConnect4GameArrayList().get(indx).toString())
+                            .build()).queue();
 
 
 
                 } else {
-                    e.getChannel().sendMessage("You already are in a game. See !connect4 for commands.").queue();
+                  //  e.getChannel().sendMessage("You already are in a game. See !connect4 for commands.").queue();
+
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                            .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                            .setDescription("You are already in a game. See **yconnect4**")
+                            .build()).queue();
 
                 }
 
@@ -95,7 +103,19 @@ public class Connect4Manager {
 
             }else{
 
-                e.getChannel().sendMessage("You cannot play solo Connect Four.").queue();
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(e.getAuthor().getName()+"'s Connect 4 game")
+                        .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                        .addField("Creating","```yc4 start @user```",true)
+                        .addField("Playing","```yc4 <column number>```",true)
+                        .addField("Board","```yc4 board```",true)
+                        .addField("End game","```c4 quit```",true)
+                        .build()).queue();
+
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                        .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                        .setDescription("You cannot play solo Connect Four.")
+                        .build()).queue();
+
 
             }
 
@@ -106,7 +126,11 @@ public class Connect4Manager {
                 String user = e.getAuthor().getId();
                 if (user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid()) || user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid2())) {
 
-                    e.getChannel().sendMessage("Successfully ended " + connect4[0].getConnect4GameArrayList().get(x).getName()+ "'s Connect 4 game").queue();
+
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                            .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                            .setDescription("Successfully ended " + connect4[0].getConnect4GameArrayList().get(x).getName()+ "'s Connect 4 game")
+                            .build()).queue();
                     hasGame= true;
 
                     user.equals(connect4[0].getConnect4GameArrayList().remove(x));
@@ -125,7 +149,11 @@ public class Connect4Manager {
 
                 } if(!hasGame){
 
-                e.getChannel().sendMessage("You are not in a Connect Four game.").queue();
+                //e.getChannel().sendMessage("You are not in a Connect Four game.").queue();
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                        .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                        .setDescription("You are not in a Connect Four game.")
+                        .build()).queue();
             }
 
 
@@ -135,7 +163,13 @@ public class Connect4Manager {
                 String user = e.getAuthor().getId();
                 if (user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid()) || user.equals(connect4[0].getConnect4GameArrayList().get(x).getUserid2())) {
 
-                    e.getChannel().sendMessage(e.getAuthor().getName()+"'s Connect 4 Game\n" +connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
+
+
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(e.getAuthor().getName()+"'s Connect 4 game")
+                      //      .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                            .setDescription(connect4[0].getConnect4GameArrayList().get(x).toString())
+                            .build()).queue();
+
                     hasGame= true;
 
                     user.equals(connect4[0].getConnect4GameArrayList().remove(x));
@@ -146,7 +180,10 @@ public class Connect4Manager {
 
             } if(!hasGame){
 
-                e.getChannel().sendMessage("You are not in a Connect Four game.").queue();
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                        .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                        .setDescription("You are not in a Connect Four game.")
+                        .build()).queue();
             }
 
     }else if (code.length == 2) {
@@ -169,7 +206,11 @@ public class Connect4Manager {
                                 if (winner!=0) {
 
                                     if (winner == 1) {
-                                        e.getChannel().sendMessage(connect4[0].getConnect4GameArrayList().get(x).getName() + "won 50 \uD83D\uDC8E by beating " + connect4[0].getConnect4GameArrayList().get(x).getName2() + "\n" + connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
+
+                                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                                            //    .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                                                .setDescription(connect4[0].getConnect4GameArrayList().get(x).getName() + "won 50 \uD83D\uDC8E by beating " + connect4[0].getConnect4GameArrayList().get(x).getName2() + "\n" + connect4[0].getConnect4GameArrayList().get(x).toString())
+                                                .build()).queue();
                                         int indx = bank[0].getAccountIndex(connect4[0].getConnect4GameArrayList().get(x).getUserid());
                                         if(indx!=-1)
                                         bank[0].getAllBalance().get(indx).setBalance(bank[0].getAllBalance().get(indx).getBalance()+50);
@@ -184,7 +225,10 @@ public class Connect4Manager {
                                         }
                                         connect4[0].getConnect4GameArrayList().remove(x);
                                     } else {
-                                        e.getChannel().sendMessage(connect4[0].getConnect4GameArrayList().get(x).getName2() + " won 50 \uD83D\uDC8E by beating " + connect4[0].getConnect4GameArrayList().get(x).getName() + "\n" + connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
+                                           e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                                       //         .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                                                .setDescription(connect4[0].getConnect4GameArrayList().get(x).getName2() + "won 50 \uD83D\uDC8E by beating " + connect4[0].getConnect4GameArrayList().get(x).getName() + "\n" + connect4[0].getConnect4GameArrayList().get(x).toString())
+                                                .build()).queue();
                                         int indx = bank[0].getAccountIndex(connect4[0].getConnect4GameArrayList().get(x).getUserid2());
                                         if(indx!=-1)
                                         bank[0].getAllBalance().get(indx).setBalance(bank[0].getAllBalance().get(indx).getBalance()+50);
@@ -202,8 +246,10 @@ public class Connect4Manager {
 
                                 } else {
 
-                                    e.getChannel().sendMessage(connect4[0].getConnect4GameArrayList().get(x).getName() + "'s Connect 4 game\n" + connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
-
+                                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(e.getAuthor().getName()+"'s Connect 4 game")
+                                        //    .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                                            .setDescription(connect4[0].getConnect4GameArrayList().get(x).toString())
+                                            .build()).queue();
 
                                 }
                                 try {
@@ -218,7 +264,13 @@ public class Connect4Manager {
 
 
                             } else if (whereGo == 3) {
-                                e.getChannel().sendMessage("It's a tie!\n" + connect4[0].getConnect4GameArrayList().get(x).toString()).queue();
+
+
+                                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(e.getAuthor().getName()+"'s Connect 4 game")
+                                     //   .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                                        .setDescription("It's a tie!\n" + connect4[0].getConnect4GameArrayList().get(x).toString())
+                                        .build()).queue();
+
                                 connect4[0].getConnect4GameArrayList().remove(x);
                                 try {
                                     FileOutputStream fileOut = new FileOutputStream("connect4.ser");
@@ -231,10 +283,22 @@ public class Connect4Manager {
                                 }
                             } else {
                                 if (whereGo == 1) {
-                                    e.getChannel().sendMessage(e.getAuthor().getName() + ", it is not your turn.").queue();
+
+
+                                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(e.getAuthor().getName()+"'s Connect 4 game")
+                                            .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                                            .setDescription(e.getAuthor().getName() + ", it is not your turn.")
+                                            .build()).queue();
+
                                 } else {
 
-                                    e.getChannel().sendMessage("Column Full.").queue();
+
+
+                                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle(e.getAuthor().getName()+"'s Connect 4 game")
+                                            .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                                            .setDescription("Column Full.")
+                                            .build()).queue();
+
                                 }
 
 
@@ -255,21 +319,30 @@ break;
                     }
                     if(!found){
 
-                        e.getChannel().sendMessage("You are not in a game").queue();
+                        e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                                .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                                .setDescription("You are not in a Connect Four game.")
+                                .build()).queue();
 
                     }
 
 
                 } else {
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                            .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                            .setDescription("Invalid move number, only type numbers on the board")
+                            .build()).queue();
 
-                    e.getChannel().sendMessage("Invalid move number, only type numbers on the board").queue();
 
 
                 }
 
             }catch (Exception w){
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                        .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                        .setDescription("Invalid move number. Format: **yc4 <column number>**")
+                        .build()).queue();
 
-                e.getChannel().sendMessage("Invalid move number. Format: y!c4 <column number>").queue();
 
 
             }
@@ -279,8 +352,13 @@ break;
             //!tic board
         }else{
             if(!e.getAuthor().isBot())
-            e.getChannel().sendMessage("y!c4 start @user - Start a match\ny!c4 <column number> - Play Column\ny!c4 board - Print our your current match board\n!c4 quit - End any unfinished games").queue();
-
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Connect 4")
+                        .setThumbnail("https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/aa/e9/96/aae9966e-a95e-65b2-a504-afbb0c9ac51d/source/512x512bb.jpg")
+                        .addField("Creating","```yc4 start @user```",true)
+                        .addField("Playing","```yc4 <column number>```",true)
+                        .addField("Board","```yc4 board```",true)
+                        .addField("End game","```c4 quit```",true)
+                        .build()).queue();
         }
         Timer time = new Timer();
         time.schedule(new TimerTask() {

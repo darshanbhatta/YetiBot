@@ -1,12 +1,14 @@
 package bot.discord.yeti.command;
 
 import bot.discord.yeti.dictionary.Dic;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -25,7 +27,7 @@ public class Unban {
             users.add(bans.get(x).getUser());
         }
         try {
-            String command = msg.getContentRaw().substring(msg.getContentRaw().indexOf("y!unban") + 7);
+            String command = msg.getContentRaw().substring(msg.getContentRaw().indexOf("yunban") + 7);
             if (command.toLowerCase().equals("all")) {
                 if (users.size() != 0) {
                     for (int x = 0; x < users.size(); x++) {
@@ -33,9 +35,13 @@ public class Unban {
 
 
                     }
-                    msg.getChannel().sendMessage("Successfully unbanned all users").queue();
+
+                    msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Successfully unbanned all users","http://icons-for-free.com/free-icons/png/512/2537322.png","http://icons-for-free.com/free-icons/png/512/2537322.png").build()).queue();
+
                 } else {
-                    msg.getChannel().sendMessage("No users in ban list.").queue();
+
+                    msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("No users in ban list.","http://icons-for-free.com/free-icons/png/512/2537322.png","http://icons-for-free.com/free-icons/png/512/2537322.png").build()).queue();
+
                 }
 
 
@@ -45,45 +51,46 @@ public class Unban {
                     for (int x = 0; x < users.size(); x++) {
                         if (command.toLowerCase().contains(users.get(x).getId().toLowerCase())) {
                             guild.getController().unban(users.get(x).getId()).queue();
-                            msg.getChannel().sendMessage("Successfully unbanned " + users.get(x).getName()).queue(w -> {
 
+                            msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Successfully unbanned " + users.get(x).getName(),"http://icons-for-free.com/free-icons/png/512/2537322.png","http://icons-for-free.com/free-icons/png/512/2537322.png").build()).queue();
 
-                            });
                             count++;
+                            break;
                         }
 
                     }
                     if (count == 0) {
-                        msg.getChannel().sendMessage("Unable to find user in ban list.").queue(w -> {
 
+                        msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Unable to find user in ban list.","http://icons-for-free.com/free-icons/png/512/2537322.png","http://icons-for-free.com/free-icons/png/512/2537322.png").build()).queue();
 
-                        });
                     }
                 } else {
 
-                    msg.getChannel().sendMessage("No users in ban list.").queue(w -> {
 
+                    msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("No users in ban list.","http://icons-for-free.com/free-icons/png/512/2537322.png","http://icons-for-free.com/free-icons/png/512/2537322.png").build()).queue();
 
-                    });
                 }
 
 
             } else {
-                msg.getChannel().sendMessage("Format: y!unban @username").queue();
+                msg.getChannel().sendMessage("Format: ").queue();
+                msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Unban Format","http://icons-for-free.com/free-icons/png/512/2537322.png","http://icons-for-free.com/free-icons/png/512/2537322.png")
+                        .setDescription("```yunban @username/all```")
+                        .build()).queue();
+
             }
         } catch (StringIndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Format: y!unban @username").queue(w -> {
-
-
-            });
+            msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("Unban Format","http://icons-for-free.com/free-icons/png/512/2537322.png","http://icons-for-free.com/free-icons/png/512/2537322.png")
+                    .setDescription("```yunban @username/all```")
+                    .build()).queue();
 
 
         }
 
     }else{
-            msg.getChannel().sendMessage(Dic.noPermission).queue(w -> {
 
-            });
+            msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setAuthor("[Unban] "+Dic.noPermission,"http://icons-for-free.com/free-icons/png/512/2537322.png","http://icons-for-free.com/free-icons/png/512/2537322.png")
+                    .build()).queue();
         }
 
 

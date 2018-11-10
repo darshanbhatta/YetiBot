@@ -4,9 +4,11 @@ import bot.discord.yeti.fortniteAPI.AllStats;
 import bot.discord.yeti.fortniteAPI.LeaderFetch;
 import bot.discord.yeti.fortniteAPI.LeaderItem;
 import bot.discord.yeti.fortniteAPI.StatsAsyncTask;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -64,37 +66,40 @@ public class FortniteLeaderboard {
 
                 ArrayList<LeaderItem> leaderBoard = stats.leaderFetch();
                 StringBuilder leaderList = new StringBuilder();
-                leaderList.append("Fortnite Leaderboard\n\n");
+                leaderList.append("\n\n");
                 for (int x = 0; x < 25; x++) {
-                    leaderList.append(x + 1 + "  " + leaderBoard.get(x).getName() + "  " + leaderBoard.get(x).getWins() + " Wins  " + leaderBoard.get(x).getUserData().toUpperCase() + "\n");
+                    leaderList.append(x + 1 + ")  **" + leaderBoard.get(x).getName() + "** | " + leaderBoard.get(x).getWins() + " Wins  *" + leaderBoard.get(x).getUserData().toUpperCase() + "*\n");
 
 
                 }
 
-
-                msg.getChannel().sendMessage(leaderList.toString()).queue(m->{
-
-                    Timer time = new Timer();
-                    time.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            msg.delete().queue();
-
-                        }
-                    }, 5000);
+                msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0xa442f4)).setTitle("Fortnite Leaderboard")
+                        .setThumbnail("http://www.stickpng.com/assets/images/5b43b818e99939b4572e32ab.png")
+                        .setDescription("\n"+leaderList)
+                        .build()).queue();
 
 
-
-                });
 
             } catch (Exception e) {
                 System.out.println(e.toString());
-                msg.getChannel().sendMessage("Format: y!fortniteleaderboard [pc, ps4, xb1] [solo, duo, squad]").queue();
+
+
+                msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Create Text Channel")
+                        .setThumbnail("http://www.stickpng.com/assets/images/5b43b818e99939b4572e32ab.png")
+                        .addField("Format","```yflb [pc, ps4, xb1] [solo, duo, squad]```",true)
+                        .build()).queue();
+
             }
 
 
         } catch (IndexOutOfBoundsException e) {
-            msg.getChannel().sendMessage("Format: y!fortniteleaderboard [pc, ps4, xb1] [solo, duo, squad]").queue();
+
+
+            msg.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Create Text Channel")
+                    .setThumbnail("http://www.stickpng.com/assets/images/5b43b818e99939b4572e32ab.png")
+                    .addField("Format","```yflb [pc, ps4, xb1] [solo, duo, squad]```",true)
+                    .build()).queue();
+
         }
         Timer time = new Timer();
         time.schedule(new TimerTask() {
