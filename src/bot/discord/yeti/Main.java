@@ -25,9 +25,9 @@ public class Main {
 
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setGame(Game.listening("yhelp | yinvite"));
-      //  builder.addEventListener(new ReadyListener());
+       builder.addEventListener(new ReadyListener());
 
-      builder.addEventListener(new Command());
+      //builder.addEventListener(new Command());
 
         try {
             jda = builder.buildBlocking();
