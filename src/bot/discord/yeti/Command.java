@@ -2,6 +2,8 @@ package bot.discord.yeti;
 
 import bot.discord.yeti.command.*;
 import bot.discord.yeti.dictionary.API;
+import bot.discord.yeti.dictionary.Dic;
+import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.ReadyEvent;
@@ -14,10 +16,19 @@ import java.awt.*;
 import java.io.IOException;
 
 public class Command extends ListenerAdapter {
+
+    EventWaiter waiter;
+    public Command(EventWaiter waiter) {
+        this.waiter = waiter;
+    }
+
     MusicManager musicManager = new MusicManager();
+
+
 
     String allGuilds = "";
     public void onMessageReceived(MessageReceivedEvent e) {
+        System.out.println(e.getMessage().getContentRaw());
         /*
         try{
 
@@ -54,7 +65,7 @@ public class Command extends ListenerAdapter {
                     break;
 
                 case "ban":
-                    Ban.run(e.getMessage(), e);
+                    Ban.run(e.getMessage(), e,waiter);
                     break;
 
                 case "unban":
@@ -378,6 +389,23 @@ public class Command extends ListenerAdapter {
                 case "subscribe":
                     Broadcast.run(e);
 
+                    break;
+                case "lmgtfy":
+                    Lmgtfy.run(e);
+                    break;
+                case "fortune":
+                    try {
+                        Fortune.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
+                case "dice":
+                    try {
+                        DiceRoll.run(e);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
                     break;
                 default:
                     break;

@@ -29,10 +29,10 @@ public class Help {
 
         e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF))
                 .setAuthor("Help","https://darshanbhatta.com/yeti","https://i.imgur.com/u2LaWB9.png")
-                .addField(":game_die: Yeti Casino :game_die:","`yblackjack`, `ycoinflip`, `yjackpot`, `ynumberguess`, `yroulette`, `yslot`",false)
+                .addField(":game_die: Yeti Casino :game_die:","`yblackjack`, `ycoinflip`, `yjackpot`, `ynumberguess`, `yroulette`, `yslot`, `ydice`",false)
                 .addField(":gem: Yeti Reserve :gem:","`ybank`, `yclaim`",false)
                 .addField(":joystick: Yeti Games :joystick:","`ytictactoe`, `yconnect4`, `ytrivia`",false)
-                .addField(":earth_americas: Yeti Community :earth_americas:","`ypolling`, `yreddit`, `yweather`",false)
+                .addField(":earth_americas: Yeti Community :earth_americas:","`ypolling`, `yreddit`, `yweather`, `ylmgtfy`",false)
                 .addField(":floppy_disk: Discord Server :floppy_disk:","`yaddtext`, `yaddvoice`, `yban`, `yunban`, `ykick`, `yrole`, `ysnappy`, `yinvite`",false)
                 .addField(":video_game: Video-Games :video_game:","`yfstats`, `yfshop`, `yflb`",false)
                 .addField(":musical_note:  Music :musical_note:","`ymusic`",false)

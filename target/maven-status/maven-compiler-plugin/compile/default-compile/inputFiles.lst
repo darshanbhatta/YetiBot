@@ -16,6 +16,7 @@ C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\command\RouletteManager.
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\fortniteAPI\StatsAsyncTask.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\util\reward\RewardUser.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\game\trivia\TriviaGame.java
+C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\command\Fortune.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\util\music\AudioPlayerSendHandler.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\game\trivia\TriviaQuestion.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\command\CreateTextChannel.java
@@ -48,10 +49,12 @@ C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\game\blackjack\Blackjack
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\command\Claim.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\command\Help.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\ReadyListener.java
+C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\command\Lmgtfy.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\game\jackpot\JackpotGame.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\Main.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\game\slot\Slot.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\command\Broadcast.java
+C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\command\DiceRoll.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\game\connect4\Connect4Holder.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\game\trivia\TriviaHolder.java
 C:\Users\Darshan\Documents\YetiBot\src\bot\discord\yeti\command\BlackjackManager.java
