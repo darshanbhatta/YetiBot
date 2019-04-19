@@ -2,9 +2,11 @@ package bot.discord.yeti.command;
 
 import bot.discord.yeti.currency.Bank;
 import bot.discord.yeti.dictionary.API;
+import bot.discord.yeti.dictionary.Dic;
 import bot.discord.yeti.game.blackjack.BlackjackGameHolder;
 import bot.discord.yeti.util.broadcast.OptOutList;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -63,32 +65,8 @@ public class Broadcast {
 
 
         } else if(e.getMessage().getContentRaw().toLowerCase().contains("unsubscribe")){
-            broadCast[0].getGuildis().add(e.getGuild().getId());
-            FileOutputStream fileOutputStream = null;
-            try {
-                fileOutputStream = new FileOutputStream("broadcast.ser");
-                ObjectOutputStream objectOutputStream = null;
-                try {
-                    objectOutputStream = new ObjectOutputStream(fileOutputStream);
-                    objectOutputStream.writeObject(broadCast[0]);
-                    objectOutputStream.close();
-                    fileOutputStream.close();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-
-            } catch (FileNotFoundException e1) {
-                e1.printStackTrace();
-            }
-
-            e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Notification")
-                    .setThumbnail("https://i.imgur.com/xRpsqdl.png")
-                    .setDescription("You've successfully opted out of all Yeti notifications If you want to receive messages from us, please type **ysubscribe**")
-                    .build()).queue();
-
-        }else{
-            try{
-                broadCast[0].getGuildis().remove(e.getGuild().getId());
+            if (e.getMember().hasPermission(Permission.MANAGE_SERVER)) {
+                broadCast[0].getGuildis().add(e.getGuild().getId());
                 FileOutputStream fileOutputStream = null;
                 try {
                     fileOutputStream = new FileOutputStream("broadcast.ser");
@@ -108,19 +86,59 @@ public class Broadcast {
 
                 e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Notification")
                         .setThumbnail("https://i.imgur.com/xRpsqdl.png")
-                        .setDescription("You've successfully opted in of all Yeti notifications")
+                        .setDescription("You've successfully opted out of all Yeti notifications If you want to receive messages from us, please type **ysubscribe**")
                         .build()).queue();
-
-
-
-
-            }catch (Exception ea){
-                e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Notification")
-                        .setThumbnail("https://i.imgur.com/xRpsqdl.png")
-                        .setDescription("You are already subscribed to Yeti notifications")
+            }else{
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Something went wrong")
+                        .setThumbnail("https://i.imgur.com/t4yagto.png")
+                        .setDescription(Dic.noPermission)
                         .build()).queue();
             }
 
+
+        }else {
+            if (e.getMember().hasPermission(Permission.MANAGE_SERVER)) {
+                try{
+                    broadCast[0].getGuildis().remove(e.getGuild().getId());
+                    FileOutputStream fileOutputStream = null;
+                    try {
+                        fileOutputStream = new FileOutputStream("broadcast.ser");
+                        ObjectOutputStream objectOutputStream = null;
+                        try {
+                            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                            objectOutputStream.writeObject(broadCast[0]);
+                            objectOutputStream.close();
+                            fileOutputStream.close();
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Notification")
+                            .setThumbnail("https://i.imgur.com/xRpsqdl.png")
+                            .setDescription("You've successfully opted in of all Yeti notifications")
+                            .build()).queue();
+
+
+
+
+                }catch (Exception ea){
+                    e.getChannel().sendMessage(new EmbedBuilder().setColor(new Color(0x8CC8FF)).setTitle("Notification")
+                            .setThumbnail("https://i.imgur.com/xRpsqdl.png")
+                            .setDescription("You are already subscribed to Yeti notifications")
+                            .build()).queue();
+                }
+
+
+            }else{
+                e.getChannel().sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Something went wrong")
+                        .setThumbnail("https://i.imgur.com/t4yagto.png")
+                        .setDescription(Dic.noPermission)
+                        .build()).queue();
+            }
         }
 
 
