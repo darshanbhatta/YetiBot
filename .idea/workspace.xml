@@ -4,11 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/bot/discord/yeti/command/Help.java" description="&#10;        ArrayList&lt;User&gt; users = new ArrayList();&#10;..." line="26" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a27e9a9b-cdd5-4a5a-8134-3f2143fb4d2f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/broadcast.ser" beforeDir="false" afterPath="$PROJECT_DIR$/broadcast.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/discord/yeti/dictionary/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/discord/yeti/dictionary/API.java" afterDir="false" />
-    </list>
+    <list default="true" id="a27e9a9b-cdd5-4a5a-8134-3f2143fb4d2f" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
