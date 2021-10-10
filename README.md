@@ -1,5 +1,8 @@
 # Yeti Bot
 
+### This project is no longer maintained and in operation.
+<br />
+
 A discord bot that allows you to play games with friends, listen to music, gamble at the casino, and keep up with other trends.
 
 
